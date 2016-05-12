@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Guia Ecomuseu</string>
+    <string name="app_description">Uma nova experiência para sua visita</string>
+
+    <string name="navigation_drawer_open">Abra o menu de navegação</string>
+    <string name="navigation_drawer_close">Feche o menu de navegação</string>
+
+    <string name="action_settings">Configurações</string>
+
+    <string name="nav_rooms">Espaços</string>
+    <string name="nav_qrcode">QR Code</string>
+    <string name="nav_map">Mapa</string>
+    <string name="nav_achievements">Conquistas</string>
+    <string name="nav_options">Opções</string>
+    <string name="nav_share">Compartilhar</string>
+
+    <string name="nav_title_social">Social</string>
+
+    <string name="no_image">Sem Imagem</string>
+    <string name="no_item_list">Vazio</string>
+
+    <string name="hello_room_fragment">Oi Espaços fragment</string>
+    <string name="hello_qrcode_fragment">Oi QR Code fragment</string>
+    <string name="hello_map_fragment">Oi Mapa fragment</string>
+    <string name="hello_achievements_fragment">Oi Conquistas fragment</string>
+    <string name="hello_option_fragment">Oi Opções fragment</string>
+
+
+</resources>

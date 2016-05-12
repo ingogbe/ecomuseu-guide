@@ -1,0 +1,24 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ingoguilherme.ecomuseuguide.MainActivity">
+
+    <ListView
+        android:id="@+id/listViewRooms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fastScrollEnabled="true"
+        android:padding="5dp" >
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/empty"
+        android:text="@string/no_item_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        />
+
+</FrameLayout>

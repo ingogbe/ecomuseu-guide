@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_list_exposition_layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_margin="5dp"
+	android:layout_weight="0.8"
+	android:baselineAligned="false">
+
+	<ImageView
+		android:id="@+id/imageCover"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:layout_marginTop="2dp"
+		android:layout_marginBottom="2dp"
+		android:src="@drawable/ic_no_image"
+		android:contentDescription="@string/no_image" />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:paddingBottom="5dp"
+		android:paddingLeft="10dp"
+		android:paddingRight="5dp"
+		android:paddingTop="5dp"
+		android:layout_toRightOf="@+id/imageCover"
+		android:layout_toEndOf="@+id/imageCover">
+
+		<TextView
+			android:id="@+id/text_view_exposition_name"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<TextView
+			android:id="@+id/text_view_exposition_summary"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceSmall" />
+	</LinearLayout>
+	
+</RelativeLayout>
+
+

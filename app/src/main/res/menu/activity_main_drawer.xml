@@ -5,31 +5,31 @@
         <item
             android:id="@+id/nav_rooms"
             android:icon="@drawable/ic_menu_rooms"
-            android:title="Rooms" />
+            android:title="@string/nav_rooms" />
         <item
             android:id="@+id/nav_qrcode"
             android:icon="@drawable/ic_menu_qrcode"
-            android:title="QR Code" />
+            android:title="@string/nav_qrcode" />
         <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_menu_map"
-            android:title="Map" />
+            android:title="@string/nav_map" />
         <item
             android:id="@+id/nav_achievements"
             android:icon="@drawable/ic_menu_achievements"
-            android:title="Achievements" />
+            android:title="@string/nav_achievements" />
+        <item
+            android:id="@+id/nav_options"
+            android:icon="@drawable/ic_menu_options"
+            android:title="@string/nav_options" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/nav_title_social">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="@string/nav_share" />
         </menu>
     </item>
 

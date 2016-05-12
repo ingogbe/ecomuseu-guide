@@ -14,10 +14,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.ingoguilherme.ecomuseuguide.fragments.AchievementsFragment;
+import com.ingoguilherme.ecomuseuguide.fragments.MapFragment;
+import com.ingoguilherme.ecomuseuguide.fragments.OptionFragment;
+import com.ingoguilherme.ecomuseuguide.fragments.QRCodeFragment;
+import com.ingoguilherme.ecomuseuguide.fragments.ExpositionFragment;
+import com.ingoguilherme.ecomuseuguide.fragments.RoomListFragment;
+
+/**
+ * Created by IngoGuilherme on 04-May-16.
+ */
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, RoomFragment.OnRoomFragmentInteractionListener,
+        implements NavigationView.OnNavigationItemSelectedListener, ExpositionFragment.OnExpositionFragmentInteractionListener,
         QRCodeFragment.OnQRCodeFragmentInteractionListener, MapFragment.OnMapFragmentInteractionListener,
-        AchievementsFragment.OnAchievementsFragmentInteractionListener{
+        AchievementsFragment.OnAchievementsFragmentInteractionListener, RoomListFragment.OnRoomListFragmentInteractionListener,
+        OptionFragment.OnOptionFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +84,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.your_placeholder, new OptionFragment());
+            ft.commit();
             return true;
         }
 
@@ -99,15 +113,17 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         } else if (id == R.id.nav_rooms) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.your_placeholder, new RoomFragment());
+            ft.replace(R.id.your_placeholder, new RoomListFragment());
             ft.commit();
         } else if (id == R.id.nav_achievements) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.your_placeholder, new AchievementsFragment());
             ft.commit();
+        } else if (id == R.id.nav_options) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.your_placeholder, new OptionFragment());
+            ft.commit();
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
@@ -117,7 +133,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onRoomFragmentInteraction(Uri uri) {
+    public void onExpositionFragmentInteraction(Uri uri) {
 
     }
 
@@ -133,6 +149,16 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onAchievementsFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onRoomListFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onOptionFragmentInteraction(Uri uri) {
 
     }
 }
