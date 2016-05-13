@@ -22,7 +22,7 @@ public class MapFragment extends Fragment {
     }
 
 
-    public static MapFragment newInstance(String param1, String param2) {
+    public static MapFragment newInstance() {
         MapFragment fragment = new MapFragment();
         return fragment;
     }

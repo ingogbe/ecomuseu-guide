@@ -27,6 +27,8 @@ public class ExpositionFragment extends Fragment {
 
     View rootView;
 
+    public static final int REQUEST_CODE = 0;
+
     private OnExpositionFragmentInteractionListener mListener;
 
     public ExpositionFragment() {
@@ -52,6 +54,8 @@ public class ExpositionFragment extends Fragment {
             exposition.setDescription(getArguments().getString(ARG_PARAM3));
 
             //TODO: GET PANELS DA EXPOSIÇÃO NO BANCO
+            //TODO: GET IMAGENS DESSES PANEL
+            //TODO: GET PARAGRAFOS DESSES PANEL
         }
         else{
             exposition = new Exposition();

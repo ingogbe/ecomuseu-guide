@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
+import com.ingoguilherme.ecomuseuguide.fragments.ExpositionFragment;
 
 import java.util.ArrayList;
 
@@ -73,7 +74,7 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
     }
     
     public void expositionClick(Exposition e){
-    	//TODO: Chamar exposition fragment
-
+		ft.replace(R.id.your_placeholder, ExpositionFragment.newInstance(e));
+		ft.commit();
     }
 }

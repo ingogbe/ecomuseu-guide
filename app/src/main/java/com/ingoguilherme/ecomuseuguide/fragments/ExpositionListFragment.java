@@ -64,9 +64,6 @@ public class ExpositionListFragment extends Fragment {
 
         listView = (ListView) rootView.findViewById(R.id.listViewExpositions);
 
-        View empty = rootView.findViewById(R.id.empty);
-        listView.setEmptyView(empty);
-
         ExpositionListAdapter expositionsAdapter = new ExpositionListAdapter(rootView.getContext(), R.layout.item_list_exposition, expositions, getActivity().getSupportFragmentManager().beginTransaction());
         listView.setAdapter(expositionsAdapter);
 

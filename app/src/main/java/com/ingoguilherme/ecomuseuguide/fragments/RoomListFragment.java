@@ -31,7 +31,7 @@ public class RoomListFragment extends Fragment {
     }
 
 
-    public static RoomListFragment newInstance(String param1, String param2) {
+    public static RoomListFragment newInstance() {
         RoomListFragment fragment = new RoomListFragment();
 
         return fragment;

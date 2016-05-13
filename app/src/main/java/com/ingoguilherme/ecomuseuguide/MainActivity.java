@@ -15,10 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ingoguilherme.ecomuseuguide.fragments.AchievementsFragment;
+import com.ingoguilherme.ecomuseuguide.fragments.ExpositionFragment;
 import com.ingoguilherme.ecomuseuguide.fragments.MapFragment;
 import com.ingoguilherme.ecomuseuguide.fragments.OptionFragment;
 import com.ingoguilherme.ecomuseuguide.fragments.QRCodeFragment;
-import com.ingoguilherme.ecomuseuguide.fragments.ExpositionFragment;
 import com.ingoguilherme.ecomuseuguide.fragments.RoomListFragment;
 
 /**
@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity
         QRCodeFragment.OnQRCodeFragmentInteractionListener, MapFragment.OnMapFragmentInteractionListener,
         AchievementsFragment.OnAchievementsFragmentInteractionListener, RoomListFragment.OnRoomListFragmentInteractionListener,
         OptionFragment.OnOptionFragmentInteractionListener{
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,12 +102,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_qrcode) {
-            // Begin the transaction
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            // Replace the contents of the container with the new fragment
-            ft.replace(R.id.your_placeholder, new QRCodeFragment());
-            // or ft.add(R.id.your_placeholder, new FooFragment());
-            // Complete the changes added above
+            ft.replace(R.id.your_placeholder, QRCodeFragment.newInstance());
             ft.commit();
         } else if (id == R.id.nav_map) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

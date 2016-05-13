@@ -21,7 +21,7 @@ public class OptionFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static OptionFragment newInstance(String param1, String param2) {
+    public static OptionFragment newInstance() {
         OptionFragment fragment = new OptionFragment();
         return fragment;
     }
