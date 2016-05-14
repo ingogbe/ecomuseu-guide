@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.fragments;
+package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,10 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
+import com.ingoguilherme.ecomuseuguide.bo.Panel;
+import com.ingoguilherme.ecomuseuguide.dao.controller.PanelDAO;
+import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
 
 /**
  * Created by IngoGuilherme on 04-May-16.
@@ -49,13 +55,15 @@ public class ExpositionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            exposition = new Exposition();
             exposition.setId(getArguments().getInt(ARG_PARAM1));
             exposition.setName(getArguments().getString(ARG_PARAM2));
             exposition.setDescription(getArguments().getString(ARG_PARAM3));
 
-            //TODO: GET PANELS DA EXPOSIÇÃO NO BANCO
-            //TODO: GET IMAGENS DESSES PANEL
-            //TODO: GET PARAGRAFOS DESSES PANEL
+            DatabaseHandler dh = new DatabaseHandler(getContext());
+            PanelDAO panelDAO = new PanelDAO(dh);
+            exposition.setPanels(panelDAO.queryPanelByExposition(exposition));
+            dh.close();
         }
         else{
             exposition = new Exposition();
@@ -70,40 +78,39 @@ public class ExpositionFragment extends Fragment {
 
         if(exposition.getId() != 0) {
             LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.room_images);
+            TextView tvText = (TextView) rootView.findViewById(R.id.textViewText);
+            String text = "";
 
-            /* CARREGA IMAGENS
-            try {
-                for(String s : mParamDescription) {
-                    byte[] imageData = null;
+            TextView tvTitle = (TextView) rootView.findViewById(R.id.textViewTitle);
+            tvTitle.setText(exposition.getName());
+
+            //TODO: FAZER PEGAR AUDIO
+            //TODO: fazer ampliar imagem quando clicada
+
+            for(Panel p :exposition.getPanels()) {
+                for(String s :p.getParagraphs()){
+                    text = text + s + "\n\n";
+                }
+                text = text + "\n\n\n\n";
+
+                for (String s : p.getImageSources()) {
                     ImageView im = new ImageView(rootView.getContext());
 
-                    final int THUMBNAIL_SIZE = 100;
-                    //InputStream is=getAssets().open("apple-android-battle.jpg");
-                    int id = rootView.getContext().getResources().getIdentifier(s, "drawable", rootView.getContext().getPackageName());
-                    Bitmap imageBitmap = BitmapFactory.decodeResource(rootView.getContext().getResources(), id);
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    lp.setMargins(10, 10, 10, 10);
+                    im.setLayoutParams(lp);
 
-                    Float width = new Float(imageBitmap.getWidth());
-                    Float height = new Float(imageBitmap.getHeight());
-                    Float ratio = width / height;
-                    imageBitmap = Bitmap.createScaledBitmap(imageBitmap, (int) (THUMBNAIL_SIZE * ratio), THUMBNAIL_SIZE, false);
+                    im.setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
 
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                    imageData = baos.toByteArray();
-                    im.setImageBitmap(imageBitmap);
-                    im.setMaxHeight(100);
-                    im.setMaxWidth(100);
+                    im.setImageBitmap(Thumbnail.generateThumbnail(rootView,s,150));
+                    im.setPadding(10,10,10,10);
 
                     ll.addView(im);
                 }
             }
-            catch(Exception ex) {
-                ImageView im = new ImageView(rootView.getContext());
-                im.setImageResource(R.drawable.ic_no_image);
-                ll.addView(im);
-                Log.d("TESTE","Deu pau");
-            }
-            */
+
+            tvText.setText(text);
+
         }
         else{
             //Sem exposição

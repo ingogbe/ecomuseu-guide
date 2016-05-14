@@ -1,6 +1,7 @@
-package com.ingoguilherme.ecomuseuguide.adapter;
+package com.ingoguilherme.ecomuseuguide.view.adapter;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
-import com.ingoguilherme.ecomuseuguide.fragments.ExpositionListFragment;
+import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
+import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
+import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionListFragment;
 
 import java.util.ArrayList;
 
@@ -47,13 +50,7 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 		view = inflater.inflate(R.layout.item_list_room, null);
 
 		ImageView imageCover = (ImageView) view.findViewById(R.id.imageCover);
-
-		try{
-			int id = context.getResources().getIdentifier(room.getCoverImageSrc(), "drawable", context.getPackageName());
-			imageCover.setImageResource(id);
-		}catch (Exception e) {
-			imageCover.setImageResource(R.drawable.ic_no_image);
-		}
+		imageCover.setImageBitmap(Thumbnail.generateThumbnail(view,room.getCoverImageSrc(),200));
 
         TextView textViewRoomName = (TextView) view.findViewById(R.id.text_view_room_name);
 		textViewRoomName.setText(room.getName());
@@ -73,7 +70,9 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
     }
     
     public void roomClick(Room r){
-		ft.replace(R.id.your_placeholder, ExpositionListFragment.newInstance(r.getId()));
+		Fragment f = ExpositionListFragment.newInstance(r.getId());
+		MainActivity.addLastOpenedFragment(f);
+		ft.replace(R.id.your_placeholder, f);
 		ft.commit();
     }
 }

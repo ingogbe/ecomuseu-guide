@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.fragments;
+package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,45 +10,46 @@ import android.view.ViewGroup;
 
 import com.ingoguilherme.ecomuseuguide.R;
 
-
 /**
- * Created by IngoGuilherme on 04-May-16.
+ * Created by IngoGuilherme on 11-May-16.
  */
-public class AchievementsFragment extends Fragment {
+public class OptionFragment extends Fragment {
 
-    private OnAchievementsFragmentInteractionListener mListener;
+    private OnOptionFragmentInteractionListener mListener;
 
-    public AchievementsFragment() {
+    public OptionFragment() {
         // Required empty public constructor
     }
 
-    public static AchievementsFragment newInstance(String param1, String param2) {
-        AchievementsFragment fragment = new AchievementsFragment();
+    public static OptionFragment newInstance() {
+        OptionFragment fragment = new OptionFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //TODO: Change selectedLanguage
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_achievements, container, false);
+        return inflater.inflate(R.layout.fragment_option, container, false);
     }
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onAchievementsFragmentInteraction(uri);
+            mListener.onOptionFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnAchievementsFragmentInteractionListener) {
-            mListener = (OnAchievementsFragmentInteractionListener) context;
+        if (context instanceof OnOptionFragmentInteractionListener) {
+            mListener = (OnOptionFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -61,7 +62,7 @@ public class AchievementsFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnAchievementsFragmentInteractionListener {
-        void onAchievementsFragmentInteraction(Uri uri);
+    public interface OnOptionFragmentInteractionListener {
+        void onOptionFragmentInteraction(Uri uri);
     }
 }

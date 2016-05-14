@@ -1,18 +1,25 @@
-package com.ingoguilherme.ecomuseuguide.fragments;
+package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ingoguilherme.ecomuseuguide.R;
-import com.ingoguilherme.ecomuseuguide.zxing.IntentIntegrator;
-import com.ingoguilherme.ecomuseuguide.zxing.IntentResult;
+import com.ingoguilherme.ecomuseuguide.barcode.reader.zxing.IntentIntegrator;
+import com.ingoguilherme.ecomuseuguide.barcode.reader.zxing.IntentResult;
+import com.ingoguilherme.ecomuseuguide.bo.Exposition;
+import com.ingoguilherme.ecomuseuguide.bo.Language;
+import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
+import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
+import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 
 
 /**
@@ -21,6 +28,8 @@ import com.ingoguilherme.ecomuseuguide.zxing.IntentResult;
 public class QRCodeFragment extends Fragment {
 
     View rootView;
+
+    public static boolean isBackPressed = false;
 
     private OnQRCodeFragmentInteractionListener mListener;
 
@@ -40,7 +49,7 @@ public class QRCodeFragment extends Fragment {
 
         IntentIntegrator integrator = IntentIntegrator.forFragment(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-        integrator.setPrompt("Scan a QR Code");
+        integrator.setPrompt(getResources().getString(R.string.qr_code_scan));
         integrator.setOrientationLocked(false);
         integrator.setBeepEnabled(false);
         integrator.initiateScan();
@@ -53,7 +62,32 @@ public class QRCodeFragment extends Fragment {
             if (scanResult != null) {
                 Log.d("QR_CODE", scanResult.getContents());
                 Log.d("QR_CODE", scanResult.getFormatName());
-                //TODO: Chamar fragment da exposição
+
+                DatabaseHandler dh = new DatabaseHandler(getContext());
+
+                LanguageDAO languageDAO = new LanguageDAO(dh);
+                Language language = languageDAO.queryCurrentSysLanguage();
+
+                ExpositionDAO expositionDAO = new ExpositionDAO(dh);
+                Exposition expo = expositionDAO.queryExpositionByQrCodeAndLanguage(scanResult.getContents(), language);
+
+                if (expo.getId() != 0){
+                    MainActivity.lastOpenedFragmentList.remove(this);
+                    Fragment f = ExpositionFragment.newInstance(expo);
+                    MainActivity.addLastOpenedFragment(f);
+
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.your_placeholder, f);
+                    ft.commit();
+                }
+                else{
+                    IntentIntegrator integrator = IntentIntegrator.forFragment(this);
+                    integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+                    integrator.setPrompt(getResources().getString(R.string.qr_code_scan));
+                    integrator.setOrientationLocked(false);
+                    integrator.setBeepEnabled(false);
+                    integrator.initiateScan();
+                }
             }
         }
     }
@@ -74,6 +108,7 @@ public class QRCodeFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
+
         super.onAttach(context);
         if (context instanceof OnQRCodeFragmentInteractionListener) {
             mListener = (OnQRCodeFragmentInteractionListener) context;
@@ -81,6 +116,7 @@ public class QRCodeFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
     }
 
     @Override

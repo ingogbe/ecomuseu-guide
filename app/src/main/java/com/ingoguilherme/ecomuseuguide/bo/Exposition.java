@@ -11,6 +11,7 @@ public class Exposition {
     String description;
     ArrayList<Panel> panels;
     String coverImageSrc;
+    String qrCodeLink;
 
     private static Exposition ourInstance = new Exposition();
 
@@ -23,6 +24,8 @@ public class Exposition {
         setName("");
         setDescription("");
         setPanels(new ArrayList<Panel>());
+        setCoverImageSrc("");
+        setQrCodeLink("");
     }
 
     public Exposition(String name) {
@@ -30,6 +33,8 @@ public class Exposition {
         setName(name);
         setDescription("");
         setPanels(new ArrayList<Panel>());
+        setCoverImageSrc("");
+        setQrCodeLink("");
     }
 
     public Exposition(String name, String description) {
@@ -37,6 +42,17 @@ public class Exposition {
         setName(name);
         setDescription(description);
         setPanels(new ArrayList<Panel>());
+        setCoverImageSrc("");
+        setQrCodeLink("");
+    }
+
+    public Exposition(String name, String description, String qrCodeLink) {
+        setId(0);
+        setName(name);
+        setDescription(description);
+        setPanels(new ArrayList<Panel>());
+        setCoverImageSrc("");
+        setQrCodeLink(qrCodeLink);
     }
 
     public void addPanel(Panel panel){
@@ -81,5 +97,13 @@ public class Exposition {
 
     public void setCoverImageSrc(String coverImageSrc) {
         this.coverImageSrc = coverImageSrc;
+    }
+
+    public String getQrCodeLink() {
+        return qrCodeLink;
+    }
+
+    public void setQrCodeLink(String qrCodeLink) {
+        this.qrCodeLink = qrCodeLink;
     }
 }

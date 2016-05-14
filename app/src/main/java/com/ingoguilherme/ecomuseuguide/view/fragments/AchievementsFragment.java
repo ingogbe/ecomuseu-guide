@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.fragments;
+package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,20 +10,20 @@ import android.view.ViewGroup;
 
 import com.ingoguilherme.ecomuseuguide.R;
 
+
 /**
  * Created by IngoGuilherme on 04-May-16.
  */
-public class MapFragment extends Fragment {
+public class AchievementsFragment extends Fragment {
 
-    private OnMapFragmentInteractionListener mListener;
+    private OnAchievementsFragmentInteractionListener mListener;
 
-    public MapFragment() {
+    public AchievementsFragment() {
         // Required empty public constructor
     }
 
-
-    public static MapFragment newInstance() {
-        MapFragment fragment = new MapFragment();
+    public static AchievementsFragment newInstance() {
+        AchievementsFragment fragment = new AchievementsFragment();
         return fragment;
     }
 
@@ -35,20 +35,20 @@ public class MapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        return inflater.inflate(R.layout.fragment_achievements, container, false);
     }
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onMapFragmentInteraction(uri);
+            mListener.onAchievementsFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnMapFragmentInteractionListener) {
-            mListener = (OnMapFragmentInteractionListener) context;
+        if (context instanceof OnAchievementsFragmentInteractionListener) {
+            mListener = (OnAchievementsFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -61,8 +61,7 @@ public class MapFragment extends Fragment {
         mListener = null;
     }
 
-
-    public interface OnMapFragmentInteractionListener {
-        void onMapFragmentInteraction(Uri uri);
+    public interface OnAchievementsFragmentInteractionListener {
+        void onAchievementsFragmentInteraction(Uri uri);
     }
 }

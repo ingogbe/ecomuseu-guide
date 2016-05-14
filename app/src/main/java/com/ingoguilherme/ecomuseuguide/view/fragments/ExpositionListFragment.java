@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.fragments;
+package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ingoguilherme.ecomuseuguide.R;
-import com.ingoguilherme.ecomuseuguide.adapter.ExpositionListAdapter;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
+import com.ingoguilherme.ecomuseuguide.bo.Room;
+import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
+import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.view.adapter.ExpositionListAdapter;
 
 import java.util.ArrayList;
 
@@ -27,7 +30,7 @@ public class ExpositionListFragment extends Fragment {
     ListView listView;
     View rootView;
 
-    private OnFragmentInteractionListener mListener;
+    private OnExpositionListFragmentInteractionListener mListener;
 
     public ExpositionListFragment() {
         // Required empty public constructor
@@ -48,8 +51,14 @@ public class ExpositionListFragment extends Fragment {
 
         if (getArguments() != null) {
             this.idRoom = getArguments().getInt(ARG_PARAM1);
-            //TODO: Pegar expositions da Room no BD
-            //expositions
+            Room r = new Room();
+            r.setId(idRoom);
+
+            DatabaseHandler dh = new DatabaseHandler(getContext());
+            ExpositionDAO expositionDAO = new ExpositionDAO(dh);
+            expositions = expositionDAO.queryExpositionByRoom(r);
+            dh.close();
+
         }
         else{
             expositions = new ArrayList<Exposition>();
@@ -64,6 +73,9 @@ public class ExpositionListFragment extends Fragment {
 
         listView = (ListView) rootView.findViewById(R.id.listViewExpositions);
 
+        View empty = rootView.findViewById(R.id.empty);
+        listView.setEmptyView(empty);
+
         ExpositionListAdapter expositionsAdapter = new ExpositionListAdapter(rootView.getContext(), R.layout.item_list_exposition, expositions, getActivity().getSupportFragmentManager().beginTransaction());
         listView.setAdapter(expositionsAdapter);
 
@@ -72,15 +84,15 @@ public class ExpositionListFragment extends Fragment {
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onExpositionListFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnExpositionListFragmentInteractionListener) {
+            mListener = (OnExpositionListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -93,7 +105,7 @@ public class ExpositionListFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+    public interface OnExpositionListFragmentInteractionListener {
+        void onExpositionListFragmentInteraction(Uri uri);
     }
 }

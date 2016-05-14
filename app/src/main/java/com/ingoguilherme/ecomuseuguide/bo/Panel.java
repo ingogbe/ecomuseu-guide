@@ -7,7 +7,6 @@ import java.util.ArrayList;
  */
 public class Panel {
     int id;
-    String qrCodeLink;
     ArrayList<String> paragraphs;
     String audioSource;
     ArrayList<String> imageSources;
@@ -20,7 +19,6 @@ public class Panel {
 
     public Panel() {
         setId(0);
-        setQrCodeLink("");
         setParagraphs(new ArrayList<String>());
         setAudioSource("");
         setImageSources(new ArrayList<String>());
@@ -28,7 +26,6 @@ public class Panel {
 
     public Panel(ArrayList<String> paragraphs) {
         setId(0);
-        setQrCodeLink("");
         setParagraphs(paragraphs);
         setAudioSource("");
         setImageSources(new ArrayList<String>());
@@ -48,14 +45,6 @@ public class Panel {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getQrCodeLink() {
-        return qrCodeLink;
-    }
-
-    public void setQrCodeLink(String qrCodeLink) {
-        this.qrCodeLink = qrCodeLink;
     }
 
     public ArrayList<String> getParagraphs() {

@@ -1,6 +1,7 @@
-package com.ingoguilherme.ecomuseuguide.adapter;
+package com.ingoguilherme.ecomuseuguide.view.adapter;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,9 @@ import android.widget.TextView;
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
-import com.ingoguilherme.ecomuseuguide.fragments.ExpositionFragment;
+import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
+import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
+import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionFragment;
 
 import java.util.ArrayList;
 
@@ -48,13 +51,7 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 		view = inflater.inflate(R.layout.item_list_exposition, null);
 
 		ImageView imageCover = (ImageView) view.findViewById(R.id.imageCover);
-
-		try{
-			int id = context.getResources().getIdentifier(exposition.getCoverImageSrc(), "drawable", context.getPackageName());
-			imageCover.setImageResource(id);
-		}catch (Exception e) {
-			imageCover.setImageResource(R.drawable.ic_no_image);
-		}
+		imageCover.setImageBitmap(Thumbnail.generateThumbnail(view,exposition.getCoverImageSrc(),200));
 
         TextView textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
 		textViewExpositionName.setText(exposition.getName());
@@ -74,7 +71,9 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
     }
     
     public void expositionClick(Exposition e){
-		ft.replace(R.id.your_placeholder, ExpositionFragment.newInstance(e));
+		Fragment f = ExpositionFragment.newInstance(e);
+		MainActivity.addLastOpenedFragment(f);
+		ft.replace(R.id.your_placeholder, f);
 		ft.commit();
     }
 }

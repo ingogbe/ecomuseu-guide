@@ -1,9 +1,10 @@
-package com.ingoguilherme.ecomuseuguide;
+package com.ingoguilherme.ecomuseuguide.view.activities;
 
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,12 +15,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.ingoguilherme.ecomuseuguide.fragments.AchievementsFragment;
-import com.ingoguilherme.ecomuseuguide.fragments.ExpositionFragment;
-import com.ingoguilherme.ecomuseuguide.fragments.MapFragment;
-import com.ingoguilherme.ecomuseuguide.fragments.OptionFragment;
-import com.ingoguilherme.ecomuseuguide.fragments.QRCodeFragment;
-import com.ingoguilherme.ecomuseuguide.fragments.RoomListFragment;
+import com.ingoguilherme.ecomuseuguide.R;
+import com.ingoguilherme.ecomuseuguide.bo.Language;
+import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
+import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.view.fragments.AchievementsFragment;
+import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionFragment;
+import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionListFragment;
+import com.ingoguilherme.ecomuseuguide.view.fragments.MapFragment;
+import com.ingoguilherme.ecomuseuguide.view.fragments.OptionFragment;
+import com.ingoguilherme.ecomuseuguide.view.fragments.QRCodeFragment;
+import com.ingoguilherme.ecomuseuguide.view.fragments.RoomListFragment;
+
+import java.util.ArrayList;
 
 /**
  * Created by IngoGuilherme on 04-May-16.
@@ -28,9 +36,10 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ExpositionFragment.OnExpositionFragmentInteractionListener,
         QRCodeFragment.OnQRCodeFragmentInteractionListener, MapFragment.OnMapFragmentInteractionListener,
         AchievementsFragment.OnAchievementsFragmentInteractionListener, RoomListFragment.OnRoomListFragmentInteractionListener,
-        OptionFragment.OnOptionFragmentInteractionListener{
+        OptionFragment.OnOptionFragmentInteractionListener, ExpositionListFragment.OnExpositionListFragmentInteractionListener{
 
-
+    public static ArrayList<Fragment> lastOpenedFragmentList = new ArrayList<Fragment>();
+    public static Language selectedLanguage = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +53,10 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                Fragment f = QRCodeFragment.newInstance();
+                addLastOpenedFragment(f);
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.your_placeholder, new QRCodeFragment());
+                ft.replace(R.id.your_placeholder, f);
                 ft.commit();
             }
         });
@@ -58,6 +69,48 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if(lastOpenedFragmentList.size() == 0) {
+            Fragment f = RoomListFragment.newInstance();
+            addLastOpenedFragment(f);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.your_placeholder, f);
+            ft.commit();
+        }
+        else{
+            if(lastOpenedFragmentList.size() == 1) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.your_placeholder, lastOpenedFragmentList.get(lastOpenedFragmentList.size() - 1));
+                ft.commit();
+            }
+        }
+
+        if(selectedLanguage == null){
+            DatabaseHandler dh = new DatabaseHandler(this);
+            LanguageDAO languageDAO = new LanguageDAO(dh);
+            selectedLanguage = languageDAO.queryCurrentSysLanguage();
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        if(QRCodeFragment.isBackPressed) {
+            QRCodeFragment.isBackPressed = false;
+            if(lastOpenedFragmentList.size() > 1) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.your_placeholder, getLastOpenedFragment());
+                ft.commit();
+            }
+            else{
+                if(lastOpenedFragmentList.size() == 1) {
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.your_placeholder, lastOpenedFragmentList.get(lastOpenedFragmentList.size() - 1));
+                    ft.commit();
+                }
+            }
+        }
+        super.onResume();
     }
 
     @Override
@@ -66,7 +119,14 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(lastOpenedFragmentList.size() > 1) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.your_placeholder, getLastOpenedFragment());
+                ft.commit();
+            }
+            else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -86,8 +146,10 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Fragment f = OptionFragment.newInstance();
+            addLastOpenedFragment(f);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.your_placeholder, new OptionFragment());
+            ft.replace(R.id.your_placeholder, f);
             ft.commit();
             return true;
         }
@@ -102,32 +164,52 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_qrcode) {
+            Fragment f = QRCodeFragment.newInstance();
+            addLastOpenedFragment(f);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.your_placeholder, QRCodeFragment.newInstance());
+            ft.replace(R.id.your_placeholder, f);
             ft.commit();
         } else if (id == R.id.nav_map) {
+            Fragment f = MapFragment.newInstance();
+            addLastOpenedFragment(f);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.your_placeholder, new MapFragment());
+            ft.replace(R.id.your_placeholder, f);
             ft.commit();
         } else if (id == R.id.nav_rooms) {
+            Fragment f = RoomListFragment.newInstance();
+            addLastOpenedFragment(f);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.your_placeholder, new RoomListFragment());
+            ft.replace(R.id.your_placeholder, f);
             ft.commit();
         } else if (id == R.id.nav_achievements) {
+            Fragment f = AchievementsFragment.newInstance();
+            addLastOpenedFragment(f);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.your_placeholder, new AchievementsFragment());
+            ft.replace(R.id.your_placeholder, f);
             ft.commit();
         } else if (id == R.id.nav_options) {
+            Fragment f = OptionFragment.newInstance();
+            addLastOpenedFragment(f);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.your_placeholder, new OptionFragment());
+            ft.replace(R.id.your_placeholder, f);
             ft.commit();
         } else if (id == R.id.nav_share) {
-
+            //TODO: Share options
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static void addLastOpenedFragment(Fragment f){
+        lastOpenedFragmentList.add(f);
+    }
+
+    public static Fragment getLastOpenedFragment(){
+        lastOpenedFragmentList.remove(lastOpenedFragmentList.size()-1);
+        Fragment f = lastOpenedFragmentList.get(lastOpenedFragmentList.size()-1);
+        return f;
     }
 
     @Override
@@ -157,6 +239,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onOptionFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onExpositionListFragmentInteraction(Uri uri) {
 
     }
 }

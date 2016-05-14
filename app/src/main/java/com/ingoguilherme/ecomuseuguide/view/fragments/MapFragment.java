@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.fragments;
+package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,18 +11,19 @@ import android.view.ViewGroup;
 import com.ingoguilherme.ecomuseuguide.R;
 
 /**
- * Created by IngoGuilherme on 11-May-16.
+ * Created by IngoGuilherme on 04-May-16.
  */
-public class OptionFragment extends Fragment {
+public class MapFragment extends Fragment {
 
-    private OnOptionFragmentInteractionListener mListener;
+    private OnMapFragmentInteractionListener mListener;
 
-    public OptionFragment() {
+    public MapFragment() {
         // Required empty public constructor
     }
 
-    public static OptionFragment newInstance() {
-        OptionFragment fragment = new OptionFragment();
+
+    public static MapFragment newInstance() {
+        MapFragment fragment = new MapFragment();
         return fragment;
     }
 
@@ -34,20 +35,20 @@ public class OptionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_option, container, false);
+        return inflater.inflate(R.layout.fragment_map, container, false);
     }
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onOptionFragmentInteraction(uri);
+            mListener.onMapFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnOptionFragmentInteractionListener) {
-            mListener = (OnOptionFragmentInteractionListener) context;
+        if (context instanceof OnMapFragmentInteractionListener) {
+            mListener = (OnMapFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -60,7 +61,8 @@ public class OptionFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnOptionFragmentInteractionListener {
-        void onOptionFragmentInteraction(Uri uri);
+
+    public interface OnMapFragmentInteractionListener {
+        void onMapFragmentInteraction(Uri uri);
     }
 }

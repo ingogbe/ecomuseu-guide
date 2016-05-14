@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.zxing;/*
+package com.ingoguilherme.ecomuseuguide.barcode.reader.zxing;/*
  * Copyright 2009 ZXing authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

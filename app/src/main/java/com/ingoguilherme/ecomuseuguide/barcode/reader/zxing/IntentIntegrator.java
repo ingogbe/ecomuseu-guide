@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.zxing;/*
+package com.ingoguilherme.ecomuseuguide.barcode.reader.zxing;/*
  * Copyright 2009 ZXing authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.google.zxing.client.android.Intents;
-import com.ingoguilherme.ecomuseuguide.fragments.QRCodeFragment;
-import com.journeyapps.barcodescanner.CaptureActivity;
+import com.ingoguilherme.ecomuseuguide.view.fragments.QRCodeFragment;
 
 import java.util.Arrays;
 import java.util.Collection;

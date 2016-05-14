@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.fragments;
+package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,8 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ingoguilherme.ecomuseuguide.R;
-import com.ingoguilherme.ecomuseuguide.adapter.RoomListAdapter;
+import com.ingoguilherme.ecomuseuguide.bo.Language;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
+import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
+import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
+import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.view.adapter.RoomListAdapter;
 
 import java.util.ArrayList;
 
@@ -40,12 +44,15 @@ public class RoomListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        //getContext().deleteDatabase(DatabaseHandler.db_name);
 
-        //TODO: Buscar Rooms no BD
-
-        //ArrayList de Testes
-        rooms = new ArrayList<Room>();
-
+        DatabaseHandler dh = new DatabaseHandler(getContext());
+        LanguageDAO languageDAO = new LanguageDAO(dh);
+        Language lang = languageDAO.queryCurrentSysLanguage();
+        RoomDAO roomDAO = new RoomDAO(dh);
+        rooms = roomDAO.queryRoomsByLanguage(lang);
+        dh.close();
     }
 
     @Override
