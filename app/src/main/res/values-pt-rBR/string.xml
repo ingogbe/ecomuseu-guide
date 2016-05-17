@@ -26,6 +26,7 @@
     <string name="hello_option_fragment">Oi Opções fragment</string>
 
     <string name="qr_code_scan">Escaneie um QR Code</string>
+    <string name="no_audio">Exposição sem áudio</string>
 
 
 </resources>

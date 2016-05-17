@@ -44,7 +44,7 @@ public class RoomListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         //getContext().deleteDatabase(DatabaseHandler.db_name);
 
         DatabaseHandler dh = new DatabaseHandler(getContext());

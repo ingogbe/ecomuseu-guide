@@ -1,14 +1,18 @@
 package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ingoguilherme.ecomuseuguide.R;
@@ -16,6 +20,7 @@ import com.ingoguilherme.ecomuseuguide.bo.Exposition;
 import com.ingoguilherme.ecomuseuguide.bo.Panel;
 import com.ingoguilherme.ecomuseuguide.dao.controller.PanelDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.utils.Audio;
 import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
 
 /**
@@ -30,6 +35,8 @@ public class ExpositionFragment extends Fragment {
     public static final int THUMBNAIL_WIDTH = 150;
 
     Exposition exposition;
+    Audio audio;
+    String audioSrc = "";
 
     View rootView;
 
@@ -84,6 +91,10 @@ public class ExpositionFragment extends Fragment {
             TextView tvTitle = (TextView) rootView.findViewById(R.id.textViewTitle);
             tvTitle.setText(exposition.getName());
 
+            final ImageButton imPlay = (ImageButton) rootView.findViewById(R.id.buttonPlayPause);
+
+            final ProgressBar audioPb = (ProgressBar) rootView.findViewById(R.id.audioProgressBar);
+
             //TODO: FAZER PEGAR AUDIO
             //TODO: fazer ampliar imagem quando clicada
 
@@ -107,9 +118,68 @@ public class ExpositionFragment extends Fragment {
 
                     ll.addView(im);
                 }
+
+                audioSrc = p.getAudioSource();
+                audio = new Audio(audioSrc, rootView);
+
+                if(audio.isReady()) {
+                    audio.getMediaPlayer().setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            imPlay.setBackgroundResource(R.drawable.ic_button_play);
+                            audioPb.setProgress(0);
+                        }
+                    });
+                    audioPb.setMax(audio.getMediaPlayer().getDuration());
+                }
             }
 
             tvText.setText(text);
+
+
+            imPlay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(audio.isReady()) {
+                        if (audio.isPlaying()) {
+                            audio.pause();
+                            imPlay.setBackgroundResource(R.drawable.ic_button_play);
+                        } else {
+                            if (audio.isStop()) {
+                                audio = new Audio(audioSrc, rootView);
+                                audio.getMediaPlayer().setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                    @Override
+                                    public void onCompletion(MediaPlayer mp) {
+                                        imPlay.setBackgroundResource(R.drawable.ic_button_play);
+                                        audioPb.setProgress(0);
+                                    }
+                                });
+                                audioPb.setMax(audio.getMediaPlayer().getDuration());
+                            }
+                            audio.startResume(audioPb);
+                            imPlay.setBackgroundResource(R.drawable.ic_button_pause);
+                        }
+                    }
+                    else{
+                        Snackbar snack = Snackbar.make(rootView, R.string.no_audio, Snackbar.LENGTH_LONG).setAction("Message", null);
+                        View sbView = snack.getView();
+                        sbView.setBackgroundResource(R.color.colorPrimary);
+                        snack.show();
+                    }
+                }
+            });
+
+            ImageButton imStop = (ImageButton) rootView.findViewById(R.id.buttonStop);
+            imStop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(audio.isReady()) {
+                        audio.stop();
+                        audioPb.setProgress(0);
+                        imPlay.setBackgroundResource(R.drawable.ic_button_play);
+                    }
+                }
+            });
 
         }
         else{
