@@ -51,6 +51,7 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 
 		ImageView imageCover = (ImageView) view.findViewById(R.id.imageCover);
 		imageCover.setImageBitmap(Thumbnail.generateThumbnail(view,room.getCoverImageSrc(),200));
+		imageCover.setPadding(0,10,0,10);
 
         TextView textViewRoomName = (TextView) view.findViewById(R.id.text_view_room_name);
 		textViewRoomName.setText(room.getName());

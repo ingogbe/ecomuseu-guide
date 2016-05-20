@@ -34,15 +34,13 @@ public class ExpositionDAO {
                     "e.qrCodeLink " +
                 "FROM " +
                     "Exposition e, " +
-                    "Room r, " +
                     "RoomLanguage rl, " +
                     "Language l " +
                 "WHERE " +
-                    "e.qrCodeLink = '" + qrCode + "' AND " +
-                    "e.idRoom = r.id AND " +
-                    "r.id = rl.idRoom AND " +
+                    "e.idRoomLanguage = rl.id AND " +
                     "rl.idLanguage = l.id AND " +
-                    "l.id = " + lang.getId(), null);
+                    "l.id = "+ lang.getId() +" AND " +
+                    "e.qrCodeLink = '"+ qrCode +"'", null);
 
         while (cursor.moveToNext()) {
             expo = fromCursorExposition(cursor);
@@ -56,7 +54,7 @@ public class ExpositionDAO {
         return expo;
     }
 
-    public ArrayList<Exposition> queryExpositionByRoom(Room room){
+    public ArrayList<Exposition> queryExpositionByRoomAndLanguage(Room room, Language lang){
         ArrayList<Exposition> expoList = new ArrayList<Exposition>();
         SQLiteDatabase db = dbHandler.getReadableDatabase();
 
@@ -69,9 +67,15 @@ public class ExpositionDAO {
                     "e.qrCodeLink " +
                 "FROM " +
                     "Exposition e, " +
+                    "RoomLanguage rl, " +
+                    "Language l, " +
                     "Room r " +
-                "WHERE r.id = e.idRoom AND " +
-                    "r.id = " + room.getId(), null);
+                "WHERE " +
+                    "e.idRoomLanguage = rl.id AND " +
+                    "r.id = rl.idRoom AND " +
+                    "rl.idLanguage = l.id AND " +
+                    "r.id = " + room.getId() + " AND " +
+                    "l.id = " + lang.getId(), null);
 
         while (cursor.moveToNext()) {
             Exposition expo = new Exposition();

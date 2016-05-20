@@ -11,8 +11,10 @@ import android.widget.ListView;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
+import com.ingoguilherme.ecomuseuguide.bo.Language;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
+import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.adapter.ExpositionListAdapter;
 
@@ -55,8 +57,11 @@ public class ExpositionListFragment extends Fragment {
             r.setId(idRoom);
 
             DatabaseHandler dh = new DatabaseHandler(getContext());
+            LanguageDAO languageDAO = new LanguageDAO(dh);
+            Language lang = languageDAO.queryCurrentSysLanguage();
+
             ExpositionDAO expositionDAO = new ExpositionDAO(dh);
-            expositions = expositionDAO.queryExpositionByRoom(r);
+            expositions = expositionDAO.queryExpositionByRoomAndLanguage(r, lang);
             dh.close();
 
         }

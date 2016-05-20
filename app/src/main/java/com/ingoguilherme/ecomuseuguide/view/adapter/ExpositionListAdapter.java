@@ -52,6 +52,7 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 
 		ImageView imageCover = (ImageView) view.findViewById(R.id.imageCover);
 		imageCover.setImageBitmap(Thumbnail.generateThumbnail(view,exposition.getCoverImageSrc(),200));
+		imageCover.setPadding(0,10,0,10);
 
         TextView textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
 		textViewExpositionName.setText(exposition.getName());

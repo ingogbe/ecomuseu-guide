@@ -95,7 +95,6 @@ public class ExpositionFragment extends Fragment {
 
             final ProgressBar audioPb = (ProgressBar) rootView.findViewById(R.id.audioProgressBar);
 
-            //TODO: FAZER PEGAR AUDIO
             //TODO: fazer ampliar imagem quando clicada
 
             for(Panel p :exposition.getPanels()) {

@@ -14,8 +14,10 @@ import android.view.ViewGroup;
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.barcode.reader.zxing.IntentIntegrator;
 import com.ingoguilherme.ecomuseuguide.barcode.reader.zxing.IntentResult;
+import com.ingoguilherme.ecomuseuguide.bo.Achievement;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
 import com.ingoguilherme.ecomuseuguide.bo.Language;
+import com.ingoguilherme.ecomuseuguide.dao.controller.AchievementDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
@@ -67,6 +69,10 @@ public class QRCodeFragment extends Fragment {
 
                 LanguageDAO languageDAO = new LanguageDAO(dh);
                 Language language = languageDAO.queryCurrentSysLanguage();
+
+                AchievementDAO achievementDAO = new AchievementDAO(dh);
+                Achievement achi = achievementDAO.queryAchievementByQrCode(scanResult.getContents());
+                achievementDAO.insertCompletedAchievement(achi);
 
                 ExpositionDAO expositionDAO = new ExpositionDAO(dh);
                 Exposition expo = expositionDAO.queryExpositionByQrCodeAndLanguage(scanResult.getContents(), language);

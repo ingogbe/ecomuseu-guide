@@ -4,9 +4,18 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.MainActivity">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_achievements_fragment" />
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/table_achievement"
+            android:layout_gravity="left|top">
+
+        </TableLayout>
+
+    </ScrollView>
 
 </FrameLayout>

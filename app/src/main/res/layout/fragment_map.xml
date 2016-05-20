@@ -4,10 +4,151 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_map_fragment" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/lightGreen">
+
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/map_shape_oval"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/frameLayout">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Sala da Turbina"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/map_shape_rect"
+                    android:layout_below="@+id/frameLayout"
+                    android:id="@+id/frameLayout2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Sala X"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/map_shape_rect_rotate"
+                    android:id="@+id/frameLayout3"
+                    android:layout_below="@+id/frameLayout2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignRight="@+id/frameLayout2"
+                    android:layout_alignEnd="@+id/frameLayout2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Sala Y"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/map_shape_rect"
+                    android:layout_toRightOf="@+id/frameLayout"
+                    android:id="@+id/frameLayout4">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Sala Z"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/map_shape_rect"
+                    android:layout_toRightOf="@+id/frameLayout4"
+                    android:id="@+id/frameLayout5">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Sala D"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/map_shape_rect_rotate"
+                    android:id="@+id/frameLayout6"
+                    android:layout_below="@+id/frameLayout4"
+                    android:layout_toRightOf="@+id/frameLayout2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Sala A"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/map_shape_rect_rotate"
+                    android:id="@+id/frameLayout7"
+                    android:layout_below="@+id/frameLayout6"
+                    android:layout_toRightOf="@+id/frameLayout6">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Sala W"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/map_shape_rect"
+                    android:id="@+id/frameLayout8"
+                    android:layout_below="@+id/frameLayout7"
+                    android:layout_toRightOf="@+id/frameLayout7">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Sala K"/>
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+    </ScrollView>
 
 </FrameLayout>

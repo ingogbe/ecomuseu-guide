@@ -28,8 +28,8 @@ public class PanelDAO {
                     "p.id, " +
                     "a.source " +
                 "FROM " +
-                    "Panel p, " +
                     "Audio a, " +
+                    "Panel p, " +
                     "Exposition e " +
                 "WHERE " +
                     "p.id = a.idPanel AND " +
@@ -59,10 +59,12 @@ public class PanelDAO {
                 "SELECT " +
                     "i.source " +
                 "FROM " +
-                    "Panel p, " +
-                    "Images i " +
+                    "Images i, " +
+                    "PanelImages pi, " +
+                    "Panel p " +
                 "WHERE " +
-                    "p.id = i.idPanel AND " +
+                    "p.id = pi.idPanel AND " +
+                    "i.id = pi.idImage AND " +
                     "p.id = " + pan.getId(), null);
 
         while (cursor.moveToNext()) {
@@ -82,12 +84,12 @@ public class PanelDAO {
                 "SELECT " +
                     "t.text " +
                 "FROM " +
-                    "Panel p, " +
                     "Text t, " +
-                    "Paragraph pt " +
+                    "Paragraph ph, " +
+                    "Panel p " +
                 "WHERE " +
-                    "p.id = pt.idPanel AND " +
-                    "t.id = pt.idText AND " +
+                    "p.id = ph.idPanel AND " +
+                    "t.id = ph.idText AND " +
                     "p.id = " + pan.getId(), null);
 
         while (cursor.moveToNext()) {

@@ -3,6 +3,7 @@ package com.ingoguilherme.ecomuseuguide.dao.controller;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.ingoguilherme.ecomuseuguide.bo.Achievement;
 import com.ingoguilherme.ecomuseuguide.bo.Language;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
@@ -26,12 +27,17 @@ public class RoomDAO {
 
         Cursor cursor = db.rawQuery("" +
                 "SELECT " +
-                    "r.id, r.name, r.description, r.coverImageSrc " +
+                    "r.id, " +
+                    "r.coverImageSrc, " +
+                    "rl.name, " +
+                    "rl.description " +
                 "FROM " +
-                    "Room r, Language l, RoomLanguage rl " +
+                    "Room r, " +
+                    "RoomLanguage rl, " +
+                    "Language l " +
                 "WHERE " +
-                    "l.id = rl.idLanguage AND " +
                     "r.id = rl.idRoom AND " +
+                    "l.id = rl.idLanguage AND " +
                     "l.id = " + lang.getId(), null);
 
         while (cursor.moveToNext()) {
@@ -45,19 +51,27 @@ public class RoomDAO {
         return roomList;
     }
 
-    public Room queryRoomByQRCode(String qrCode){
+    public Room queryRoomsByAchievementAndLanguage(Achievement achi, Language lang){
         Room room = new Room();
         SQLiteDatabase db = dbHandler.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("" +
-            "SELECT " +
-                "r.id, r.name, r.description, r.coverImageSrc " +
-            "FROM " +
-                "Room r, Exposition e, Panel p " +
-            "WHERE " +
-                "r.id = e.idRoom AND " +
-                "e.id = p.idExposition AND " +
-                "p.qrCodeLink = '" + qrCode + "'", null);
+                "SELECT " +
+                "r.id, " +
+                "r.coverImageSrc, " +
+                "rl.name, " +
+                "rl.description " +
+                "FROM " +
+                "Room r, " +
+                "RoomLanguage rl, " +
+                "Language l ," +
+                "Achievement a " +
+                "WHERE " +
+                "r.id = rl.idRoom AND " +
+                "l.id = rl.idLanguage AND " +
+                "l.id = " + lang.getId() + " AND " +
+                "a.idRoom = r.id AND " +
+                "a.id = " + achi.getId(), null);
 
         while (cursor.moveToNext()) {
             room = fromCursorRoom(cursor);
