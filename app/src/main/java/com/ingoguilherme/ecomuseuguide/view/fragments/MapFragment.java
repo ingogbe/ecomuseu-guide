@@ -58,6 +58,7 @@ public class MapFragment extends Fragment {
         DatabaseHandler dh = new DatabaseHandler(rootView.getContext());
         RoomDAO roomDAO = new RoomDAO(dh);
         rooms = roomDAO.queryRoomsByLanguage(MainActivity.selectedLanguage);
+        rooms.addAll(roomDAO.queryNonClickableRoomsByLanguage(MainActivity.selectedLanguage));
 
         WebSettings webSettings = map.getSettings();
         webSettings.setJavaScriptEnabled(true);

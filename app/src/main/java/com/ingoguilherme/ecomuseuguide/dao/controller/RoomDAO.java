@@ -84,12 +84,48 @@ public class RoomDAO {
         return room;
     }
 
+    public ArrayList<Room> queryNonClickableRoomsByLanguage(Language lang){
+        ArrayList<Room> roomList = new ArrayList<Room>();
+        SQLiteDatabase db = dbHandler.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("" +
+                "SELECT " +
+                "r.id, " +
+                "r.name, " +
+                "r.mapIdentification " +
+                "FROM " +
+                "NonClickableRoom r, " +
+                "Language l " +
+                "WHERE " +
+                "r.idLanguage = l.id AND " +
+                "l.id = " + lang.getId(), null);
+
+        while (cursor.moveToNext()) {
+            Room room = new Room();
+            room = fromCursorNonClickableRoom(cursor);
+            roomList.add(room);
+        }
+
+        cursor.close();
+
+        return roomList;
+    }
+
     private Room fromCursorRoom(Cursor cursor) {
         Room room = new Room();
         room.setId(cursor.getInt(cursor.getColumnIndex("id")));
         room.setName(cursor.getString(cursor.getColumnIndex("name")));
         room.setDescription(cursor.getString(cursor.getColumnIndex("description")));
         room.setCoverImageSrc(cursor.getString(cursor.getColumnIndex("coverImageSrc")));
+        room.setMapIdentification(cursor.getString(cursor.getColumnIndex("mapIdentification")));
+
+        return room;
+    }
+
+    private Room fromCursorNonClickableRoom(Cursor cursor) {
+        Room room = new Room();
+        room.setId(cursor.getInt(cursor.getColumnIndex("id")));
+        room.setName(cursor.getString(cursor.getColumnIndex("name")));
         room.setMapIdentification(cursor.getString(cursor.getColumnIndex("mapIdentification")));
 
         return room;

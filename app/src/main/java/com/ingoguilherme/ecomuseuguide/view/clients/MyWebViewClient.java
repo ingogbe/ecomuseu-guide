@@ -55,6 +55,7 @@ public class MyWebViewClient extends WebViewClient{
     }
 
     public void onPageFinished(WebView view, String url) {
+
         for(Room r: rooms){
             map.loadUrl("javascript:loadTextByID('" + r.getMapIdentification() + "','" + r.getName() + "')");
         }

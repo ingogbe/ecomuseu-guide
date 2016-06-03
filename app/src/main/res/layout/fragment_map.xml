@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.MainActivity">
 
-    <!-- TODO: Textos da legenda hardcoded, trocar para string.xml-->
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -42,7 +40,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/map_labels_text_right_margin"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Clickable\nRoom"
+                        android:text="@string/map_label_clickable_room"
                         android:layout_gravity="center"
                         android:gravity="center" />
                 </LinearLayout>
@@ -66,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/map_labels_text_right_margin"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Actual\nPlace"
+                        android:text="@string/map_label_actual_place"
                         android:layout_gravity="center"
                         android:gravity="center" />
                 </LinearLayout>
@@ -90,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/map_labels_text_right_margin"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Acessible\nAreas"
+                        android:text="@string/map_label_acessible_areas"
                         android:layout_gravity="center"
                         android:gravity="center" />
                 </LinearLayout>
@@ -114,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/map_labels_text_right_margin"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Administration\nRooms"
+                        android:text="@string/map_label_administration_rooms"
                         android:layout_gravity="center"
                         android:gravity="center" />
                 </LinearLayout>
@@ -138,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/map_labels_text_right_margin"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Paviment"
+                        android:text="@string/map_label_paviment"
                         android:layout_gravity="center"
                         android:gravity="center" />
                 </LinearLayout>
@@ -162,7 +160,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/map_labels_text_right_margin"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Grass"
+                        android:text="@string/map_label_grass"
                         android:layout_gravity="center"
                         android:gravity="center" />
                 </LinearLayout>

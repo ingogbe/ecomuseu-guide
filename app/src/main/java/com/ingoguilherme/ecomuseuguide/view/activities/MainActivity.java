@@ -96,9 +96,12 @@ public class MainActivity extends AppCompatActivity
             selectedLanguage = languageDAO.queryCurrentSysLanguage();
         }
 
-        MapFragment.actualRoom = new Room();
-        MapFragment.actualRoom.setMapIdentification("flecha");
-        MapFragment.actualRoom.setName("Entrada por aqui");
+
+        Room flecha = new Room();
+        flecha.setMapIdentification("flecha");
+        flecha.setName("Entrada por aqui");
+
+        MapFragment.actualRoom = flecha;
 
     }
 

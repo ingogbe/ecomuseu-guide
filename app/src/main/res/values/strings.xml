@@ -18,18 +18,18 @@
 
     <string name="no_image">No Image</string>
     <string name="no_item_list">Empty</string>
+    <string name="no_audio">Exposition without audio</string>
+
     <string name="new_achievement_unlocked">New achievement unlocked</string>
+    <string name="qr_code_scan">Scan a QR Code</string>
 
     <string name="hello_option_fragment">Hello Option fragment</string>
 
-    <string name="qr_code_scan">Scan a QR Code</string>
-
-    <string name="no_audio">Exposition without audio</string>
-
-    <string name="text_test">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis velit eget magna convallis iaculis. Sed quis nulla eleifend, fringilla nunc ac, aliquam sem. Maecenas in eros ullamcorper, egestas dui id, consequat dui. Mauris at quam rutrum velit pellentesque condimentum. Ut sollicitudin augue ex, a molestie diam facilisis et. Maecenas nunc enim, luctus id enim sit amet, consectetur tristique augue. Nam pellentesque erat a risus vestibulum rutrum. Quisque semper dapibus dolor a fringilla. Nulla finibus lectus nec ligula sagittis convallis. Vivamus faucibus varius congue.
-        In sed ante tincidunt, bibendum mi ac, egestas eros. Praesent et facilisis sem, eget semper quam. In eget ligula finibus lectus fringilla iaculis. Vestibulum sollicitudin tristique augue ut tristique. Pellentesque semper, tellus auctor scelerisque dapibus, enim enim fringilla felis, tincidunt sagittis arcu odio semper risus. Sed pulvinar egestas molestie. Integer ultrices facilisis dictum. Integer fringilla convallis nisl, et iaculis lorem viverra sed. Vivamus et ante ut lacus lacinia suscipit. Vestibulum vel mollis magna. Duis et dapibus velit. Nullam ac dictum arcu. Aenean et odio vitae tortor eleifend vehicula sit amet iaculis tellus. Praesent nec convallis tortor.
-        In ac lorem vehicula, dictum sapien ac, facilisis felis. Vestibulum ac arcu ut turpis pretium placerat. Suspendisse ut malesuada dui. Integer id nisl iaculis magna euismod dignissim eget eget risus. Etiam elit elit, vehicula quis purus at, egestas luctus quam. Integer sit amet pulvinar justo. Morbi ac nisl non ipsum pharetra rhoncus. Vivamus tortor sem, fringilla et pharetra et, gravida eget justo. Cras ut imperdiet risus.
-    </string>
+    <string name="map_label_clickable_room">Accessible\nRooms</string>
+    <string name="map_label_actual_place">Actual\nPlace</string>
+    <string name="map_label_acessible_areas">Accessible\nAreas</string>
+    <string name="map_label_administration_rooms">Administration\nRooms</string>
+    <string name="map_label_paviment">Paviment</string>
+    <string name="map_label_grass">Grass</string>
 
 </resources>
