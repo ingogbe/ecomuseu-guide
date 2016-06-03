@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ingoguilherme.ecomuseuguide.bo.Language;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
-import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -64,7 +63,12 @@ public class LanguageDAO {
         lang = queryIdForLanguage(lang);
 
         if(lang.getId() == 0){
-            return MainActivity.selectedLanguage;
+            //Não achou lingua retorna inglês
+            Language langEn = new Language();
+            langEn.setId(0);
+            langEn.setLanguage("en");
+            langEn.setCountryCode("US");
+            return langEn;
         }
 
         return lang;
