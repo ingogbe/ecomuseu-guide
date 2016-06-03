@@ -17,6 +17,7 @@ import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
 import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionListFragment;
+import com.ingoguilherme.ecomuseuguide.view.fragments.MapFragment;
 
 import java.util.ArrayList;
 
@@ -71,6 +72,7 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
     }
     
     public void roomClick(Room r){
+		MapFragment.actualRoom = r;
 		Fragment f = ExpositionListFragment.newInstance(r.getId());
 		MainActivity.addLastOpenedFragment(f);
 		ft.replace(R.id.your_placeholder, f);

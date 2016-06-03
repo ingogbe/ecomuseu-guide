@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.ingoguilherme.ecomuseuguide.dao.controller.PanelDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.utils.Audio;
 import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
+import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 
 /**
  * Created by IngoGuilherme on 04-May-16.
@@ -95,15 +97,14 @@ public class ExpositionFragment extends Fragment {
 
             final ProgressBar audioPb = (ProgressBar) rootView.findViewById(R.id.audioProgressBar);
 
-            //TODO: fazer ampliar imagem quando clicada
-
             for(Panel p :exposition.getPanels()) {
                 for(String s :p.getParagraphs()){
                     text = text + s + "\n\n";
                 }
                 text = text + "\n\n\n\n";
 
-                for (String s : p.getImageSources()) {
+                for (int i = 0; i < p.getImageSources().size(); i++) {
+                    String s = p.getImageSources().get(i);
                     ImageView im = new ImageView(rootView.getContext());
 
                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -114,6 +115,20 @@ public class ExpositionFragment extends Fragment {
 
                     im.setImageBitmap(Thumbnail.generateThumbnail(rootView,s,150));
                     im.setPadding(10,10,10,10);
+
+                    final int final_i = i;
+                    final Panel final_p = p;
+
+                    im.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                            Fragment f = GalleryFragment.newInstance(final_p.getImageSources(), final_i);
+                            MainActivity.addLastOpenedFragment(f);
+                            ft.replace(R.id.your_placeholder, f);
+                            ft.commit();
+                        }
+                    });
 
                     ll.addView(im);
                 }

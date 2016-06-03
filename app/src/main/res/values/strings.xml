@@ -18,11 +18,8 @@
 
     <string name="no_image">No Image</string>
     <string name="no_item_list">Empty</string>
+    <string name="new_achievement_unlocked">New achievement unlocked</string>
 
-    <string name="hello_room_fragment">Hello Room fragment</string>
-    <string name="hello_qrcode_fragment">Hello QR Code fragment</string>
-    <string name="hello_map_fragment">Hello Map fragment</string>
-    <string name="hello_achievements_fragment">Hello Achievements fragment</string>
     <string name="hello_option_fragment">Hello Option fragment</string>
 
     <string name="qr_code_scan">Scan a QR Code</string>

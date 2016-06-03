@@ -9,6 +9,7 @@ public class Room {
     int id;
     String name;
     String description;
+    String mapIdentification;
     ArrayList<Exposition> expositions;
     String coverImageSrc;
 
@@ -23,6 +24,8 @@ public class Room {
         setName("");
         setDescription("");
         setExpositions(new ArrayList<Exposition>());
+        setCoverImageSrc("");
+        setMapIdentification("");
     }
 
     public Room(String name) {
@@ -30,6 +33,8 @@ public class Room {
         setName(name);
         setDescription("");
         setExpositions(new ArrayList<Exposition>());
+        setCoverImageSrc("");
+        setMapIdentification("");
     }
 
     public Room(String name, String description) {
@@ -37,6 +42,8 @@ public class Room {
         setName(name);
         setDescription(description);
         setExpositions(new ArrayList<Exposition>());
+        setCoverImageSrc("");
+        setMapIdentification("");
     }
 
     public void addExposition(Exposition exposition){
@@ -73,6 +80,14 @@ public class Room {
 
     public void setExpositions(ArrayList<Exposition> expositions) {
         this.expositions = expositions;
+    }
+
+    public String getMapIdentification() {
+        return mapIdentification;
+    }
+
+    public void setMapIdentification(String mapIdentification) {
+        this.mapIdentification = mapIdentification;
     }
 
     public String getCoverImageSrc() {

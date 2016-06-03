@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 import com.ingoguilherme.ecomuseuguide.view.adapter.ExpositionListAdapter;
 
 import java.util.ArrayList;
@@ -63,6 +65,15 @@ public class ExpositionListFragment extends Fragment {
             ExpositionDAO expositionDAO = new ExpositionDAO(dh);
             expositions = expositionDAO.queryExpositionByRoomAndLanguage(r, lang);
             dh.close();
+
+            if(expositions.size() == 1){
+                MainActivity.getLastOpenedFragment();
+                Fragment f = ExpositionFragment.newInstance(expositions.get(0));
+                MainActivity.addLastOpenedFragment(f);
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.your_placeholder, f);
+                ft.commit();
+            }
 
         }
         else{

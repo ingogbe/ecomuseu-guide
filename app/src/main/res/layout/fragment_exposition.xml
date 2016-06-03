@@ -29,6 +29,8 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:background="@drawable/gradient_black_background"
                 android:id="@+id/scrollView">
 
                 <LinearLayout
@@ -39,6 +41,7 @@
 
 
                 </LinearLayout>
+
             </HorizontalScrollView>
 
 
@@ -47,8 +50,10 @@
                 android:orientation="horizontal"
                 android:id="@+id/room_audio"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
                 android:layout_height="match_parent"
                 android:weightSum="12">
 
@@ -82,10 +87,19 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:text="@string/text_test"
                 android:id="@+id/textViewText" />
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"></FrameLayout>
+
+
         </LinearLayout>
+
+
 
     </ScrollView>
 </FrameLayout>

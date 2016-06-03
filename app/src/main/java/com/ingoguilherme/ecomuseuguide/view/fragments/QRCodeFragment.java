@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.ingoguilherme.ecomuseuguide.bo.Language;
 import com.ingoguilherme.ecomuseuguide.dao.controller.AchievementDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
+import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 
@@ -70,12 +72,10 @@ public class QRCodeFragment extends Fragment {
                 LanguageDAO languageDAO = new LanguageDAO(dh);
                 Language language = languageDAO.queryCurrentSysLanguage();
 
-                AchievementDAO achievementDAO = new AchievementDAO(dh);
-                Achievement achi = achievementDAO.queryAchievementByQrCode(scanResult.getContents());
-                achievementDAO.insertCompletedAchievement(achi);
-
                 ExpositionDAO expositionDAO = new ExpositionDAO(dh);
                 Exposition expo = expositionDAO.queryExpositionByQrCodeAndLanguage(scanResult.getContents(), language);
+
+                RoomDAO roomDAO = new RoomDAO(dh);
 
                 if (expo.getId() != 0){
                     MainActivity.lastOpenedFragmentList.remove(this);
@@ -85,6 +85,19 @@ public class QRCodeFragment extends Fragment {
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.your_placeholder, f);
                     ft.commit();
+
+                    AchievementDAO achievementDAO = new AchievementDAO(dh);
+                    Achievement achi = achievementDAO.queryAchievementByQrCode(scanResult.getContents());
+                    boolean is_inserted = achievementDAO.insertCompletedAchievement(achi);
+
+                    MapFragment.actualRoom = roomDAO.queryRoomsByAchievementAndLanguage(achi,MainActivity.selectedLanguage);
+
+                    if(is_inserted) {
+                        Snackbar snack = Snackbar.make(rootView, R.string.new_achievement_unlocked, Snackbar.LENGTH_LONG).setAction("Message", null);
+                        View sbView = snack.getView();
+                        sbView.setBackgroundResource(R.color.colorPrimary);
+                        snack.show();
+                    }
                 }
                 else{
                     IntentIntegrator integrator = IntentIntegrator.forFragment(this);

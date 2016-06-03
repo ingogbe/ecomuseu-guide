@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -74,7 +75,7 @@ public class AchievementsFragment extends Fragment {
         row.setPadding(5,5,5,15);
         int counter = 0;
 
-        for(Achievement a :all) {
+        for(final Achievement a :all) {
 
             if(counter == 3){
                 table.addView(row);
@@ -105,14 +106,25 @@ public class AchievementsFragment extends Fragment {
 
             ll.addView(im);
 
-            RoomDAO roomDAO = new RoomDAO(dh);
-            Room r = roomDAO.queryRoomsByAchievementAndLanguage(a, MainActivity.selectedLanguage);
+            final RoomDAO roomDAO = new RoomDAO(dh);
+            final Room r = roomDAO.queryRoomsByAchievementAndLanguage(a, MainActivity.selectedLanguage);
 
             TextView tv = new TextView(rootView.getContext());
             tv.setGravity(TextView.TEXT_ALIGNMENT_GRAVITY);
             tv.setText(r.getName());
 
             ll.addView(tv);
+
+            ll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    Fragment f = ExpositionListFragment.newInstance(r.getId());
+                    MainActivity.addLastOpenedFragment(f);
+                    ft.replace(R.id.your_placeholder, f);
+                    ft.commit();
+                }
+            });
 
             row.addView(ll);
 

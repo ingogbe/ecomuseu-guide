@@ -17,11 +17,13 @@ import android.view.View;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Language;
+import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.fragments.AchievementsFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionListFragment;
+import com.ingoguilherme.ecomuseuguide.view.fragments.GalleryFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.MapFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.OptionFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.QRCodeFragment;
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ExpositionFragment.OnExpositionFragmentInteractionListener,
         QRCodeFragment.OnQRCodeFragmentInteractionListener, MapFragment.OnMapFragmentInteractionListener,
         AchievementsFragment.OnAchievementsFragmentInteractionListener, RoomListFragment.OnRoomListFragmentInteractionListener,
-        OptionFragment.OnOptionFragmentInteractionListener, ExpositionListFragment.OnExpositionListFragmentInteractionListener{
+        OptionFragment.OnOptionFragmentInteractionListener, ExpositionListFragment.OnExpositionListFragmentInteractionListener,
+        GalleryFragment.OnGalleryFragmentInteractionListener{
 
     public static ArrayList<Fragment> lastOpenedFragmentList = new ArrayList<Fragment>();
     public static Language selectedLanguage = null;
@@ -87,11 +90,15 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
+        DatabaseHandler dh = new DatabaseHandler(this);
         if(selectedLanguage == null){
-            DatabaseHandler dh = new DatabaseHandler(this);
             LanguageDAO languageDAO = new LanguageDAO(dh);
             selectedLanguage = languageDAO.queryCurrentSysLanguage();
         }
+
+        MapFragment.actualRoom = new Room();
+        MapFragment.actualRoom.setMapIdentification("flecha");
+        MapFragment.actualRoom.setName("Entrada por aqui");
 
     }
 
@@ -246,6 +253,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onExpositionListFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onGalleryFragmentInteraction(Uri uri) {
 
     }
 }

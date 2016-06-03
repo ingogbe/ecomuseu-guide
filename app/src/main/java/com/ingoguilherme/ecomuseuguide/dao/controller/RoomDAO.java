@@ -29,6 +29,7 @@ public class RoomDAO {
                 "SELECT " +
                     "r.id, " +
                     "r.coverImageSrc, " +
+                    "r.mapIdentification, " +
                     "rl.name, " +
                     "rl.description " +
                 "FROM " +
@@ -59,6 +60,7 @@ public class RoomDAO {
                 "SELECT " +
                 "r.id, " +
                 "r.coverImageSrc, " +
+                "r.mapIdentification, " +
                 "rl.name, " +
                 "rl.description " +
                 "FROM " +
@@ -88,6 +90,7 @@ public class RoomDAO {
         room.setName(cursor.getString(cursor.getColumnIndex("name")));
         room.setDescription(cursor.getString(cursor.getColumnIndex("description")));
         room.setCoverImageSrc(cursor.getString(cursor.getColumnIndex("coverImageSrc")));
+        room.setMapIdentification(cursor.getString(cursor.getColumnIndex("mapIdentification")));
 
         return room;
     }

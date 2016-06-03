@@ -2,25 +2,25 @@
 INSERT INTO Language (id, language, countryCode) VALUES (1,"pt","BR");
 INSERT INTO Language (id, language, countryCode) VALUES (2,"en","US");
 
-INSERT INTO Room (id, coverImageSrc) VALUES (1, 'ecomuseu1');
-INSERT INTO Room (id, coverImageSrc) VALUES (2, 'ecomuseu2');
-INSERT INTO Room (id, coverImageSrc) VALUES (3, 'ecomuseu3');
-INSERT INTO Room (id, coverImageSrc) VALUES (4, 'ecomuseu4');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (1, 'ecomuseu1', 'rodaDagua');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (2, 'ecomuseu2', 'carrocaoCarroBoi');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (3, 'ecomuseu3', 'exposicoesHall');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (4, 'ecomuseu4', 'historiaUsina');
 
 INSERT INTO Achievement (id, points, idRoom) VALUES (1, 50, 1);
 INSERT INTO Achievement (id, points, idRoom) VALUES (2, 100, 2);
 INSERT INTO Achievement (id, points, idRoom) VALUES (3, 70, 3);
 INSERT INTO Achievement (id, points, idRoom) VALUES (4, 60, 4);
 
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (1,1,1, 'Sala 1', 'Essa é a sala 1');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (2,2,1, 'Sala 2', 'Essa é a sala 2');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (3,3,1, 'Sala 3', 'Essa é a sala 3');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (4,4,1, 'Sala 4', 'Essa é a sala 4');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (1,1,1, "Roda D Água", "Nessa pode-se observar uma roda d'água.");
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (2,2,1, 'Carroção', 'Essa sala possui um carroçã e um carro de boi.');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (3,3,1, 'Hall de Exposições', 'Nessa sala é possível encontrar diversas exposições');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (4,4,1, 'História da Usina Hidrelétrica', 'Essa sala é composta por exposições sobre a história da usina');
 
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (5,1,2, 'Room 1', 'This is room 1');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (6,2,2, 'Room 2', 'This is room 2');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (7,3,2, 'Room 3', 'This is room 3');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (8,4,2, 'Room 4', 'This is room 4');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (5,1,2, 'Water Wheel', 'This is room 1');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (6,2,2, 'Wagon', 'This is room 2');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (7,3,2, 'Expositions Hall', 'This is room 3');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (8,4,2, 'History of Hydroelectric Plant', 'This is room 4');
 
 INSERT INTO Exposition (id, name, description, coverImageSrc, qrCodeLink, idRoomLanguage) VALUES (1, 'Exposição 1-1', 'Essa é a exposição 1-1', 'ecomuseu1', 'expo1sala1','1');
 INSERT INTO Exposition (id, name, description, coverImageSrc, qrCodeLink, idRoomLanguage) VALUES (2, 'Exposição 2-1', 'Essa é a exposição 2-1', 'ecomuseu2', 'expo2sala1','1');

@@ -4,151 +4,180 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.MainActivity">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <!-- TODO: Textos da legenda hardcoded, trocar para string.xml-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollViewLabels">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/lightGreen">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/labels"
+                android:layout_width="wrap_content"
+                android:background="@drawable/border"
+                android:layout_height="60dp">
 
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/map_shape_oval"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:id="@+id/frameLayout">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Sala da Turbina"/>
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/map_shape_rect"
-                    android:layout_below="@+id/frameLayout"
-                    android:id="@+id/frameLayout2">
+                    <ImageView
+                        android:layout_width="@dimen/map_labels_img"
+                        android:layout_height="@dimen/map_labels_img"
+                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
+                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
+                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
+                        android:background="@drawable/border"
+                        android:src="@color/map_acessible_clickable" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Sala X"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Clickable\nRoom"
+                        android:layout_gravity="center"
+                        android:gravity="center" />
+                </LinearLayout>
 
-                </FrameLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/map_shape_rect_rotate"
-                    android:id="@+id/frameLayout3"
-                    android:layout_below="@+id/frameLayout2"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignRight="@+id/frameLayout2"
-                    android:layout_alignEnd="@+id/frameLayout2">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Sala Y"/>
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/map_shape_rect"
-                    android:layout_toRightOf="@+id/frameLayout"
-                    android:id="@+id/frameLayout4">
+                    <ImageView
+                        android:layout_width="@dimen/map_labels_img"
+                        android:layout_height="@dimen/map_labels_img"
+                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
+                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
+                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
+                        android:background="@drawable/border"
+                        android:src="@color/map_actualPlace" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Sala Z"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Actual\nPlace"
+                        android:layout_gravity="center"
+                        android:gravity="center" />
+                </LinearLayout>
 
-                </FrameLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/map_shape_rect"
-                    android:layout_toRightOf="@+id/frameLayout4"
-                    android:id="@+id/frameLayout5">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Sala D"/>
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/map_shape_rect_rotate"
-                    android:id="@+id/frameLayout6"
-                    android:layout_below="@+id/frameLayout4"
-                    android:layout_toRightOf="@+id/frameLayout2">
+                    <ImageView
+                        android:layout_width="@dimen/map_labels_img"
+                        android:layout_height="@dimen/map_labels_img"
+                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
+                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
+                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
+                        android:background="@drawable/border"
+                        android:src="@color/map_acessible_other" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Sala A"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Acessible\nAreas"
+                        android:layout_gravity="center"
+                        android:gravity="center" />
+                </LinearLayout>
 
-                </FrameLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/map_shape_rect_rotate"
-                    android:id="@+id/frameLayout7"
-                    android:layout_below="@+id/frameLayout6"
-                    android:layout_toRightOf="@+id/frameLayout6">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Sala W"/>
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/map_shape_rect"
-                    android:id="@+id/frameLayout8"
-                    android:layout_below="@+id/frameLayout7"
-                    android:layout_toRightOf="@+id/frameLayout7">
+                    <ImageView
+                        android:layout_width="@dimen/map_labels_img"
+                        android:layout_height="@dimen/map_labels_img"
+                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
+                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
+                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
+                        android:background="@drawable/border"
+                        android:src="@color/map_administration" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Sala K"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Administration\nRooms"
+                        android:layout_gravity="center"
+                        android:gravity="center" />
+                </LinearLayout>
 
-                </FrameLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
-            </RelativeLayout>
+                    <ImageView
+                        android:layout_width="@dimen/map_labels_img"
+                        android:layout_height="@dimen/map_labels_img"
+                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
+                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
+                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
+                        android:background="@drawable/border"
+                        android:src="@color/map_paviment" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Paviment"
+                        android:layout_gravity="center"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/map_labels_img"
+                        android:layout_height="@dimen/map_labels_img"
+                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
+                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
+                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
+                        android:background="@drawable/border"
+                        android:src="@color/map_grass" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Grass"
+                        android:layout_gravity="center"
+                        android:gravity="center" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         </HorizontalScrollView>
 
-    </ScrollView>
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/wb_map">
+
+        </WebView>
+
+    </LinearLayout>
 
 </FrameLayout>

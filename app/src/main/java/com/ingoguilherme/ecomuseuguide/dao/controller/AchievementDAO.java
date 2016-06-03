@@ -91,15 +91,18 @@ public class AchievementDAO {
         return list_achi;
     }
 
-    public Achievement insertCompletedAchievement(Achievement achi){
+    public boolean insertCompletedAchievement(Achievement achi){
         SQLiteDatabase db = dbHandler.getWritableDatabase();
 
         ContentValues values1 = new ContentValues();
         values1.put("idAchievement", achi.getId());
 
-        db.insert("CompletedAchievement", null, values1);
+        long insert = db.insert("CompletedAchievement", null, values1);
 
-        return achi;
+        if(insert == -1)
+            return false;
+        else
+            return true;
     }
 
     private Achievement fromCursorAchievement(Cursor cursor) {
