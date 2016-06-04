@@ -62,6 +62,10 @@ public class RoomListFragment extends Fragment {
         View empty = rootView.findViewById(R.id.empty);
         listView.setEmptyView(empty);
 
+        rooms.add(new Room());
+        if(rooms.size() == 1)
+            rooms.remove(0);
+
         RoomListAdapter roomsAdapter = new RoomListAdapter(rootView.getContext(), R.layout.item_list_room, rooms, getActivity().getSupportFragmentManager().beginTransaction());
         listView.setAdapter(roomsAdapter);
 

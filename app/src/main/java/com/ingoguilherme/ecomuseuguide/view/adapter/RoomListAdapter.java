@@ -5,11 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ingoguilherme.ecomuseuguide.R;
@@ -51,23 +50,28 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 		view = inflater.inflate(R.layout.item_list_room, null);
 
 		ImageView imageCover = (ImageView) view.findViewById(R.id.imageCover);
-		imageCover.setImageBitmap(Thumbnail.generateThumbnail(view,room.getCoverImageSrc(),200));
-		imageCover.setPadding(0,10,0,10);
-
         TextView textViewRoomName = (TextView) view.findViewById(R.id.text_view_room_name);
-		textViewRoomName.setText(room.getName());
- 
         TextView textViewRoomSummary = (TextView)view.findViewById(R.id.text_view_room_summary);
-		textViewRoomSummary.setText(room.getDescription());
+        LinearLayout itemRoomListLayout = (LinearLayout) view.findViewById(R.id.item_list_room_layout);
 
-        RelativeLayout itemRoomListLayout = (RelativeLayout) view.findViewById(R.id.item_list_room_layout);
-		itemRoomListLayout.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				roomClick(room);
-			}
-		});
- 
+		if(room.getId() != 0){
+			textViewRoomSummary.setText(room.getDescription());
+			textViewRoomName.setText(room.getName());
+			imageCover.setImageBitmap(Thumbnail.generateThumbnail(view,room.getCoverImageSrc(),200));
+			itemRoomListLayout.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					roomClick(room);
+				}
+			});
+		}
+		else{
+			((ViewGroup) imageCover.getParent()).removeView(imageCover);
+			textViewRoomName.setText("");
+			textViewRoomSummary.setText("");
+			textViewRoomSummary.setHeight(100);
+		}
+
         return view;
     }
     

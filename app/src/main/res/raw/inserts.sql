@@ -2,25 +2,23 @@
 INSERT INTO Language (id, language, countryCode) VALUES (1,"pt","BR");
 INSERT INTO Language (id, language, countryCode) VALUES (2,"en","US");
 
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (1, 'ecomuseu1', 'rodaDagua');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (2, 'ecomuseu2', 'carrocaoCarroBoi');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (3, 'ecomuseu3', 'exposicoesHall');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (4, 'ecomuseu4', 'historiaUsina');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (5, 'ecomuseu4', 'prensaFumo');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (6, 'ecomuseu4', 'moendaMadeira');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (7, 'ecomuseu4', 'enterramento');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (8, 'ecomuseu4', 'moendaPedra');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (9, 'ecomuseu4', 'arrado');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (10, 'ecomuseu4', 'caminhao');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (11, 'ecomuseu4', 'evolucao');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (12, 'ecomuseu4', 'espacoArtes');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (13, 'ecomuseu4', 'turbina');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (14, 'ecomuseu4', 'maqueteRelevoRegiao');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (15, 'ecomuseu4', 'maiorMaqueteMundo');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (16, 'ecomuseu4', 'atividadeEducacional1');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (17, 'ecomuseu4', 'atividadeEducacional2');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (18, 'ecomuseu4', 'exposicaoTemporaria');
-INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (19, 'ecomuseu4', 'colecoes');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (1, 'room_thumbnail_rodadagua', 'rodaDagua');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (2, 'room_thumbnail_carrocaocarroboi', 'carrocaoCarroBoi');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (3, 'room_thumbnail_exposicoes', 'exposicoesHall');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (4, 'room_thumbnail_historiausina', 'historiaUsina');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (5, 'room_thumbnail_prensafumo', 'prensaFumo');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (6, 'room_thumbnail_moendamadeira', 'moendaMadeira');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (7, 'room_thumbnail_enterramento', 'enterramento');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (8, 'room_thumbnail_moendapedra', 'moendaPedra');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (9, 'room_thumbnail_arrado', 'arrado');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (10, 'room_thumbnail_caminhao', 'caminhao');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (11, 'room_thumbnail_evolucao', 'evolucao');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (12, 'room_thumbnail_espacoartes', 'espacoArtes');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (13, 'room_thumbnail_turbina', 'turbina');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (14, 'room_thumbnail_maqueterelevoregiao', 'maqueteRelevoRegiao');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (15, 'room_thumbnail_maiormaquetemundo', 'maiorMaqueteMundo');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (16, 'room_thumbnail_exposicaotemporaria', 'exposicaoTemporaria');
+INSERT INTO Room (id, coverImageSrc, mapIdentification) VALUES (17, 'room_thumbnail_colecoes', 'colecoes');
 
 INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (1, 'flecha', 'Entrada por aqui', 1);
 INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (2, 'flecha', 'Entrance over here', 2);
@@ -46,6 +44,11 @@ INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (2
 INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (22, 'acervo', 'Archives', 2);
 INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (23, 'espacoRecreativo', 'Espaço Recreativo', 1);
 INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (24, 'espacoRecreativo', 'Recreational Space', 2);
+INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (25, 'atividadeEducacional1','Atividade Educacional 1',1);
+INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (26, 'atividadeEducacional1','Educational Activity 1',2);
+INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (27, 'atividadeEducacional2','Atividade Educacional 2',1);
+INSERT INTO NonClickableRoom (id, mapIdentification, name, idLanguage) VALUES (28, 'atividadeEducacional2','Educational Activity 2',2);
+
 
 INSERT INTO Achievement (id, points, idRoom) VALUES (1, 60, 1);
 INSERT INTO Achievement (id, points, idRoom) VALUES (2, 60, 2);
@@ -62,10 +65,8 @@ INSERT INTO Achievement (id, points, idRoom) VALUES (12, 100, 12);
 INSERT INTO Achievement (id, points, idRoom) VALUES (13, 150, 13);
 INSERT INTO Achievement (id, points, idRoom) VALUES (14, 100, 14);
 INSERT INTO Achievement (id, points, idRoom) VALUES (15, 150, 15);
-INSERT INTO Achievement (id, points, idRoom) VALUES (16, 30, 16);
-INSERT INTO Achievement (id, points, idRoom) VALUES (17, 30, 17);
-INSERT INTO Achievement (id, points, idRoom) VALUES (18, 100, 18);
-INSERT INTO Achievement (id, points, idRoom) VALUES (19, 120, 19);
+INSERT INTO Achievement (id, points, idRoom) VALUES (16, 100, 16);
+INSERT INTO Achievement (id, points, idRoom) VALUES (17, 120, 17);
 
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (1,1,1, "Roda D Água", "Dispositivo gerador de energia hidráulica.");
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (2,2,1, 'Carroças', 'Veículos antigos para transporte de cargas.');
@@ -82,10 +83,8 @@ INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (12,
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (13,13,1, "Sala da Turbina", "Simulação de uma turbina da Itaipu");
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (14,14,1, 'Maquete do Relevo da Região', 'Maquete mostrando a região.');
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (15,15,1, 'Maior Maquete do Mundo', 'Maior maquete do mundo mostrando toda a area da usina');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (16,16,1, 'Atividade Educacional 1', 'Area para atividades educacionais');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (17,17,1, "Atividade Educacional 2", "Area para atividades educacionais.");
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (18,18,1, 'Exposição Temporária', 'Exposições que mudam de tempos em tempos.');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (19,19,1, 'Coleções', 'Várias coleções de diversos artefatos');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (16,16,1, 'Exposição Temporária', 'Exposições que mudam de tempos em tempos.');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (17,17,1, 'Coleções', 'Várias coleções de diversos artefatos');
 
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (20,1,2, "Water Wheel", "Hidraulic power generator.");
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (21,2,2, 'Wagons', 'Old vehicles for cargo transportation.');
@@ -102,10 +101,8 @@ INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (31,
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (32,13,2, "Turbine Room", "Itaipu turbine simulation");
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (33,14,2, 'Model of the Region', 'Model of the topography of the region.');
 INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (34,15,2, 'Biggets Maquette of World', 'Biggets maquette of world showing the whole area of Itaipu.');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (35,16,2, 'Educational Activity 1', 'Area for educational activity.');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (36,17,2, "Educational Activity 2", "Area for educational activity.");
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (37,18,2, 'Temporary Exposition', 'Exhibitions that change from time to time.');
-INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (38,19,2, 'Collections', 'Several collections of various artifacts.');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (35,16,2, 'Temporary Exposition', 'Exhibitions that change from time to time.');
+INSERT INTO RoomLanguage (id, idRoom, idLanguage, name, description) VALUES (36,17,2, 'Collections', 'Several collections of various artifacts.');
 
 INSERT INTO Exposition (id, name, description, coverImageSrc, qrCodeLink, idRoomLanguage) VALUES (1, 'Exposição 1-1', 'Essa é a exposição 1-1', 'ecomuseu1', 'expo1sala1',1);
 INSERT INTO Exposition (id, name, description, coverImageSrc, qrCodeLink, idRoomLanguage) VALUES (2, 'Exposição 2-1', 'Essa é a exposição 2-1', 'ecomuseu2', 'expo2sala1',1);

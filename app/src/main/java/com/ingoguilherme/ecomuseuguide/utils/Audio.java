@@ -1,8 +1,8 @@
 package com.ingoguilherme.ecomuseuguide.utils;
 
 import android.content.res.AssetFileDescriptor;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -24,16 +24,37 @@ public class Audio {
 
     public void setMediaPlayer(View rootView, String audioSrc){
 
-        try{
-            AssetFileDescriptor afd = rootView.getContext().getAssets().openFd("audios/" + audioSrc + ".mp3");
-            is_ready = true;
+        String TAG = "TESTE";
+
+        try {
+            String path = "audios/" + audioSrc + ".mp3";
+
+            AssetFileDescriptor afd = rootView.getContext().getAssets().openFd(path);
+
             mp = new MediaPlayer();
-            mp.setDataSource(afd.getFileDescriptor());
-            mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        }catch (IOException e){
-            is_ready = false;
+            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+            mp.prepare();
+
+            is_ready = true;
+        } catch (IllegalStateException e) {
+            Log.d(TAG, "IllegalStateException: " + e.getMessage());
+            catchFunction();
+        } catch (IllegalArgumentException e) {
+            Log.d(TAG, "IllegalArgumentException: " + e.getMessage());
+            catchFunction();
+        } catch (SecurityException e) {
+            Log.d(TAG, "SecurityException: " + e.getMessage());
+            catchFunction();
+        } catch (IOException e){
+            Log.d(TAG, "IOException: " + e.getMessage());
+            catchFunction();
         }
 
+    }
+
+    public void catchFunction(){
+        is_ready = false;
+        mp = null;
     }
 
     public boolean isReady(){

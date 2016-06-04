@@ -87,6 +87,10 @@ public class ExpositionListFragment extends Fragment {
         View empty = rootView.findViewById(R.id.empty);
         listView.setEmptyView(empty);
 
+        expositions.add(new Exposition());
+        if(expositions.size() == 1)
+            expositions.remove(0);
+
         ExpositionListAdapter expositionsAdapter = new ExpositionListAdapter(rootView.getContext(), R.layout.item_list_exposition, expositions, getActivity().getSupportFragmentManager().beginTransaction());
         listView.setAdapter(expositionsAdapter);
 

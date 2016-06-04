@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //TODO: Change selected on drawer when change fragment by other ways
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

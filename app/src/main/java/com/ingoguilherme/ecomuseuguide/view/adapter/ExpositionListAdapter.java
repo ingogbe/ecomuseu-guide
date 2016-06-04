@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ingoguilherme.ecomuseuguide.R;
@@ -46,27 +46,33 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
+
     	final Exposition exposition = expositions.get(position);
 
 		view = inflater.inflate(R.layout.item_list_exposition, null);
 
 		ImageView imageCover = (ImageView) view.findViewById(R.id.imageCover);
-		imageCover.setImageBitmap(Thumbnail.generateThumbnail(view,exposition.getCoverImageSrc(),200));
-		imageCover.setPadding(0,10,0,10);
+		TextView textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
+		TextView textViewExpositionSummary = (TextView) view.findViewById(R.id.text_view_exposition_summary);
+		LinearLayout itemExpositionListLayout = (LinearLayout) view.findViewById(R.id.item_list_exposition_layout);
 
-        TextView textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
-		textViewExpositionName.setText(exposition.getName());
- 
-        TextView textViewExpositionSummary = (TextView)view.findViewById(R.id.text_view_exposition_summary);
-		textViewExpositionSummary.setText(exposition.getDescription());
-
-        RelativeLayout itemExpositionListLayout = (RelativeLayout) view.findViewById(R.id.item_list_exposition_layout);
-		itemExpositionListLayout.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				expositionClick(exposition);
-			}
-		});
+		if(exposition.getId() != 0) {
+			imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, exposition.getCoverImageSrc(), 200));
+			textViewExpositionName.setText(exposition.getName());
+			textViewExpositionSummary.setText(exposition.getDescription());
+			itemExpositionListLayout.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					expositionClick(exposition);
+				}
+			});
+		}
+		else{
+			((ViewGroup) imageCover.getParent()).removeView(imageCover);
+			textViewExpositionName.setText("");
+			textViewExpositionSummary.setText("");
+			textViewExpositionSummary.setHeight(100);
+		}
  
         return view;
     }
