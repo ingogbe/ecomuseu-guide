@@ -40,17 +40,17 @@ Android project for the Ecomuseum (Foz do Iguaçu - PR - Brazil), to help visito
 
 <b>Application features are:</b>
 - Iterative Map (HTML, SVG, CSS, JavaScript) using Android's WebView for easy access to the exhibitions of the areas
-  - Map Division into areas
-    - Last user accessed location <i>(in red #ff7e7e)</i>
-    - Administration areas (Ex .: Auditorium, Maintenance) <i>(in purple #c8c8ff)</i>
-    - Accessible areas without exhibitions (Ex .: Bath) <i>(in blue #d8fdff)</i>
-    - Accessible areas with exhibitions (All other areas) <i>(in yellow #fffcd8)</i>
-    - Pavements <i>(in gray #e8e8e8)</i>
-    - Other areas (Ex .: Grass) <i>(in green #9bd78e)</i>
-  - When you open the map it finds the last location accessed
-  - Zoom in and Zoom out
-  - Possible access the exhibitions list by clicking on an accessible area with exhibitions (Yellow)
-  - Labels of the areas at the top
+	- Map Division into areas
+	    - Last user accessed location <i>(in red #ff7e7e)</i>
+	    - Administration areas (Ex .: Auditorium, Maintenance) <i>(in purple #c8c8ff)</i>
+	    - Accessible areas without exhibitions (Ex .: Bath) <i>(in blue #d8fdff)</i>
+	    - Accessible areas with exhibitions (All other areas) <i>(in yellow #fffcd8)</i>
+	    - Pavements <i>(in gray #e8e8e8)</i>
+	    - Other areas (Ex .: Grass) <i>(in green #9bd78e)</i>
+	- When you open the map it finds the last location accessed
+	- Zoom in and Zoom out
+	- Possible access the exhibitions list by clicking on an accessible area with exhibitions (Yellow)
+	- Labels of the areas at the top
 - Museum areas list for manual access if you do not want the map
 - QR Code Reader (ZXing-android-embedded, based on ZXing Barcode Scanner Google) for quick access to exhibition (each museum exhibition will have a QR Code)
 - Achievements for each area that the user visit (to unlock the achievement, only by reading a QR Code of area)
