@@ -20,3 +20,8 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 - Conquistas para cada area que o usuario visitar (para desbloquear a conquista, somente por leitura de algum QR Code da area)
 - Opção multi-linguagem (Atualmente en-rUS e pt-rBR)
 - Opção de compartilhar que esteve no museu e a porcentagem de conquistas que adquiriu
+
+<b>TO DO List</b>
+- Inserir imagens finais nos assets
+- Inserir audios finais nos assets (en-rUS, pt-rBR, es-rAR)
+- Popular banco com informações finais (en-rUS, pt-rBR, es-rAR)
