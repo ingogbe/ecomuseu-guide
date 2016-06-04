@@ -8,7 +8,8 @@ import android.view.View;
 
 import com.ingoguilherme.ecomuseuguide.R;
 
-import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by IngoGuilherme on 14-May-16.
@@ -22,6 +23,7 @@ public class Thumbnail {
         }
 
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
@@ -31,29 +33,26 @@ public class Thumbnail {
 
     public static Bitmap generateThumbnail(View rootView, String drawableString, int thumbSize){
 
-        int id = rootView.getContext().getResources().getIdentifier(drawableString, "drawable", rootView.getContext().getPackageName());
-
         Drawable d;
 
-        if(id == 0){
+        try{
+            InputStream ims = rootView.getContext().getAssets().open("images/" + drawableString + ".jpg");
+            d = Drawable.createFromStream(ims, null);
+        }catch (IOException e){
             d = rootView.getContext().getResources().getDrawable(R.drawable.ic_no_image);
         }
-        else{
-            d = rootView.getContext().getResources().getDrawable(id);
-        }
-
 
         //TODO: Melhorar desempenho, está muito lerdo
-        //Bitmap imageBitmap = BitmapFactory.decodeResource(rootView.getContext().getResources(), id);
         Bitmap imageBitmap = drawableToBitmap(d);
 
         Float width = new Float(imageBitmap.getWidth());
         Float height = new Float(imageBitmap.getHeight());
         Float ratio = width / height;
+
         imageBitmap = Bitmap.createScaledBitmap(imageBitmap, (int) (thumbSize * ratio), thumbSize, false);
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        //ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        //imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
         return imageBitmap;
     }

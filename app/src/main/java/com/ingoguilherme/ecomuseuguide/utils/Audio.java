@@ -1,9 +1,12 @@
 package com.ingoguilherme.ecomuseuguide.utils;
 
+import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import java.io.IOException;
 
 /**
  * Created by IngoGuilherme on 16-May-16.
@@ -20,14 +23,14 @@ public class Audio {
     }
 
     public void setMediaPlayer(View rootView, String audioSrc){
-        int id = rootView.getContext().getResources().getIdentifier(audioSrc, "raw", rootView.getContext().getPackageName());
 
-        if(id != 0){
+        try{
+            AssetFileDescriptor afd = rootView.getContext().getAssets().openFd("audios/" + audioSrc + ".mp3");
             is_ready = true;
-            mp = MediaPlayer.create(rootView.getContext(),id);
+            mp = new MediaPlayer();
+            mp.setDataSource(afd.getFileDescriptor());
             mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        }
-        else{
+        }catch (IOException e){
             is_ready = false;
         }
 
