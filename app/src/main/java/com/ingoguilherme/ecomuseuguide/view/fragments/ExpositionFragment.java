@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
 import com.ingoguilherme.ecomuseuguide.bo.Panel;
+import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.PanelDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.utils.Audio;
@@ -32,6 +33,7 @@ public class ExpositionFragment extends Fragment {
     private static final String ARG_PARAM1 = "id";
     private static final String ARG_PARAM2 = "name";
     private static final String ARG_PARAM3 = "description";
+    private static final String ARG_PARAM4 = "qrCodeLink";
 
     public static final int THUMBNAIL_HEIGHT = 150;
     public static final int THUMBNAIL_WIDTH = 150;
@@ -56,6 +58,7 @@ public class ExpositionFragment extends Fragment {
         args.putInt(ARG_PARAM1, e.getId());
         args.putString(ARG_PARAM2, e.getName());
         args.putString(ARG_PARAM3, e.getDescription());
+        args.putString(ARG_PARAM4, e.getQrCodeLink());
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,6 +70,7 @@ public class ExpositionFragment extends Fragment {
             exposition = new Exposition();
             exposition.setId(getArguments().getInt(ARG_PARAM1));
             exposition.setName(getArguments().getString(ARG_PARAM2));
+            exposition.setQrCodeLink(getArguments().getString(ARG_PARAM4));
             exposition.setDescription(getArguments().getString(ARG_PARAM3));
 
             DatabaseHandler dh = new DatabaseHandler(getContext());
@@ -84,6 +88,11 @@ public class ExpositionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_exposition, container, false);
+
+        //Caso a pessoa troque o idioma enquanto estiver com a exposicao aberta
+        DatabaseHandler dh = new DatabaseHandler(rootView.getContext());
+        ExpositionDAO expositionDAO = new ExpositionDAO(dh);
+        exposition = expositionDAO.queryExpositionByQrCodeAndLanguage(exposition.getQrCodeLink(),MainActivity.selectedLanguage);
 
         if(exposition.getId() != 0) {
             LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.room_images);

@@ -10,11 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ingoguilherme.ecomuseuguide.R;
-import com.ingoguilherme.ecomuseuguide.bo.Language;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
-import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 import com.ingoguilherme.ecomuseuguide.view.adapter.RoomListAdapter;
 
 import java.util.ArrayList;
@@ -48,10 +47,8 @@ public class RoomListFragment extends Fragment {
         //getContext().deleteDatabase(DatabaseHandler.db_name);
 
         DatabaseHandler dh = new DatabaseHandler(getContext());
-        LanguageDAO languageDAO = new LanguageDAO(dh);
-        Language lang = languageDAO.queryCurrentSysLanguage();
         RoomDAO roomDAO = new RoomDAO(dh);
-        rooms = roomDAO.queryRoomsByLanguage(lang);
+        rooms = roomDAO.queryRoomsByLanguage(MainActivity.selectedLanguage);
         dh.close();
     }
 

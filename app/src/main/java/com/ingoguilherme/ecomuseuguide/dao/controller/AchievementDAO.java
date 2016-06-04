@@ -91,6 +91,28 @@ public class AchievementDAO {
         return list_achi;
     }
 
+    public int queryAllCompletedCountAchievement(){
+        int counter = 0;
+        SQLiteDatabase db = dbHandler.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("" +
+                "SELECT " +
+                "COUNT (a.id) as total " +
+                "FROM " +
+                "Achievement a, " +
+                "CompletedAchievement ca " +
+                "WHERE " +
+                "a.id = ca.idAchievement", null);
+
+        while (cursor.moveToNext()) {
+            counter = cursor.getInt(cursor.getColumnIndex("total"));
+        }
+
+        cursor.close();
+
+        return counter;
+    }
+
     public boolean insertCompletedAchievement(Achievement achi){
         SQLiteDatabase db = dbHandler.getWritableDatabase();
 
@@ -103,6 +125,25 @@ public class AchievementDAO {
             return false;
         else
             return true;
+    }
+
+    public int queryAllCountAchievement(){
+        int counter = 0;
+        SQLiteDatabase db = dbHandler.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("" +
+                "SELECT " +
+                "COUNT(a.id) as total " +
+                "FROM " +
+                "Achievement a ", null);
+
+        while (cursor.moveToNext()) {
+            counter = cursor.getInt(cursor.getColumnIndex("total"));
+        }
+
+        cursor.close();
+
+        return counter;
     }
 
     private Achievement fromCursorAchievement(Cursor cursor) {

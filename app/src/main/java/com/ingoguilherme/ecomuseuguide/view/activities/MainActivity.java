@@ -1,5 +1,6 @@
 package com.ingoguilherme.ecomuseuguide.view.activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,7 @@ import android.view.View;
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Language;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
+import com.ingoguilherme.ecomuseuguide.dao.controller.AchievementDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.fragments.AchievementsFragment;
@@ -75,6 +77,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        DatabaseHandler dh = new DatabaseHandler(this);
+        if(selectedLanguage == null){
+            LanguageDAO languageDAO = new LanguageDAO(dh);
+            selectedLanguage = languageDAO.queryCurrentSysLanguage();
+        }
+
         if(lastOpenedFragmentList.size() == 0) {
             Fragment f = RoomListFragment.newInstance();
             addLastOpenedFragment(f);
@@ -90,16 +98,8 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-        DatabaseHandler dh = new DatabaseHandler(this);
-        if(selectedLanguage == null){
-            LanguageDAO languageDAO = new LanguageDAO(dh);
-            selectedLanguage = languageDAO.queryCurrentSysLanguage();
-        }
-
-
         Room flecha = new Room();
         flecha.setMapIdentification("flecha");
-        flecha.setName("Entrada por aqui");
 
         MapFragment.actualRoom = flecha;
 
@@ -206,7 +206,36 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.your_placeholder, f);
             ft.commit();
         } else if (id == R.id.nav_share) {
-            //TODO: Share options
+            DatabaseHandler dh = new DatabaseHandler(this);
+            AchievementDAO achievementDAO = new AchievementDAO(dh);
+            int completed = achievementDAO.queryAllCompletedCountAchievement();
+            int all = achievementDAO.queryAllCountAchievement();
+
+            String appName = getResources().getString(R.string.app_name);
+            int porcentagem = (completed * 100) / all;
+
+            String langCode = selectedLanguage.getLanguage() + "-r" + selectedLanguage.getCountryCode();
+
+            String texto = "";
+
+            if(langCode.equals("pt-rBR"))
+                texto = "Eu visitei o Ecomuseu (Foz do Iguaçu - PR) e consegui " + porcentagem + "% das conquistas no " +
+                        "aplicativo " + appName + " para Android. Venha visitar-lo também! " +
+                        "https://goo.gl/mJ5mI9";
+            else if(langCode.equals("en-rUS"))
+                texto = "I visited the Ecomuseu (Foz do Iguassu - PR) and got " + porcentagem + "% of the achievements in " + appName +
+                         " app for Android. Come and visit you too! " +
+                        "https://goo.gl/mJ5mI9";
+            else
+                texto = "I visited the Ecomuseu (Foz do Iguassu - PR) and got " + porcentagem + "% of the achievements in " + appName +
+                        " app for Android. Come and visit you too! " +
+                        "https://goo.gl/mJ5mI9";
+
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, texto);
+            sendIntent.setType("text/plain");
+            startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -215,7 +244,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     public static void addLastOpenedFragment(Fragment f){
-        lastOpenedFragmentList.add(f);
+        boolean insere = true;
+
+        if(lastOpenedFragmentList.size() >= 1) {
+            Fragment f1 = lastOpenedFragmentList.get(lastOpenedFragmentList.size() - 1);
+            if(f1.getClass().equals(f.getClass()))
+                insere = false;
+        }
+
+        if(insere)
+            lastOpenedFragmentList.add(f);
     }
 
     public static Fragment getLastOpenedFragment(){

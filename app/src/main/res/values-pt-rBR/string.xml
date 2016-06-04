@@ -6,6 +6,7 @@
     <string name="navigation_drawer_close">Feche o menu de navegação</string>
 
     <string name="action_settings">Configurações</string>
+    <string name="send_to">Enviar para</string>
 
     <string name="nav_rooms">Espaços</string>
     <string name="nav_qrcode">QR Code</string>
@@ -22,8 +23,6 @@
 
     <string name="new_achievement_unlocked">Nova conquista desbloqueada</string>
     <string name="qr_code_scan">Escaneie um QR Code</string>
-
-    <string name="hello_option_fragment">Oi Opções fragment</string>
 
     <string name="map_label_clickable_room">Salas\nAcessíveis</string>
     <string name="map_label_actual_place">Local\nAtual</string>

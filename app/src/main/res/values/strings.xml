@@ -6,6 +6,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="send_to">Send to</string>
 
     <string name="nav_rooms">Rooms</string>
     <string name="nav_qrcode">QR Code</string>
@@ -22,8 +23,6 @@
 
     <string name="new_achievement_unlocked">New achievement unlocked</string>
     <string name="qr_code_scan">Scan a QR Code</string>
-
-    <string name="hello_option_fragment">Hello Option fragment</string>
 
     <string name="map_label_clickable_room">Accessible\nRooms</string>
     <string name="map_label_actual_place">Actual\nPlace</string>

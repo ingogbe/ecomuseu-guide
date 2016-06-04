@@ -8,6 +8,7 @@
     <color name="colorAccent">#4CAF50</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="light_gray">#e1e1e1</color>
 
     <color name="map_actualPlace">#ff7e7e</color>
     <color name="map_paviment">#e8e8e8</color>
