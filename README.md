@@ -41,12 +41,12 @@ Android project for the Ecomuseum (Foz do Iguaçu - PR - Brazil), to help visito
 <b>Application features are:</b>
 - Iterative Map (HTML, SVG, CSS, JavaScript) using Android's WebView for easy access to the exhibitions of the areas
 	- Map Division into areas
-	    - Last user accessed location <i>(in red #ff7e7e)</i>
-	    - Administration areas (Ex .: Auditorium, Maintenance) <i>(in purple #c8c8ff)</i>
-	    - Accessible areas without exhibitions (Ex .: Bath) <i>(in blue #d8fdff)</i>
-	    - Accessible areas with exhibitions (All other areas) <i>(in yellow #fffcd8)</i>
-	    - Pavements <i>(in gray #e8e8e8)</i>
-	    - Other areas (Ex .: Grass) <i>(in green #9bd78e)</i>
+		- Last user accessed location <i>(in red #ff7e7e)</i>
+		- Administration areas (Ex .: Auditorium, Maintenance) <i>(in purple #c8c8ff)</i>
+		- Accessible areas without exhibitions (Ex .: Bath) <i>(in blue #d8fdff)</i>
+		- Accessible areas with exhibitions (All other areas) <i>(in yellow #fffcd8)</i>
+		- Pavements <i>(in gray #e8e8e8)</i>
+		- Other areas (Ex .: Grass) <i>(in green #9bd78e)</i>
 	- When you open the map it finds the last location accessed
 	- Zoom in and Zoom out
 	- Possible access the exhibitions list by clicking on an accessible area with exhibitions (Yellow)
@@ -59,12 +59,12 @@ Android project for the Ecomuseum (Foz do Iguaçu - PR - Brazil), to help visito
 
 <b> TO DO List: </b>
 - General
-    - Insert final images in assets
-    - Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
-    - Populate the database with final information (en-rUS, pt-rBR, es-rAR)
-    - Refine application layout (correct minor details)
+	- Insert final images in assets
+	- Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
+	- Populate the database with final information (en-rUS, pt-rBR, es-rAR)
+	- Refine application layout (correct minor details)
 - Code
-    - Improving further the performance of the generateThumbnail()
-    - Change the title of the ActionBar when change application language
-    - Implement pinch zoom, in ViewPager of exhibition images
+	- Improving further the performance of the generateThumbnail()
+	- Change the title of the ActionBar when change application language
+	- Implement pinch zoom, in ViewPager of exhibition images
 
