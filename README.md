@@ -38,7 +38,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 
 Android project for the Ecomuseum (Foz do Iguaçu - PR - Brazil), to help visitors. The application will contain several information about the spaces and museum exhibitions.
 
-<b>Application features are:</ b>
+<b>Application features are:</b>
 - Iterative Map (HTML, SVG, CSS, JavaScript) using Android's WebView for easy access to the exhibitions of the areas
   - Map Division into areas
     - Last user accessed location <i>(in red #ff7e7e)</i>
@@ -57,7 +57,7 @@ Android project for the Ecomuseum (Foz do Iguaçu - PR - Brazil), to help visito
 - Option multi-language (currently en-rUS and pt-rBR)
 - Option to share you were in the museum and the percentage of achievements acquired
 
-<B> TO DO List: </ b>
+<b> TO DO List: </b>
 - General
     - Insert final images in assets
     - Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
