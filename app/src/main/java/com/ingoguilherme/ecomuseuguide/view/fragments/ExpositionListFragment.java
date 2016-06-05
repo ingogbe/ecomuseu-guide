@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
@@ -25,8 +26,9 @@ import java.util.ArrayList;
  */
 public class ExpositionListFragment extends Fragment {
     private static final String ARG_PARAM1 = "idRoom";
+    private static final String ARG_PARAM2 = "name";
 
-    private int idRoom;
+    private Room room;
 
     ArrayList<Exposition> expositions;
     ListView listView;
@@ -39,10 +41,11 @@ public class ExpositionListFragment extends Fragment {
     }
 
 
-    public static ExpositionListFragment newInstance(int idRoom) {
+    public static ExpositionListFragment newInstance(Room r) {
         ExpositionListFragment fragment = new ExpositionListFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, idRoom);
+        args.putInt(ARG_PARAM1, r.getId());
+        args.putString(ARG_PARAM2, r.getName());
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,13 +55,13 @@ public class ExpositionListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            this.idRoom = getArguments().getInt(ARG_PARAM1);
-            Room r = new Room();
-            r.setId(idRoom);
+            room = new Room();
+            room.setId(getArguments().getInt(ARG_PARAM1));
+            room.setName(getArguments().getString(ARG_PARAM2));
 
             DatabaseHandler dh = new DatabaseHandler(getContext());
             ExpositionDAO expositionDAO = new ExpositionDAO(dh);
-            expositions = expositionDAO.queryExpositionByRoomAndLanguage(r, MainActivity.selectedLanguage);
+            expositions = expositionDAO.queryExpositionByRoomAndLanguage(room, MainActivity.selectedLanguage);
             dh.close();
 
             if(expositions.size() == 1){
@@ -83,6 +86,8 @@ public class ExpositionListFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_exposition_list, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.listViewExpositions);
+        TextView tvNameRoom = (TextView) rootView.findViewById(R.id.textView_roomName);
+        tvNameRoom.setText(room.getName());
 
         View empty = rootView.findViewById(R.id.empty);
         listView.setEmptyView(empty);

@@ -1,13 +1,10 @@
 package com.ingoguilherme.ecomuseuguide.view.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,14 +53,7 @@ public class AchievementsFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_achievements, container, false);
 
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        ((Activity) rootView.getContext()).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        int width = displaymetrics.widthPixels;
-
-        int size_im = width / 4;
-
         TableLayout table = (TableLayout) rootView.findViewById(R.id.table_achievement);
-        table.setStretchAllColumns(true);
 
         DatabaseHandler dh = new DatabaseHandler(rootView.getContext());
         AchievementDAO achievementDAO = new AchievementDAO(dh);
@@ -71,67 +61,61 @@ public class AchievementsFragment extends Fragment {
         ArrayList<Achievement> completed = achievementDAO.queryAllCompletedAchievement();
 
         TableRow row = new TableRow(rootView.getContext());
-        row.setGravity(Gravity.CENTER);
-        row.setPadding(5,5,5,15);
         int counter = 0;
+        int pontos = 0;
+        int totalPontos = 0;
 
         for(final Achievement a :all) {
+            totalPontos = totalPontos + a.getPoints();
 
             if(counter == 3){
                 table.addView(row);
                 row = new TableRow(rootView.getContext());
-                row.setGravity(Gravity.CENTER);
-                row.setPadding(5,5,5,15);
                 counter = 0;
             }
 
-            LinearLayout ll = new LinearLayout(rootView.getContext());
-            ll.setOrientation(LinearLayout.VERTICAL);
+            View viewAchievement = inflater.inflate(R.layout.item_achievement, row, false);
 
-            ImageView im = new ImageView(rootView.getContext());
-            im.setImageResource(R.drawable.achievement_trophy_gray);
+            LinearLayout ll = (LinearLayout) viewAchievement.findViewById(R.id.item_achievement);
+            ImageView im = (ImageView) viewAchievement.findViewById(R.id.imageView_achievement);
+            TextView tv_name = (TextView) viewAchievement.findViewById(R.id.textView_achievement_name);
+            TextView tv_points = (TextView) viewAchievement.findViewById(R.id.textView_achievement_points);
+
+            RoomDAO roomDAO = new RoomDAO(dh);
+            final Room r = roomDAO.queryRoomsByAchievementAndLanguage(a, MainActivity.selectedLanguage);
+            tv_name.setText(r.getName());
+
+            tv_points.setText(a.getPoints() + " " + getResources().getString(R.string.points));
 
             for(Achievement c :completed){
                 if(a.getId() == c.getId()){
                     im.setImageResource(R.drawable.achievement_trophy);
+                    pontos = pontos + a.getPoints();
                     break;
                 }
             }
-
-            im.setLayoutParams(new TableRow.LayoutParams(size_im,size_im));
-
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) im.getLayoutParams();
-            params.gravity = Gravity.CENTER;
-            im.setLayoutParams(params);
-
-            ll.addView(im);
-
-            final RoomDAO roomDAO = new RoomDAO(dh);
-            final Room r = roomDAO.queryRoomsByAchievementAndLanguage(a, MainActivity.selectedLanguage);
-
-            TextView tv = new TextView(rootView.getContext());
-            tv.setGravity(TextView.TEXT_ALIGNMENT_GRAVITY);
-            tv.setText(r.getName());
-
-            ll.addView(tv);
 
             ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                    Fragment f = ExpositionListFragment.newInstance(r.getId());
+                    Fragment f = ExpositionListFragment.newInstance(r);
                     MainActivity.addLastOpenedFragment(f);
                     ft.replace(R.id.your_placeholder, f);
                     ft.commit();
                 }
             });
 
-            row.addView(ll);
+            row.addView(viewAchievement);
 
             counter++;
         }
 
         table.addView(row);
+        table.setShrinkAllColumns(true);
+
+        TextView tvPontos = (TextView) rootView.findViewById(R.id.totalPontos);
+        tvPontos.setText(getResources().getString(R.string.points) + ": " + pontos + "/" + totalPontos);
 
         return rootView;
     }

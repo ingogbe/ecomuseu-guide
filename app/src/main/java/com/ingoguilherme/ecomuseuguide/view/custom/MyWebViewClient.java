@@ -42,7 +42,7 @@ public class MyWebViewClient extends WebViewClient{
                 map.loadUrl("javascript:changeColor('" + MapFragment.actualRoom.getMapIdentification() + "','#ff7e7e')");
 
                 FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
-                Fragment f = ExpositionListFragment.newInstance(r.getId());
+                Fragment f = ExpositionListFragment.newInstance(r);
                 MainActivity.addLastOpenedFragment(f);
                 ft.replace(R.id.your_placeholder, f);
                 ft.commit();

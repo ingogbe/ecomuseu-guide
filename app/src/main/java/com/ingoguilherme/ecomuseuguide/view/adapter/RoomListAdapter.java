@@ -77,7 +77,7 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
     
     public void roomClick(Room r){
 		MapFragment.actualRoom = r;
-		Fragment f = ExpositionListFragment.newInstance(r.getId());
+		Fragment f = ExpositionListFragment.newInstance(r);
 		MainActivity.addLastOpenedFragment(f);
 		ft.replace(R.id.your_placeholder, f);
 		ft.commit();

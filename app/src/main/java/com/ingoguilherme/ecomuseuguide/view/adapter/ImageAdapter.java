@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.ingoguilherme.ecomuseuguide.R;
@@ -22,19 +21,18 @@ import java.util.ArrayList;
 public class ImageAdapter extends PagerAdapter {
 
     private Activity _activity;
-    private ArrayList<String> mStrings;
+    private ArrayList<String> imageSources;
     private LayoutInflater inflater;
+    TouchImageView imgDisplay;
 
-
-    // constructor
-    public ImageAdapter(Activity activity, ArrayList<String> mStrings) {
+    public ImageAdapter(Activity activity, ArrayList<String> imageSources) {
         this._activity = activity;
-        this.mStrings = mStrings;
+        this.imageSources = imageSources;
     }
 
     @Override
     public int getCount() {
-        return this.mStrings.size();
+        return this.imageSources.size();
     }
 
     @Override
@@ -44,21 +42,14 @@ public class ImageAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        TouchImageView imgDisplay;
-        final Button btnClose;
-
         inflater = (LayoutInflater) _activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         View viewLayout = inflater.inflate(R.layout.item_list_gallery, container, false);
-        RelativeLayout parentview = (RelativeLayout) viewLayout .findViewById(R.id.rel);
+
         imgDisplay = (TouchImageView) viewLayout.findViewById(R.id.imgDisplay);
-        imgDisplay.setImageBitmap(Thumbnail.generateThumbnail(container, mStrings.get(position),600));
+        imgDisplay.setImageBitmap(Thumbnail.generateThumbnail(container, imageSources.get(position),600));
 
         ((ViewPager) container).addView(viewLayout);
-        /**
-         * Setting the object for animation
-         * */
-
-
         return viewLayout;
     }
 

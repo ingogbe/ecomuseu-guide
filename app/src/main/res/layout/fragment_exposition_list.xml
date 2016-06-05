@@ -4,20 +4,40 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.MainActivity">
 
-    <ListView
-        android:id="@+id/listViewExpositions"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fastScrollEnabled="true" >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </ListView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_line"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView_roomName" />
 
-    <TextView
-        android:id="@+id/empty"
-        android:text="@string/no_item_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center"
-        />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/listViewExpositions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fastScrollEnabled="true" >
+
+            </ListView>
+
+            <TextView
+                android:id="@+id/empty"
+                android:text="@string/no_item_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center" />
+
+        </FrameLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
