@@ -15,7 +15,7 @@ import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
-import com.ingoguilherme.ecomuseuguide.view.clients.MyWebViewClient;
+import com.ingoguilherme.ecomuseuguide.view.custom.MyWebViewClient;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.ingoguilherme.ecomuseuguide.view.clients;
+package com.ingoguilherme.ecomuseuguide.view.custom;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;

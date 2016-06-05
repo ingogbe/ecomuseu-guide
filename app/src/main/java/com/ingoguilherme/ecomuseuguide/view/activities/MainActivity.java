@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
     public static ArrayList<Fragment> lastOpenedFragmentList = new ArrayList<Fragment>();
     public static Language selectedLanguage = null;
+    public static NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +69,16 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        //TODO: Change selected on drawer when change fragment by other ways
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
 
         DatabaseHandler dh = new DatabaseHandler(this);
         if(selectedLanguage == null){
@@ -152,7 +154,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
+        // Handle action bar lazylist_item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
@@ -173,7 +175,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle navigation view lazylist_item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_qrcode) {
@@ -253,8 +255,26 @@ public class MainActivity extends AppCompatActivity
                 insere = false;
         }
 
-        if(insere)
+        if(insere) {
             lastOpenedFragmentList.add(f);
+
+            if(f instanceof AchievementsFragment)
+                navigationView.getMenu().getItem(3).setChecked(true);
+            else if(f instanceof ExpositionFragment)
+                navigationView.getMenu().getItem(0).setChecked(true);
+            else if(f instanceof ExpositionListFragment)
+                navigationView.getMenu().getItem(0).setChecked(true);
+            else if(f instanceof GalleryFragment)
+                navigationView.getMenu().getItem(0).setChecked(true);
+            else if(f instanceof MapFragment)
+                navigationView.getMenu().getItem(2).setChecked(true);
+            else if(f instanceof OptionFragment)
+                navigationView.getMenu().getItem(4).setChecked(true);
+            else if(f instanceof QRCodeFragment)
+                navigationView.getMenu().getItem(1).setChecked(true);
+            else if(f instanceof RoomListFragment)
+                navigationView.getMenu().getItem(0).setChecked(true);
+        }
     }
 
     public static Fragment getLastOpenedFragment(){

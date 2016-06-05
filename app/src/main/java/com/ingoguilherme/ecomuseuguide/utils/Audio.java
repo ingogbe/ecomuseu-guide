@@ -24,7 +24,7 @@ public class Audio {
 
     public void setMediaPlayer(View rootView, String audioSrc){
 
-        String TAG = "TESTE";
+        String TAG = "EXCEPTION";
 
         try {
             String path = "audios/" + audioSrc + ".mp3";

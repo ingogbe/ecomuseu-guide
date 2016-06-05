@@ -1,37 +1,38 @@
-# Ecomuseu Guide (Guia Ecomuseu)
+# Guia Ecomuseu (Ecomuseu Guide)
 
 Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os visitantes. O aplicativo irá conter diversas informações sobre os espaços e exposições do museu.
 
 <b>As funcionalidades do aplicativo são:</b>
 - Mapa iterativo (HTML, SVG, CSS, JavaScript) usando WebView do Android para fácil acesso as exposiçoes das areas
-  - Divisão do mapa em areas
-    - Ultima localização acessada do usuário <i>(Em vermelho #ff7e7e)</i>
-    - Areas da administração (Ex.: Auditorio, Manuntenção) <i>(Em roxo #c8c8ff)</i>
-    - Areas acessiveis sem exposições (Ex.: Banheiros) <i>(Em azul #d8fdff)</i>
-    - Areas acessiveis com exposições (Todas as demais areas) <i>(Em amarelo #fffcd8)</i>
-    - Calçadas <i>(Em cinza #e8e8e8)</i>
-    - Demais areas (Ex.: Grama) <i>(Em verde #9bd78e)</i>
-  - Ao abrir o mapa ele localiza a ultima localização acessada
-  - Zoom in e Zoom out
-  - Possivel acessar lista de exposições ao clicar sobre uma area acessivel com exposição (Amarela)
-  - Legenda das areas na parte superior
+	- Divisão do mapa em areas
+		- Ultima localização acessada do usuário <i>(Em vermelho #ff7e7e)</i>
+		- Areas da administração (Ex.: Auditorio, Manuntenção) <i>(Em roxo #c8c8ff)</i>
+		- Areas acessiveis sem exposições (Ex.: Banheiros) <i>(Em azul #d8fdff)</i>
+		- Areas acessiveis com exposições (Todas as demais areas) <i>(Em amarelo #fffcd8)</i>
+		- Calçadas <i>(Em cinza #e8e8e8)</i>
+		- Demais areas (Ex.: Grama) <i>(Em verde #9bd78e)</i>
+	- Ao abrir o mapa ele localiza a ultima localização acessada
+	- Zoom in e Zoom out
+	- Possivel acessar lista de exposições ao clicar sobre uma area acessivel com exposição (Amarela)
+	- Legenda das areas na parte superior
 - Lista de areas do museu, para acesso manual, caso não queira pelo mapa
-- Leitor de QR Code (zxing-android-embedded, baseado no ZXing Barcode Scanner do Google) para rapido acesso a exposição (cada exposição do museu terá um QR Code)
+- Leitor de QR Code ([zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded), baseado no ZXing Barcode Scanner do Google) para rapido acesso a exposição (cada exposição do museu terá um QR Code)
 - Conquistas para cada area que o usuario visitar (para desbloquear a conquista, somente por leitura de algum QR Code da area)
 - Opção multi-linguagem (Atualmente en-rUS e pt-rBR)
 - Opção de compartilhar que você esteve no museu e a porcentagem de conquistas que adquiriu
 
 <b>TO DO List:</b>
 - Geral
-    - Inserir imagens finais nos assets
-    - Inserir audios finais nos assets (en-rUS, pt-rBR, es-rAR)
-    - Popular banco de dados com informações finais (en-rUS, pt-rBR, es-rAR)
-    - Refinar layout do aplicativo (corrigir pequenos detalhes)
+    - [ ] Inserir imagens finais nos assets
+    - [ ] Inserir audios finais nos assets (en-rUS, pt-rBR, es-rAR)
+    - [ ] Popular banco de dados com informações finais (en-rUS, pt-rBR, es-rAR)
+    - [ ] Refinar layout do aplicativo (corrigir pequenos detalhes)
 - Código
-    - Melhorar mais ainda o desemepenho do generateThumbnail()
-    - Trocar o título da ActionBar ao trocar idioma do aplicativo
-    - Implementar pinch zoom, no ViewPager das imagens da exposição
-	
+    - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
+    - [ ] Trocar o título da ActionBar ao trocar idioma do aplicativo
+    - [x] Implementar pinch zoom, no ViewPager das imagens da exposição (com [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
+    - [x] Trocar item selecionado do menu no drawer ao trocar fragment com link externo
+
 	
 -----------------------------
 
@@ -52,19 +53,37 @@ Android project for the Ecomuseum (Foz do Iguaçu - PR - Brazil), to help visito
 	- Possible access the exhibitions list by clicking on an accessible area with exhibitions (Yellow)
 	- Labels of the areas at the top
 - Museum areas list for manual access if you do not want the map
-- QR Code Reader (ZXing-android-embedded, based on ZXing Barcode Scanner Google) for quick access to exhibition (each museum exhibition will have a QR Code)
+- QR Code Reader (([zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded), based on ZXing Barcode Scanner Google) for quick access to exhibition (each museum exhibition will have a QR Code)
 - Achievements for each area that the user visit (to unlock the achievement, only by reading a QR Code of area)
 - Option multi-language (currently en-rUS and pt-rBR)
 - Option to share you were in the museum and the percentage of achievements acquired
 
 <b> TO DO List: </b>
 - General
-	- Insert final images in assets
-	- Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
-	- Populate the database with final information (en-rUS, pt-rBR, es-rAR)
-	- Refine application layout (correct minor details)
+	- [ ] Insert final images in assets
+	- [ ] Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
+	- [ ] Populate the database with final information (en-rUS, pt-rBR, es-rAR)
+	- [ ] Refine application layout (correct minor details)
 - Code
-	- Improving further the performance of the generateThumbnail()
-	- Change the title of the ActionBar when change application language
-	- Implement pinch zoom, in ViewPager of exhibition images
+	- [ ] Improving further the performance of the generateThumbnail()
+	- [ ] Change the title of the ActionBar when change application language
+	- [x] Implement pinch zoom, in ViewPager of exhibition images (with [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
+	- [x] Change seletected item in drawer menu when change fragment with external link
+
+
+-----------------------------
+
+
+<b>ScreenShots</b>
+
+<img width="120" src="http://i.imgur.com/guZYydx.jpg">
+<img width="120" src="http://i.imgur.com/DwgaeUa.jpg">
+<img width="120" src="http://i.imgur.com/OaBPg3h.jpg">
+<img width="120" src="http://i.imgur.com/2wL0bFF.jpg">
+<img width="120" src="http://i.imgur.com/Ilh0KDr.jpg">
+<img width="120" src="http://i.imgur.com/JQNZYjC.jpg">
+<img width="120" src="http://i.imgur.com/3FW7VcZ.jpg">
+
+
+-----------------------------
 

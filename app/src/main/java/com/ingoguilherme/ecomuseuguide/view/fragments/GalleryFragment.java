@@ -4,13 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.view.adapter.ImageAdapter;
+import com.ingoguilherme.ecomuseuguide.view.custom.MyViewPager;
 
 import java.util.ArrayList;
 
@@ -60,9 +60,8 @@ public class GalleryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
 
-        //TODO: Implementar pinch zoom
-        ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.view_pager);
-        ImageAdapter adapter = new ImageAdapter(rootView.getContext(), imageSources);
+        MyViewPager viewPager = (MyViewPager) rootView.findViewById(R.id.view_pager);
+        ImageAdapter adapter = new ImageAdapter(getActivity(), imageSources);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(clickedImage);
 
