@@ -219,6 +219,8 @@ public class MainActivity extends AppCompatActivity
             AchievementDAO achievementDAO = new AchievementDAO(dh);
             int completed = achievementDAO.queryAllCompletedCountAchievement();
             int all = achievementDAO.queryAllCountAchievement();
+            int points = achievementDAO.queryActualAchievementPoints();
+            int totalPoints = achievementDAO.queryTotalPointsAchievement();
 
             String appName = getResources().getString(R.string.app_name);
             int porcentagem = (completed * 100) / all;
@@ -228,16 +230,16 @@ public class MainActivity extends AppCompatActivity
             String texto = "";
 
             if(langCode.equals("pt-rBR"))
-                texto = "Eu visitei o Ecomuseu (Foz do Iguaçu - PR) e consegui " + porcentagem + "% das conquistas no " +
-                        "aplicativo " + appName + " para Android. Venha visitar-lo também! " +
+                texto = "Eu visitei o Ecomuseu (Foz do Iguaçu - PR) e consegui " + points + "/" + totalPoints + " pontos, totalizando " +
+                        porcentagem + "% das conquistas no aplicativo " + appName + " para Android. Venha visitar-lo também! " +
                         "https://goo.gl/mJ5mI9";
             else if(langCode.equals("en-rUS"))
-                texto = "I visited the Ecomuseu (Foz do Iguassu - PR) and got " + porcentagem + "% of the achievements in " + appName +
-                         " app for Android. Come and visit you too! " +
+                texto = "I visited the Ecomuseu (Foz do Iguassu - PR) and got " + points + "/" + totalPoints + " points, totaling " +
+                        porcentagem + "% of the achievements in " + appName + " app for Android. Come and visit you too! " +
                         "https://goo.gl/mJ5mI9";
             else
-                texto = "I visited the Ecomuseu (Foz do Iguassu - PR) and got " + porcentagem + "% of the achievements in " + appName +
-                        " app for Android. Come and visit you too! " +
+                texto = "I visited the Ecomuseu (Foz do Iguassu - PR) and got " + points + "/" + totalPoints + " points, totaling " +
+                        porcentagem + "% of the achievements in " + appName + " app for Android. Come and visit you too! " +
                         "https://goo.gl/mJ5mI9";
 
             Intent sendIntent = new Intent();

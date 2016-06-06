@@ -68,6 +68,25 @@ public class AchievementDAO {
         return list_achi;
     }
 
+    public int queryTotalPointsAchievement(){
+        int points = 0;
+        SQLiteDatabase db = dbHandler.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("" +
+                "SELECT " +
+                "sum(a.points) as points " +
+                "FROM " +
+                "Achievement a ", null);
+
+        while (cursor.moveToNext()) {
+            points = cursor.getInt(cursor.getColumnIndex("points"));
+        }
+
+        cursor.close();
+
+        return points;
+    }
+
     public ArrayList<Achievement> queryAllCompletedAchievement(){
         ArrayList<Achievement> list_achi = new ArrayList<Achievement>();
         SQLiteDatabase db = dbHandler.getReadableDatabase();
@@ -89,6 +108,28 @@ public class AchievementDAO {
         cursor.close();
 
         return list_achi;
+    }
+
+    public int queryActualAchievementPoints(){
+        int points = 0;
+        SQLiteDatabase db = dbHandler.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("" +
+                "SELECT " +
+                "sum(a.points) as points " +
+                "FROM " +
+                "Achievement a, " +
+                "CompletedAchievement ca " +
+                "WHERE " +
+                "a.id = ca.idAchievement", null);
+
+        while (cursor.moveToNext()) {
+            points = cursor.getInt(cursor.getColumnIndex("points"));
+        }
+
+        cursor.close();
+
+        return points;
     }
 
     public int queryAllCompletedCountAchievement(){
