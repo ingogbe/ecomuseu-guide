@@ -31,7 +31,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 		- [ ] Exposition Fragment
 		- [x] Exposition List Fragment
 		- [x] Map Fragment (FloatingActionButton na esquerda que abre popup da legenda)
-		- [ ] Nome da sala na fragment da exposição
+		- [x] Nome da sala na fragment da exposição
 - Código
     - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
     - [ ] Trocar o título da ActionBar ao trocar idioma do aplicativo
@@ -73,7 +73,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 		- [ ] Exposition Fragment
 		- [x] Exposition List Fragment
 		- [x] Map Fragment (FloatingActionButton on the left opens map labels popup)
-		- [ ] Room name at the exposition fragment
+		- [x] Room name at the exposition fragment
 - Code
 	- [ ] Improving further the performance of the generateThumbnail()
 	- [ ] Change the title of the ActionBar when change application language

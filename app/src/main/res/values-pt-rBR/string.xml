@@ -28,7 +28,7 @@
 
     <string name="map_label_clickable_room">Salas\nAcessíveis</string>
     <string name="map_label_actual_place">Local\nAtual</string>
-    <string name="map_label_acessible_areas">Areas\nAcessíveis</string>
+    <string name="map_label_acessible_areas">Areas Acessíveis\nSem exposição</string>
     <string name="map_label_administration_rooms">Salas da\nAdministração</string>
     <string name="map_label_paviment">Calçadas</string>
     <string name="map_label_grass">Grama</string>

@@ -27,8 +27,7 @@
                     android:layout_width="@dimen/map_labels_img"
                     android:layout_height="@dimen/map_labels_img"
                     android:layout_margin="5dp"
-                    android:background="@drawable/border"
-                    android:src="@color/map_acessible_clickable" />
+                    android:background="@drawable/label_acessible_clickable"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -49,8 +48,7 @@
                     android:layout_width="@dimen/map_labels_img"
                     android:layout_height="@dimen/map_labels_img"
                     android:layout_margin="5dp"
-                    android:background="@drawable/border"
-                    android:src="@color/map_actualPlace" />
+                    android:background="@drawable/label_actual_place" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -71,8 +69,7 @@
                     android:layout_width="@dimen/map_labels_img"
                     android:layout_height="@dimen/map_labels_img"
                     android:layout_margin="5dp"
-                    android:background="@drawable/border"
-                    android:src="@color/map_acessible_other" />
+                    android:background="@drawable/label_acessible_other" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -93,8 +90,7 @@
                     android:layout_width="@dimen/map_labels_img"
                     android:layout_height="@dimen/map_labels_img"
                     android:layout_margin="5dp"
-                    android:background="@drawable/border"
-                    android:src="@color/map_administration" />
+                    android:background="@drawable/label_administration" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -115,8 +111,7 @@
                     android:layout_width="@dimen/map_labels_img"
                     android:layout_height="@dimen/map_labels_img"
                     android:layout_margin="5dp"
-                    android:background="@drawable/border"
-                    android:src="@color/map_paviment" />
+                    android:background="@drawable/label_paviment"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -137,8 +132,7 @@
                     android:layout_width="@dimen/map_labels_img"
                     android:layout_height="@dimen/map_labels_img"
                     android:layout_margin="5dp"
-                    android:background="@drawable/border"
-                    android:src="@color/map_grass" />
+                    android:background="@drawable/label_grass" />
 
                 <TextView
                     android:layout_width="match_parent"

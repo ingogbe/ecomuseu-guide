@@ -28,7 +28,7 @@
 
     <string name="map_label_clickable_room">Accessible\nRooms</string>
     <string name="map_label_actual_place">Actual\nPlace</string>
-    <string name="map_label_acessible_areas">Accessible\nAreas</string>
+    <string name="map_label_acessible_areas">Accessible Areas\nwithout exposition</string>
     <string name="map_label_administration_rooms">Administration\nRooms</string>
     <string name="map_label_paviment">Paviment</string>
     <string name="map_label_grass">Grass</string>
