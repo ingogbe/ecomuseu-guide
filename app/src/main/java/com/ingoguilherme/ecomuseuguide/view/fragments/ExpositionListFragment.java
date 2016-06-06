@@ -15,6 +15,7 @@ import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
+import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 import com.ingoguilherme.ecomuseuguide.view.adapter.ExpositionListAdapter;
@@ -60,8 +61,13 @@ public class ExpositionListFragment extends Fragment {
             room.setName(getArguments().getString(ARG_PARAM2));
 
             DatabaseHandler dh = new DatabaseHandler(getContext());
+
+            RoomDAO roomDAO = new RoomDAO(dh);
+            room = roomDAO.queryRoomByIdAndLanguage(room.getId(),MainActivity.selectedLanguage);
+
             ExpositionDAO expositionDAO = new ExpositionDAO(dh);
             expositions = expositionDAO.queryExpositionByRoomAndLanguage(room, MainActivity.selectedLanguage);
+
             dh.close();
 
             if(expositions.size() == 1){

@@ -52,6 +52,36 @@ public class RoomDAO {
         return roomList;
     }
 
+    public Room queryRoomByIdAndLanguage(int id, Language lang){
+        Room room = new Room();
+        SQLiteDatabase db = dbHandler.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("" +
+                "SELECT " +
+                "r.id, " +
+                "r.coverImageSrc, " +
+                "r.mapIdentification, " +
+                "rl.name, " +
+                "rl.description " +
+                "FROM " +
+                "Room r, " +
+                "RoomLanguage rl, " +
+                "Language l " +
+                "WHERE " +
+                "r.id = rl.idRoom AND " +
+                "r.id = " + id + " AND " +
+                "l.id = rl.idLanguage AND " +
+                "l.id = " + lang.getId(), null);
+
+        while (cursor.moveToNext()) {
+            room = fromCursorRoom(cursor);
+        }
+
+        cursor.close();
+
+        return room;
+    }
+
     public Room queryRoomsByAchievementAndLanguage(Achievement achi, Language lang){
         Room room = new Room();
         SQLiteDatabase db = dbHandler.getReadableDatabase();
