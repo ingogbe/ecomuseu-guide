@@ -18,7 +18,7 @@
                 android:orientation="horizontal"
                 android:id="@+id/labels"
                 android:layout_width="wrap_content"
-                android:background="@drawable/border"
+                android:background="@drawable/text_line"
                 android:layout_height="60dp">
 
                 <LinearLayout

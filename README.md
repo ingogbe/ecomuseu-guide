@@ -16,7 +16,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 	- Possivel acessar lista de exposições ao clicar sobre uma area acessivel com exposição (Amarela)
 	- Legenda das areas na parte superior
 - Lista de areas do museu, para acesso manual, caso não queira pelo mapa
-- Leitor de QR Code ([zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded), baseado no ZXing Barcode Scanner do Google) para rapido acesso a exposição (cada exposição do museu terá um QR Code)
+- Leitor de QR Code ([zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded), baseado no [ZXing Barcode Scanner do Google](https://github.com/zxing/zxing)) para rapido acesso a exposição (cada exposição do museu terá um QR Code)
 - Conquistas para cada area que o usuario visitar (para desbloquear a conquista, somente por leitura de algum QR Code da area)
 - Opção multi-linguagem (Atualmente en-rUS e pt-rBR)
 - Opção de compartilhar que você esteve no museu e a porcentagem de conquistas que adquiriu
@@ -30,6 +30,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
     	- [x] Achievements Fragment
 		- [ ] Exposition Fragment
 		- [x] Exposition List Fragment
+		- [ ] Map Fragment (FloatingActionButton na esquerda que abre popup da legenda)
 - Código
     - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
     - [ ] Trocar o título da ActionBar ao trocar idioma do aplicativo
@@ -56,7 +57,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 	- Possible access the exhibitions list by clicking on an accessible area with exhibitions (Yellow)
 	- Labels of the areas at the top
 - Museum areas list for manual access if you do not want the map
-- QR Code Reader ([zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded), based on ZXing Barcode Scanner Google) for quick access to exhibition (each museum exhibition will have a QR Code)
+- QR Code Reader ([zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded), based on [ZXing Barcode Scanner from Google](https://github.com/zxing/zxing)) for quick access to exhibition (each museum exhibition will have a QR Code)
 - Achievements for each area that the user visit (to unlock the achievement, only by reading a QR Code of area)
 - Option multi-language (currently en-rUS and pt-rBR)
 - Option to share you were in the museum and the percentage of achievements acquired
@@ -70,6 +71,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 		- [x] Achievements Fragment
 		- [ ] Exposition Fragment
 		- [x] Exposition List Fragment
+		- [ ] Map Fragment (FloatingActionButton on the left opens map labels popup)
 - Code
 	- [ ] Improving further the performance of the generateThumbnail()
 	- [ ] Change the title of the ActionBar when change application language
