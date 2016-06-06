@@ -16,7 +16,10 @@ import android.widget.TextView;
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Language;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
+import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
+import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
+import com.ingoguilherme.ecomuseuguide.view.fragments.MapFragment;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -85,9 +88,13 @@ public class LanguagesAdapter extends ArrayAdapter<Room> {
 		conf.locale = new Locale(l.getLanguage(),l.getCountryCode());
 		res.updateConfiguration(conf, dm);
 
-		activity.recreate();
+		MainActivity.refreshDrawerTexts();
 
 		//TODO: Não troca o titulo na ActionBar, arrumar isso
+		DatabaseHandler dh = new DatabaseHandler(getContext());
+		RoomDAO roomDAO = new RoomDAO(dh);
+		Room room = roomDAO.queryRoomByIdAndLanguage(MapFragment.actualRoom.getId(), l);
+		MapFragment.actualRoom = room;
 
 		Fragment f = MainActivity.getLastOpenedFragment();
 		ft.replace(R.id.your_placeholder, f);

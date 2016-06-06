@@ -1,14 +1,18 @@
 package com.ingoguilherme.ecomuseuguide.view.fragments;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Room;
@@ -27,6 +31,7 @@ public class MapFragment extends Fragment {
     private OnMapFragmentInteractionListener mListener;
     private View rootView;
     public static Room actualRoom;
+    FloatingActionButton fab;
 
     private WebView map;
     private ArrayList<Room> rooms;
@@ -46,6 +51,8 @@ public class MapFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
+    boolean animationEnded = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,6 +76,49 @@ public class MapFragment extends Fragment {
         MyWebViewClient wvc = new MyWebViewClient(rooms, map, getActivity());
 
         map.setWebViewClient(wvc);
+
+        final FrameLayout labels = (FrameLayout) rootView.findViewById(R.id.labels);
+
+        final int deltaX = (int) (labels.getWidth() / 2);
+        final int deltaY = (int) -1 * (labels.getHeight() / 2);
+
+        labels.setScaleX(0);
+        labels.setScaleY(0);
+        labels.setTranslationX(0);
+        labels.setTranslationY(0);
+
+        fab = MainActivity.fabMap;
+        fab.setVisibility(View.VISIBLE);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: Change visibility labels
+                if(labels.getVisibility() == View.INVISIBLE && animationEnded){
+                    animationEnded = false;
+                    labels.setVisibility(View.VISIBLE);
+
+                    labels.animate().scaleY(1).scaleX(1).translationX(deltaX).translationY(deltaY).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            animationEnded = true;
+                        }
+                    });;
+
+                }
+                else if(labels.getVisibility() == View.VISIBLE && animationEnded){
+                    animationEnded = false;
+                    labels.animate().scaleY(0).scaleX(0).translationX(0).translationY(0).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            labels.setVisibility(View.INVISIBLE);
+                            animationEnded = true;
+                        }
+                    });
+                }
+            }
+        });
 
         return rootView;
     }
@@ -94,6 +144,7 @@ public class MapFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        fab.setVisibility(View.INVISIBLE);
     }
 
 

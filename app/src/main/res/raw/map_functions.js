@@ -23,7 +23,7 @@ function changeColor(id, color){
     goToElement(id);
 }
 
-function loadTextByID(id,titulo){
+function loadTextByID(id, titulo){
     var element = document.getElementById('texto_' + id);
     element.children[0].textContent = titulo;
 }

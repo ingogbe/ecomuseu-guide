@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Language;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     public static ArrayList<Fragment> lastOpenedFragmentList = new ArrayList<Fragment>();
     public static Language selectedLanguage = null;
     public static NavigationView navigationView;
+    public static FloatingActionButton fabMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fabMap = (FloatingActionButton) findViewById(R.id.fab_map);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +136,19 @@ public class MainActivity extends AppCompatActivity
             }
         }
         super.onResume();
+    }
+
+    public static void refreshDrawerTexts(){
+        MainActivity.navigationView.getMenu().getItem(0).setTitle(R.string.nav_rooms);
+        MainActivity.navigationView.getMenu().getItem(1).setTitle(R.string.nav_qrcode);
+        MainActivity.navigationView.getMenu().getItem(2).setTitle(R.string.nav_map);
+        MainActivity.navigationView.getMenu().getItem(3).setTitle(R.string.nav_achievements);
+        MainActivity.navigationView.getMenu().getItem(4).setTitle(R.string.nav_options);
+        MainActivity.navigationView.getMenu().getItem(5).setTitle(R.string.nav_title_social);
+        MainActivity.navigationView.getMenu().getItem(5).getSubMenu().getItem(0).setTitle(R.string.nav_share);
+
+        ((TextView)MainActivity.navigationView.getHeaderView(0).findViewById(R.id.tv_app_title)).setText(R.string.app_name);
+        ((TextView)MainActivity.navigationView.getHeaderView(0).findViewById(R.id.tv_app_description)).setText(R.string.app_description);
     }
 
     @Override

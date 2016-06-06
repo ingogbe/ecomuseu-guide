@@ -31,4 +31,13 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_menu_qrcode" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_menu_map" />
+
 </android.support.design.widget.CoordinatorLayout>

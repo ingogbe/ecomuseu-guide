@@ -1,0 +1,157 @@
+<FrameLayout
+    android:orientation="vertical"
+    android:id="@+id/labels"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/achievement_background"
+    android:visibility="invisible"
+    android:animateLayoutChanges="true"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/map_labels_img"
+                    android:layout_height="@dimen/map_labels_img"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border"
+                    android:src="@color/map_acessible_clickable" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/map_label_clickable_room"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/map_labels_img"
+                    android:layout_height="@dimen/map_labels_img"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border"
+                    android:src="@color/map_actualPlace" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/map_label_actual_place"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/map_labels_img"
+                    android:layout_height="@dimen/map_labels_img"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border"
+                    android:src="@color/map_acessible_other" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/map_label_acessible_areas"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/map_labels_img"
+                    android:layout_height="@dimen/map_labels_img"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border"
+                    android:src="@color/map_administration" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/map_label_administration_rooms"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/map_labels_img"
+                    android:layout_height="@dimen/map_labels_img"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border"
+                    android:src="@color/map_paviment" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/map_label_paviment"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/map_labels_img"
+                    android:layout_height="@dimen/map_labels_img"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border"
+                    android:src="@color/map_grass" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/map_labels_text_right_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/map_label_grass"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

@@ -4,178 +4,18 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.MainActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <WebView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/wb_map">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/scrollViewLabels">
+    </WebView>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:id="@+id/labels"
-                android:layout_width="wrap_content"
-                android:background="@drawable/text_line"
-                android:layout_height="60dp">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/map_labels_img"
-                        android:layout_height="@dimen/map_labels_img"
-                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
-                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
-                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
-                        android:background="@drawable/border"
-                        android:src="@color/map_acessible_clickable" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/map_label_clickable_room"
-                        android:layout_gravity="center"
-                        android:gravity="center" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/map_labels_img"
-                        android:layout_height="@dimen/map_labels_img"
-                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
-                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
-                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
-                        android:background="@drawable/border"
-                        android:src="@color/map_actualPlace" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/map_label_actual_place"
-                        android:layout_gravity="center"
-                        android:gravity="center" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/map_labels_img"
-                        android:layout_height="@dimen/map_labels_img"
-                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
-                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
-                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
-                        android:background="@drawable/border"
-                        android:src="@color/map_acessible_other" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/map_label_acessible_areas"
-                        android:layout_gravity="center"
-                        android:gravity="center" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/map_labels_img"
-                        android:layout_height="@dimen/map_labels_img"
-                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
-                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
-                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
-                        android:background="@drawable/border"
-                        android:src="@color/map_administration" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/map_label_administration_rooms"
-                        android:layout_gravity="center"
-                        android:gravity="center" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/map_labels_img"
-                        android:layout_height="@dimen/map_labels_img"
-                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
-                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
-                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
-                        android:background="@drawable/border"
-                        android:src="@color/map_paviment" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/map_label_paviment"
-                        android:layout_gravity="center"
-                        android:gravity="center" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/map_labels_img"
-                        android:layout_height="@dimen/map_labels_img"
-                        android:layout_marginLeft="@dimen/map_labels_img_left_margin"
-                        android:layout_marginTop="@dimen/map_labels_img_top_margin"
-                        android:layout_marginRight="@dimen/map_labels_img_right_margin"
-                        android:background="@drawable/border"
-                        android:src="@color/map_grass" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/map_labels_text_right_margin"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/map_label_grass"
-                        android:layout_gravity="center"
-                        android:gravity="center" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
-        <WebView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/wb_map">
-
-        </WebView>
-
-    </LinearLayout>
+    <include
+        layout="@layout/map_labels"
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="45dp"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>
