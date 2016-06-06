@@ -30,11 +30,13 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 	Context context;
 	private final LayoutInflater inflater;
 	FragmentTransaction ft;
+	Room room;
 
-	public ExpositionListAdapter(Context context, int resource, ArrayList<Exposition> expositions, FragmentTransaction ft) {
+	public ExpositionListAdapter(Context context, int resource, ArrayList<Exposition> expositions, FragmentTransaction ft, Room room) {
 		super(context, resource);
 		this.context = context;
 		this.ft = ft;
+		this.room = room;
 		inflater = LayoutInflater.from(context);
 		this.expositions = expositions;
 	}
@@ -78,7 +80,7 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
     }
     
     public void expositionClick(Exposition e){
-		Fragment f = ExpositionFragment.newInstance(e);
+		Fragment f = ExpositionFragment.newInstance(e, room.getId());
 		MainActivity.addLastOpenedFragment(f);
 		ft.replace(R.id.your_placeholder, f);
 		ft.commit();

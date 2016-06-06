@@ -72,7 +72,7 @@ public class ExpositionListFragment extends Fragment {
 
             if(expositions.size() == 1){
                 MainActivity.getLastOpenedFragment();
-                Fragment f = ExpositionFragment.newInstance(expositions.get(0));
+                Fragment f = ExpositionFragment.newInstance(expositions.get(0),room.getId());
                 MainActivity.addLastOpenedFragment(f);
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.your_placeholder, f);
@@ -102,7 +102,7 @@ public class ExpositionListFragment extends Fragment {
         if(expositions.size() == 1)
             expositions.remove(0);
 
-        ExpositionListAdapter expositionsAdapter = new ExpositionListAdapter(rootView.getContext(), R.layout.item_list_exposition, expositions, getActivity().getSupportFragmentManager().beginTransaction());
+        ExpositionListAdapter expositionsAdapter = new ExpositionListAdapter(rootView.getContext(), R.layout.item_list_exposition, expositions, getActivity().getSupportFragmentManager().beginTransaction(),room);
         listView.setAdapter(expositionsAdapter);
 
         return rootView;

@@ -78,19 +78,20 @@ public class QRCodeFragment extends Fragment {
                 RoomDAO roomDAO = new RoomDAO(dh);
 
                 if (expo.getId() != 0){
-                    MainActivity.lastOpenedFragmentList.remove(this);
-                    Fragment f = ExpositionFragment.newInstance(expo);
-                    MainActivity.addLastOpenedFragment(f);
-
-                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.your_placeholder, f);
-                    ft.commit();
 
                     AchievementDAO achievementDAO = new AchievementDAO(dh);
                     Achievement achi = achievementDAO.queryAchievementByQrCode(scanResult.getContents());
                     boolean is_inserted = achievementDAO.insertCompletedAchievement(achi);
 
                     MapFragment.actualRoom = roomDAO.queryRoomsByAchievementAndLanguage(achi,MainActivity.selectedLanguage);
+
+                    MainActivity.lastOpenedFragmentList.remove(this);
+                    Fragment f = ExpositionFragment.newInstance(expo,MapFragment.actualRoom.getId());
+                    MainActivity.addLastOpenedFragment(f);
+
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.your_placeholder, f);
+                    ft.commit();
 
                     if(is_inserted) {
                         Snackbar snack = Snackbar.make(rootView, R.string.new_achievement_unlocked, Snackbar.LENGTH_LONG).setAction("Message", null);

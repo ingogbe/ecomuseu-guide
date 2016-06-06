@@ -19,8 +19,10 @@ import android.widget.TextView;
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Exposition;
 import com.ingoguilherme.ecomuseuguide.bo.Panel;
+import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.dao.controller.ExpositionDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.PanelDAO;
+import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.utils.Audio;
 import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
@@ -34,11 +36,13 @@ public class ExpositionFragment extends Fragment {
     private static final String ARG_PARAM2 = "name";
     private static final String ARG_PARAM3 = "description";
     private static final String ARG_PARAM4 = "qrCodeLink";
+    private static final String ARG_PARAM5 = "idRoom";
 
     public static final int THUMBNAIL_HEIGHT = 150;
     public static final int THUMBNAIL_WIDTH = 150;
 
     Exposition exposition;
+    Room room;
     Audio audio;
     String audioSrc = "";
 
@@ -52,13 +56,14 @@ public class ExpositionFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static ExpositionFragment newInstance(Exposition e) {
+    public static ExpositionFragment newInstance(Exposition e, int roomID) {
         ExpositionFragment fragment = new ExpositionFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, e.getId());
         args.putString(ARG_PARAM2, e.getName());
         args.putString(ARG_PARAM3, e.getDescription());
         args.putString(ARG_PARAM4, e.getQrCodeLink());
+        args.putInt(ARG_PARAM5,roomID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -73,16 +78,22 @@ public class ExpositionFragment extends Fragment {
             exposition.setQrCodeLink(getArguments().getString(ARG_PARAM4));
             exposition.setDescription(getArguments().getString(ARG_PARAM3));
 
+            room = new Room();
+            room.setId(getArguments().getInt(ARG_PARAM5));
+
             DatabaseHandler dh = new DatabaseHandler(getContext());
             PanelDAO panelDAO = new PanelDAO(dh);
             exposition.setPanels(panelDAO.queryPanelByExposition(exposition));
+
+            RoomDAO roomDAO = new RoomDAO(dh);
+            room = roomDAO.queryRoomByIdAndLanguage(room.getId(),MainActivity.selectedLanguage);
+
             dh.close();
         }
         else{
             exposition = new Exposition();
         }
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,6 +112,9 @@ public class ExpositionFragment extends Fragment {
 
             TextView tvTitle = (TextView) rootView.findViewById(R.id.textViewTitle);
             tvTitle.setText(exposition.getName());
+
+            TextView tvRoom = (TextView) rootView.findViewById(R.id.textViewRoom);
+            tvRoom.setText(getResources().getString(R.string.room) + ": " + room.getName());
 
             final ImageButton imPlay = (ImageButton) rootView.findViewById(R.id.buttonPlayPause);
 
