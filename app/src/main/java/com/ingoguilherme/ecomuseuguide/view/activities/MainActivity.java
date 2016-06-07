@@ -1,5 +1,6 @@
 package com.ingoguilherme.ecomuseuguide.view.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,9 +22,9 @@ import android.widget.TextView;
 
 import com.ingoguilherme.ecomuseuguide.R;
 import com.ingoguilherme.ecomuseuguide.bo.Language;
-import com.ingoguilherme.ecomuseuguide.bo.Room;
 import com.ingoguilherme.ecomuseuguide.dao.controller.AchievementDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
+import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.fragments.AchievementsFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionFragment;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     public static Language selectedLanguage = null;
     public static NavigationView navigationView;
     public static FloatingActionButton fabMap;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //this.deleteDatabase(DatabaseHandler.db_name);
+
+        activity = this;
 
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -91,10 +95,14 @@ public class MainActivity extends AppCompatActivity
         navigationView.getMenu().getItem(0).setChecked(true);
 
         DatabaseHandler dh = new DatabaseHandler(this);
+
         if(selectedLanguage == null){
             LanguageDAO languageDAO = new LanguageDAO(dh);
             selectedLanguage = languageDAO.queryCurrentSysLanguage();
         }
+
+        RoomDAO roomDAO = new RoomDAO(dh);
+        MapFragment.currentRoom = roomDAO.queryNonClickableRoomsByLanguageAndMapIdentification(selectedLanguage,"flecha");
 
         if(lastOpenedFragmentList.size() == 0) {
             Fragment f = RoomListFragment.newInstance();
@@ -111,10 +119,7 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-        Room flecha = new Room();
-        flecha.setMapIdentification("flecha");
 
-        MapFragment.actualRoom = flecha;
 
     }
 
@@ -139,6 +144,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public static void refreshDrawerTexts(){
+
+        activity.setTitle(R.string.app_name);
+
         MainActivity.navigationView.getMenu().getItem(0).setTitle(R.string.nav_rooms);
         MainActivity.navigationView.getMenu().getItem(1).setTitle(R.string.nav_qrcode);
         MainActivity.navigationView.getMenu().getItem(2).setTitle(R.string.nav_map);
@@ -236,7 +244,7 @@ public class MainActivity extends AppCompatActivity
             AchievementDAO achievementDAO = new AchievementDAO(dh);
             int completed = achievementDAO.queryAllCompletedCountAchievement();
             int all = achievementDAO.queryAllCountAchievement();
-            int points = achievementDAO.queryActualAchievementPoints();
+            int points = achievementDAO.queryCurrentAchievementPoints();
             int totalPoints = achievementDAO.queryTotalPointsAchievement();
 
             String appName = getResources().getString(R.string.app_name);
@@ -284,28 +292,34 @@ public class MainActivity extends AppCompatActivity
         if(insere) {
             lastOpenedFragmentList.add(f);
 
-            if(f instanceof AchievementsFragment)
-                navigationView.getMenu().getItem(3).setChecked(true);
-            else if(f instanceof ExpositionFragment)
-                navigationView.getMenu().getItem(0).setChecked(true);
-            else if(f instanceof ExpositionListFragment)
-                navigationView.getMenu().getItem(0).setChecked(true);
-            else if(f instanceof GalleryFragment)
-                navigationView.getMenu().getItem(0).setChecked(true);
-            else if(f instanceof MapFragment)
-                navigationView.getMenu().getItem(2).setChecked(true);
-            else if(f instanceof OptionFragment)
-                navigationView.getMenu().getItem(4).setChecked(true);
-            else if(f instanceof QRCodeFragment)
-                navigationView.getMenu().getItem(1).setChecked(true);
-            else if(f instanceof RoomListFragment)
-                navigationView.getMenu().getItem(0).setChecked(true);
+            checkMenuItem(f);
+
         }
+    }
+
+    public static void checkMenuItem(Fragment f){
+        if(f instanceof AchievementsFragment)
+            navigationView.getMenu().getItem(3).setChecked(true);
+        else if(f instanceof ExpositionFragment)
+            navigationView.getMenu().getItem(0).setChecked(true);
+        else if(f instanceof ExpositionListFragment)
+            navigationView.getMenu().getItem(0).setChecked(true);
+        else if(f instanceof GalleryFragment)
+            navigationView.getMenu().getItem(0).setChecked(true);
+        else if(f instanceof MapFragment)
+            navigationView.getMenu().getItem(2).setChecked(true);
+        else if(f instanceof OptionFragment)
+            navigationView.getMenu().getItem(4).setChecked(true);
+        else if(f instanceof QRCodeFragment)
+            navigationView.getMenu().getItem(1).setChecked(true);
+        else if(f instanceof RoomListFragment)
+            navigationView.getMenu().getItem(0).setChecked(true);
     }
 
     public static Fragment getLastOpenedFragment(){
         lastOpenedFragmentList.remove(lastOpenedFragmentList.size()-1);
         Fragment f = lastOpenedFragmentList.get(lastOpenedFragmentList.size()-1);
+        checkMenuItem(f);
         return f;
     }
 

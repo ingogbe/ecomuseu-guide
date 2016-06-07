@@ -5,7 +5,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 <b>As funcionalidades do aplicativo são:</b>
 - Mapa iterativo (HTML, SVG, CSS, JavaScript) usando WebView do Android para fácil acesso as exposiçoes das areas
 	- Divisão do mapa em areas
-		- Ultima localização acessada do usuário <i>(Em vermelho #ff7e7e)</i>
+		- Ultima localização acessada<i>(Em vermelho #ff7e7e)</i>
 		- Areas da administração (Ex.: Auditorio, Manuntenção) <i>(Em roxo #c8c8ff)</i>
 		- Areas acessiveis sem exposições (Ex.: Banheiros) <i>(Em azul #d8fdff)</i>
 		- Areas acessiveis com exposições (Todas as demais areas) <i>(Em amarelo #fffcd8)</i>
@@ -34,7 +34,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 		- [x] Nome da sala na fragment da exposição
 - Código
     - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
-    - [ ] Trocar o título da ActionBar ao trocar idioma do aplicativo
+    - [x] Trocar o título da ActionBar ao trocar idioma do aplicativo
     - [x] Implementar pinch zoom, no ViewPager das imagens da exposição (com [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
     - [x] Trocar item selecionado do menu no drawer ao trocar fragment com link externo
 
@@ -47,7 +47,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 <b>Application features are:</b>
 - Iterative Map (HTML, SVG, CSS, JavaScript) using Android's WebView for easy access to the exhibitions of the areas
 	- Map Division into areas
-		- Last user accessed location <i>(in red #ff7e7e)</i>
+		- Last accessed location<i>(in red #ff7e7e)</i>
 		- Administration areas (Ex .: Auditorium, Maintenance) <i>(in purple #c8c8ff)</i>
 		- Accessible areas without exhibitions (Ex .: Bath) <i>(in blue #d8fdff)</i>
 		- Accessible areas with exhibitions (All other areas) <i>(in yellow #fffcd8)</i>
@@ -76,7 +76,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 		- [x] Room name at the exposition fragment
 - Code
 	- [ ] Improving further the performance of the generateThumbnail()
-	- [ ] Change the title of the ActionBar when change application language
+	- [x] Change the title of the ActionBar when change application language
 	- [x] Implement pinch zoom, in ViewPager of exhibition images (with [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
 	- [x] Change seletected item in drawer menu when change fragment with external link
 
@@ -86,15 +86,16 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 
 <b>ScreenShots</b>
 
-<img width="90" src="http://i.imgur.com/hGK1loQ.jpg" alt="Menu" title="Menu">
-<img width="90" src="http://i.imgur.com/Ij6QS0n.jpg" alt="Room List" title="Room List">
-<img width="90" src="http://i.imgur.com/tWBVGDR.jpg" alt="Map" title="Map">
-<img width="90" src="http://i.imgur.com/b5LjwI9.jpg" alt="Achievements" title="Achievements">
-<img width="90" src="http://i.imgur.com/4jo5aHF.jpg" alt="Exposition" title="Exposition">
-<img width="90" src="http://i.imgur.com/hYbsN4J.jpg" alt="Options" title="Options">
-<img width="90" src="http://i.imgur.com/984ZjWF.jpg" alt="Expositions List" title="Exposition List">
-<img width="90" src="http://i.imgur.com/xjZ5DEl.jpg" alt="Empty Expositions List" title="Empty Exposition List">
-<img width="90" src="http://i.imgur.com/HKnn9Cs.jpg" alt="QR Code Reader" title="QR Code Reader">
+<img width="80" src="http://i.imgur.com/7XWV7sG.jpg" alt="Menu" title="Menu">
+<img width="80" src="http://i.imgur.com/OTK06ai.jpg" alt="Room List" title="Room List">
+<img width="80" src="http://i.imgur.com/1m5K1HW.jpg" alt="Map" title="Map - Labels closed">
+<img width="80" src="http://i.imgur.com/Gfx4jqy.jpg" alt="Map" title="Map - Labels opened">
+<img width="80" src="http://i.imgur.com/Tkc6hHN.jpg" alt="Achievements" title="Achievements">
+<img width="80" src="http://i.imgur.com/DSjFFpD.jpg" alt="Exposition" title="Exposition">
+<img width="80" src="http://i.imgur.com/Ecc8w4n.jpg" alt="Options" title="Options">
+<img width="80" src="http://i.imgur.com/RfMZzfd.jpg" alt="Expositions List" title="Exposition List">
+<img width="80" src="http://i.imgur.com/3mdk3GH.jpg" alt="Empty Expositions List" title="Empty Exposition List">
+<img width="80" src="http://i.imgur.com/WkFFAHi.jpg" alt="QR Code Reader" title="QR Code Reader">
 
 
 -----------------------------

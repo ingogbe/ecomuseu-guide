@@ -8,7 +8,7 @@
     <string name="action_settings">Configurações</string>
     <string name="send_to">Enviar para</string>
 
-    <string name="nav_rooms">Espaços</string>
+    <string name="nav_rooms">Salas/Espaços</string>
     <string name="nav_qrcode">QR Code</string>
     <string name="nav_map">Mapa</string>
     <string name="nav_achievements">Conquistas</string>
@@ -26,10 +26,10 @@
     <string name="new_achievement_unlocked">Nova conquista desbloqueada</string>
     <string name="qr_code_scan">Escaneie um QR Code</string>
 
-    <string name="map_label_clickable_room">Salas\nAcessíveis</string>
-    <string name="map_label_actual_place">Local\nAtual</string>
-    <string name="map_label_acessible_areas">Areas Acessíveis\nSem exposição</string>
-    <string name="map_label_administration_rooms">Salas da\nAdministração</string>
+    <string name="map_label_clickable_room">Salas acessíveis</string>
+    <string name="map_label_current_place">Area atual</string>
+    <string name="map_label_acessible_areas">Areas acessíveis\nsem exposição</string>
+    <string name="map_label_administration_rooms">Salas da\nadministração</string>
     <string name="map_label_paviment">Calçadas</string>
     <string name="map_label_grass">Grama</string>
 

@@ -110,7 +110,7 @@ public class AchievementDAO {
         return list_achi;
     }
 
-    public int queryActualAchievementPoints(){
+    public int queryCurrentAchievementPoints(){
         int points = 0;
         SQLiteDatabase db = dbHandler.getReadableDatabase();
 

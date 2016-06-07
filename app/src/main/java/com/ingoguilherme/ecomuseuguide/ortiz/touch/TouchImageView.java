@@ -630,16 +630,16 @@ public class TouchImageView extends ImageView {
             //
             // Width
             //
-            float prevActualWidth = prevMatchViewWidth * normalizedScale;
-            float actualWidth = getImageWidth();
-            translateMatrixAfterRotate(Matrix.MTRANS_X, transX, prevActualWidth, actualWidth, prevViewWidth, viewWidth, drawableWidth);
+            float prevCurrentWidth = prevMatchViewWidth * normalizedScale;
+            float currentWidth = getImageWidth();
+            translateMatrixAfterRotate(Matrix.MTRANS_X, transX, prevCurrentWidth, currentWidth, prevViewWidth, viewWidth, drawableWidth);
 
             //
             // Height
             //
-            float prevActualHeight = prevMatchViewHeight * normalizedScale;
-            float actualHeight = getImageHeight();
-            translateMatrixAfterRotate(Matrix.MTRANS_Y, transY, prevActualHeight, actualHeight, prevViewHeight, viewHeight, drawableHeight);
+            float prevCurrentHeight = prevMatchViewHeight * normalizedScale;
+            float currentHeight = getImageHeight();
+            translateMatrixAfterRotate(Matrix.MTRANS_Y, transY, prevCurrentHeight, currentHeight, prevViewHeight, viewHeight, drawableHeight);
 
             //
             // Set the matrix to the adjusted scale and translate values.

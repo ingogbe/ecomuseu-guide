@@ -79,6 +79,8 @@ public class LanguagesAdapter extends ArrayAdapter<Room> {
     }
     
     public void languageClick(Language l){
+		//TODO: Não troca o titulo na ActionBar, arrumar isso
+
 		MainActivity.selectedLanguage = l;
 
 		Resources res = context.getResources();
@@ -90,11 +92,17 @@ public class LanguagesAdapter extends ArrayAdapter<Room> {
 
 		MainActivity.refreshDrawerTexts();
 
-		//TODO: Não troca o titulo na ActionBar, arrumar isso
+		String mapIdentification = MapFragment.currentRoom.getMapIdentification();
+
 		DatabaseHandler dh = new DatabaseHandler(getContext());
 		RoomDAO roomDAO = new RoomDAO(dh);
-		Room room = roomDAO.queryRoomByIdAndLanguage(MapFragment.actualRoom.getId(), l);
-		MapFragment.actualRoom = room;
+		Room room = roomDAO.queryRoomByIdAndLanguage(MapFragment.currentRoom.getId(), l);
+
+		if(!room.getMapIdentification().equals(mapIdentification)){
+			room = roomDAO.queryNonClickableRoomsByLanguageAndMapIdentification(l, mapIdentification);
+		}
+
+		MapFragment.currentRoom = room;
 
 		Fragment f = MainActivity.getLastOpenedFragment();
 		ft.replace(R.id.your_placeholder, f);

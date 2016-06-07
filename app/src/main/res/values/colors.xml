@@ -10,7 +10,7 @@
     <color name="white">#FFFFFF</color>
     <color name="light_gray">#e1e1e1</color>
 
-    <color name="map_actualPlace">#ff7e7e</color>
+    <color name="map_currentPlace">#ff7e7e</color>
     <color name="map_paviment">#e8e8e8</color>
     <color name="map_grass">#9bd78e</color>
     <color name="map_administration">#c8c8ff</color>

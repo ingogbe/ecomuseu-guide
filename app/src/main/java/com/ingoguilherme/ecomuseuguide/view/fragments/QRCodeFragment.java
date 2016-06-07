@@ -83,10 +83,10 @@ public class QRCodeFragment extends Fragment {
                     Achievement achi = achievementDAO.queryAchievementByQrCode(scanResult.getContents());
                     boolean is_inserted = achievementDAO.insertCompletedAchievement(achi);
 
-                    MapFragment.actualRoom = roomDAO.queryRoomsByAchievementAndLanguage(achi,MainActivity.selectedLanguage);
+                    MapFragment.currentRoom = roomDAO.queryRoomsByAchievementAndLanguage(achi,MainActivity.selectedLanguage);
 
                     MainActivity.lastOpenedFragmentList.remove(this);
-                    Fragment f = ExpositionFragment.newInstance(expo,MapFragment.actualRoom.getId());
+                    Fragment f = ExpositionFragment.newInstance(expo,MapFragment.currentRoom.getId());
                     MainActivity.addLastOpenedFragment(f);
 
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();

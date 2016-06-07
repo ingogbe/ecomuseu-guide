@@ -8,7 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="send_to">Send to</string>
 
-    <string name="nav_rooms">Rooms</string>
+    <string name="nav_rooms">Rooms/Areas</string>
     <string name="nav_qrcode">QR Code</string>
     <string name="nav_map">Map</string>
     <string name="nav_achievements">Achievements</string>
@@ -26,10 +26,10 @@
     <string name="new_achievement_unlocked">New achievement unlocked</string>
     <string name="qr_code_scan">Scan a QR Code</string>
 
-    <string name="map_label_clickable_room">Accessible\nRooms</string>
-    <string name="map_label_actual_place">Actual\nPlace</string>
-    <string name="map_label_acessible_areas">Accessible Areas\nwithout exposition</string>
-    <string name="map_label_administration_rooms">Administration\nRooms</string>
+    <string name="map_label_clickable_room">Accessible rooms</string>
+    <string name="map_label_current_place">Current area</string>
+    <string name="map_label_acessible_areas">Accessible areas\nwithout exposition</string>
+    <string name="map_label_administration_rooms">Administration\nrooms</string>
     <string name="map_label_paviment">Paviment</string>
     <string name="map_label_grass">Grass</string>
 

@@ -37,9 +37,9 @@ public class MyWebViewClient extends WebViewClient{
         for(Room r :rooms) {
 
             if (url.equals(path + r.getMapIdentification())) {
-                MapFragment.actualRoom = r;
+                MapFragment.currentRoom = r;
 
-                map.loadUrl("javascript:changeColor('" + MapFragment.actualRoom.getMapIdentification() + "','#ff7e7e')");
+                map.loadUrl("javascript:changeColor('" + MapFragment.currentRoom.getMapIdentification() + "','#ff7e7e')");
 
                 FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
                 Fragment f = ExpositionListFragment.newInstance(r);
@@ -60,7 +60,7 @@ public class MyWebViewClient extends WebViewClient{
             map.loadUrl("javascript:loadTextByID('" + r.getMapIdentification() + "','" + r.getName() + "')");
         }
 
-        map.loadUrl("javascript:changeColor('" + MapFragment.actualRoom.getMapIdentification() + "','#ff7e7e')");
+        map.loadUrl("javascript:changeColor('" + MapFragment.currentRoom.getMapIdentification() + "','#ff7e7e')");
     }
 
 }

@@ -141,6 +141,32 @@ public class RoomDAO {
         return roomList;
     }
 
+    public Room queryNonClickableRoomsByLanguageAndMapIdentification(Language lang, String mapIdentification){
+        Room room = new Room();
+        SQLiteDatabase db = dbHandler.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("" +
+                "SELECT " +
+                "r.id, " +
+                "r.name, " +
+                "r.mapIdentification " +
+                "FROM " +
+                "NonClickableRoom r, " +
+                "Language l " +
+                "WHERE " +
+                "r.idLanguage = l.id AND " +
+                "r.mapIdentification = '" + mapIdentification + "' AND " +
+                "l.id = " + lang.getId(), null);
+
+        while (cursor.moveToNext()) {
+            room = fromCursorNonClickableRoom(cursor);
+        }
+
+        cursor.close();
+
+        return room;
+    }
+
     private Room fromCursorRoom(Cursor cursor) {
         Room room = new Room();
         room.setId(cursor.getInt(cursor.getColumnIndex("id")));

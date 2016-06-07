@@ -1,7 +1,5 @@
 package com.ingoguilherme.ecomuseuguide.view.fragments;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
@@ -30,7 +30,7 @@ public class MapFragment extends Fragment {
 
     private OnMapFragmentInteractionListener mListener;
     private View rootView;
-    public static Room actualRoom;
+    public static Room currentRoom;
     FloatingActionButton fab;
 
     private WebView map;
@@ -79,14 +79,6 @@ public class MapFragment extends Fragment {
 
         final FrameLayout labels = (FrameLayout) rootView.findViewById(R.id.labels);
 
-        final int deltaX = (int) (labels.getWidth() / 2);
-        final int deltaY = (int) -1 * (labels.getHeight() / 2);
-
-        labels.setScaleX(0);
-        labels.setScaleY(0);
-        labels.setTranslationX(0);
-        labels.setTranslationY(0);
-
         fab = MainActivity.fabMap;
         fab.setVisibility(View.VISIBLE);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -97,25 +89,52 @@ public class MapFragment extends Fragment {
                     animationEnded = false;
                     labels.setVisibility(View.VISIBLE);
 
-                    labels.animate().scaleY(1).scaleX(1).translationX(deltaX).translationY(deltaY).setListener(new AnimatorListenerAdapter() {
+                    Animation open = AnimationUtils.loadAnimation(getContext(), R.anim.map_labels_animation_open);
+
+                    open.setAnimationListener(new Animation.AnimationListener() {
                         @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
                             animationEnded = true;
                         }
-                    });;
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+
+                    labels.startAnimation(open);
 
                 }
                 else if(labels.getVisibility() == View.VISIBLE && animationEnded){
                     animationEnded = false;
-                    labels.animate().scaleY(0).scaleX(0).translationX(0).translationY(0).setListener(new AnimatorListenerAdapter() {
+                    labels.setVisibility(View.INVISIBLE);
+
+                    Animation close = AnimationUtils.loadAnimation(getContext(), R.anim.map_labels_animation_close);
+
+                    close.setAnimationListener(new Animation.AnimationListener() {
                         @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            labels.setVisibility(View.INVISIBLE);
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
                             animationEnded = true;
                         }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
                     });
+
+                    labels.startAnimation(close);
                 }
             }
         });

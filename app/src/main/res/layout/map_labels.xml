@@ -7,6 +7,7 @@
     android:background="@drawable/achievement_background"
     android:visibility="invisible"
     android:animateLayoutChanges="true"
+    android:padding="10dp"
     android:layout_height="wrap_content">
 
     <ScrollView
@@ -48,14 +49,14 @@
                     android:layout_width="@dimen/map_labels_img"
                     android:layout_height="@dimen/map_labels_img"
                     android:layout_margin="5dp"
-                    android:background="@drawable/label_actual_place" />
+                    android:background="@drawable/label_current_place" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/map_labels_text_right_margin"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/map_label_actual_place"
+                    android:text="@string/map_label_current_place"
                     android:layout_gravity="center"
                     android:gravity="center" />
             </LinearLayout>
