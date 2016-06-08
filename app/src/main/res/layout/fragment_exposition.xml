@@ -18,11 +18,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Title"
                 android:id="@+id/textViewTitle"
                 android:singleLine="false"
                 android:textSize="35sp"
-                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:background="@drawable/text_line"
                 android:padding="5dp" />
 
@@ -32,14 +32,16 @@
                 android:id="@+id/textViewRoom"
                 android:background="@drawable/text_line"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_gravity="center" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="15dp"
-                android:background="@drawable/gradient_black_background"
+                android:background="@drawable/exposition_image_list_bg"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:id="@+id/scrollView">
 
                 <LinearLayout
@@ -47,22 +49,29 @@
                     android:id="@+id/room_images"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
-
-
                 </LinearLayout>
 
             </HorizontalScrollView>
 
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:visibility="invisible"
+                android:id="@+id/iv_image"
+                android:layout_marginBottom="10dp"/>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:id="@+id/room_audio"
+                android:background="@drawable/exposition_audio_player_bg"
                 android:layout_width="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingBottom="10dp"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_height="match_parent"
                 android:weightSum="12">
 
@@ -71,11 +80,13 @@
                     android:layout_width="60dp"
                     android:id="@+id/buttonPlayPause"
                     android:onClick="playPauseResume"
+                    android:layout_gravity="center"
                     android:background="@drawable/ic_button_play"/>
 
                 <ImageButton
                     android:layout_height="60dp"
                     android:layout_width="60dp"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:id="@+id/buttonStop"
                     android:background="@drawable/ic_button_stop"
@@ -86,6 +97,7 @@
                     android:layout_height="60dp"
                     android:paddingBottom="20dp"
                     android:paddingTop="20dp"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="10dp"
                     android:id="@+id/audioProgressBar"
@@ -93,21 +105,24 @@
 
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:id="@+id/textViewText" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/exposition_image_list_bg"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="100dp"
+                android:layout_marginRight="5dp">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"></FrameLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textViewText" />
 
+            </LinearLayout>
 
         </LinearLayout>
-
-
 
     </ScrollView>
 </FrameLayout>

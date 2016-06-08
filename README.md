@@ -28,7 +28,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
     - [ ] Popular banco de dados com informações finais (en-rUS, pt-rBR, es-rAR)
     - Refinar layout do aplicativo (corrigir pequenos detalhes)
     	- [x] Achievements Fragment
-		- [ ] Exposition Fragment
+		- [x] Exposition Fragment
 		- [x] Exposition List Fragment
 		- [x] Map Fragment (FloatingActionButton na esquerda que abre popup da legenda)
 		- [x] Nome da sala na fragment da exposição
@@ -70,7 +70,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 	- [ ] Populate the database with final information (en-rUS, pt-rBR, es-rAR)
 	- Refine application layout (correct minor details)
 		- [x] Achievements Fragment
-		- [ ] Exposition Fragment
+		- [x] Exposition Fragment
 		- [x] Exposition List Fragment
 		- [x] Map Fragment (FloatingActionButton on the left opens map labels popup)
 		- [x] Room name at the exposition fragment

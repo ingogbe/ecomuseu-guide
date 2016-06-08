@@ -1,6 +1,7 @@
 package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,6 +29,8 @@ import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.utils.Audio;
 import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
 import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
+
+import java.util.ArrayList;
 
 /**
  * Created by IngoGuilherme on 04-May-16.
@@ -106,7 +110,6 @@ public class ExpositionFragment extends Fragment {
         exposition = expositionDAO.queryExpositionByQrCodeAndLanguage(exposition.getQrCodeLink(),MainActivity.selectedLanguage);
 
         if(exposition.getId() != 0) {
-            LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.room_images);
             TextView tvText = (TextView) rootView.findViewById(R.id.textViewText);
             String text = "";
 
@@ -121,39 +124,67 @@ public class ExpositionFragment extends Fragment {
             final ProgressBar audioPb = (ProgressBar) rootView.findViewById(R.id.audioProgressBar);
 
             for(Panel p :exposition.getPanels()) {
-                for(String s :p.getParagraphs()){
-                    text = text + s + "\n\n";
+                for(int i = 0; i < p.getParagraphs().size(); i++){
+                    if(i == p.getParagraphs().size()-1)
+                        text = text + p.getParagraphs().get(i);
+                    else
+                        text = text + p.getParagraphs().get(i) + "\n\n";
                 }
-                text = text + "\n\n\n\n";
 
-                for (int i = 0; i < p.getImageSources().size(); i++) {
-                    String s = p.getImageSources().get(i);
-                    ImageView im = new ImageView(rootView.getContext());
+                if(p.getImageSources().size() > 1) {
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.room_images);
 
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lp.setMargins(10, 10, 10, 10);
-                    im.setLayoutParams(lp);
+                    for (int i = 0; i < p.getImageSources().size(); i++) {
+                        String s = p.getImageSources().get(i);
 
-                    im.setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
+                        ImageView im = new ImageView(rootView.getContext());
 
-                    im.setImageBitmap(Thumbnail.generateThumbnail(rootView,s,150));
-                    im.setPadding(10,10,10,10);
+                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        lp.setMargins(10,0,10,0);
+                        im.setLayoutParams(lp);
 
-                    final int final_i = i;
-                    final Panel final_p = p;
+                        im.setImageBitmap(Thumbnail.generateThumbnail(rootView, s, 150));
 
-                    im.setOnClickListener(new View.OnClickListener() {
+                        final int position = i;
+                        final ArrayList<String> sources = p.getImageSources();
+
+                        im.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                Fragment f = GalleryFragment.newInstance(sources, position);
+                                MainActivity.addLastOpenedFragment(f);
+                                ft.replace(R.id.your_placeholder, f);
+                                ft.commit();
+                            }
+                        });
+
+                        ll.addView(im);
+                    }
+                }
+                else{
+                    HorizontalScrollView hsv = (HorizontalScrollView) rootView.findViewById(R.id.scrollView);
+                    hsv.setVisibility(View.GONE);
+
+                    String s = p.getImageSources().get(0);
+                    ImageView tiv = (ImageView) rootView.findViewById(R.id.iv_image);
+
+                    final ArrayList<String> sources = p.getImageSources();
+
+                    tiv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            Fragment f = GalleryFragment.newInstance(final_p.getImageSources(), final_i);
+                            Fragment f = GalleryFragment.newInstance(sources, 0);
                             MainActivity.addLastOpenedFragment(f);
                             ft.replace(R.id.your_placeholder, f);
                             ft.commit();
                         }
                     });
 
-                    ll.addView(im);
+                    tiv.setImageBitmap(Thumbnail.generateThumbnail(rootView, s, 600));
+
+                    tiv.setVisibility(View.VISIBLE);
                 }
 
                 audioSrc = p.getAudioSource();
@@ -235,6 +266,7 @@ public class ExpositionFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        getActivity().setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if (context instanceof OnExpositionFragmentInteractionListener) {
             mListener = (OnExpositionFragmentInteractionListener) context;
         } else {
@@ -246,6 +278,8 @@ public class ExpositionFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        audio.stop();
+        getActivity().setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
         mListener = null;
     }
 

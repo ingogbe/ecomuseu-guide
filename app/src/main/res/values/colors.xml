@@ -4,11 +4,13 @@
     <color name="colorPrimaryDark2">#303F9F</color>
     <color name="colorPrimary">#4CAF50</color>
     <color name="lightGreen">#85d588</color>
+    <color name="lightGreen2">#b9e9ba</color>
     <color name="colorPrimaryDark">#2E7D32</color>
     <color name="colorAccent">#4CAF50</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="light_gray">#e1e1e1</color>
+    <color name="gray">#cccccc</color>
 
     <color name="map_currentPlace">#ff7e7e</color>
     <color name="map_paviment">#e8e8e8</color>
