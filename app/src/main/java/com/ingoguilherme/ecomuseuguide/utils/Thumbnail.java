@@ -38,6 +38,7 @@ public class Thumbnail {
         try{
             InputStream ims = rootView.getContext().getAssets().open("images/" + drawableString + ".jpg");
             d = Drawable.createFromStream(ims, null);
+            ims.close();
         }catch (IOException e){
             d = rootView.getContext().getResources().getDrawable(R.drawable.ic_no_image);
         }

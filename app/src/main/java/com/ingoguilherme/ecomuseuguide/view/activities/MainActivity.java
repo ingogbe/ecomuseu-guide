@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        this.deleteDatabase(DatabaseHandler.db_name);
+        //this.deleteDatabase(DatabaseHandler.db_name);
 
         activity = this;
 
