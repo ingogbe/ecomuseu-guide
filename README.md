@@ -26,14 +26,20 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
     - [ ] Inserir imagens finais nos assets
     - [ ] Inserir audios finais nos assets (en-rUS, pt-rBR, es-rAR)
     - [ ] Popular banco de dados com informações finais (en-rUS, pt-rBR, es-rAR)
+    - [ ] Quando abrir AchievementsFragment pela primeira vez falar como se conquista elas
     - Refinar layout do aplicativo (corrigir pequenos detalhes)
     	- [x] Achievements Fragment
 		- [x] Exposition Fragment
 		- [x] Exposition List Fragment
 		- [x] Map Fragment (FloatingActionButton na esquerda que abre popup da legenda)
 		- [x] Nome da sala na fragment da exposição
+		- [ ] Quando não existe imagem nas listas, mostrar somente texto, ao invés de imagem "No Image"
+		- [ ] Quando abrir mapa, mostrar todo ele e dar zoom do centro para a sala atual
+		- [x] Não girar tela, no ExpositionFragment
+		- [ ] No ExpositionFragment, usar imagem grande (ViewPager ou AndroidImageSlider, com marcadores) quando tiver mais de uma imagem.
 - Código
     - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
+    - [ ] Dar close() em alguns objetos de conexão com o banco de dados (Alguns estão sem)
     - [x] Trocar o título da ActionBar ao trocar idioma do aplicativo
     - [x] Implementar pinch zoom, no ViewPager das imagens da exposição (com [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
     - [x] Trocar item selecionado do menu no drawer ao trocar fragment com link externo
@@ -68,14 +74,20 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 	- [ ] Insert final images in assets
 	- [ ] Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
 	- [ ] Populate the database with final information (en-rUS, pt-rBR, es-rAR)
+	- [ ] When you open AchievementsFragment for the first time, show how to win them
 	- Refine application layout (correct minor details)
 		- [x] Achievements Fragment
 		- [x] Exposition Fragment
 		- [x] Exposition List Fragment
 		- [x] Map Fragment (FloatingActionButton on the left opens map labels popup)
 		- [x] Room name at the exposition fragment
+		- [ ] When there is no image in the folder, display text only, instead of image "No Image"
+		- [ ] When open map, showing all of it and zoom from center to current room
+		- [x] Do not turn the screen in ExpositionFragment
+		- [ ] In ExpositionFragment, use large image (ViewPager or AndroidImageSlider, with markers) when you have more than one image.
 - Code
 	- [ ] Improving further the performance of the generateThumbnail()
+	- [ ] Put close() in a few database objects (Some are without)
 	- [x] Change the title of the ActionBar when change application language
 	- [x] Implement pinch zoom, in ViewPager of exhibition images (with [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
 	- [x] Change seletected item in drawer menu when change fragment with external link
@@ -91,14 +103,13 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 <img width="80" src="http://i.imgur.com/1m5K1HW.jpg" alt="Map" title="Map - Labels closed">
 <img width="80" src="http://i.imgur.com/Gfx4jqy.jpg" alt="Map" title="Map - Labels opened">
 <img width="80" src="http://i.imgur.com/Tkc6hHN.jpg" alt="Achievements" title="Achievements">
-<img width="80" src="http://i.imgur.com/DSjFFpD.jpg" alt="Exposition" title="Exposition">
+<img width="80" src="http://i.imgur.com/0aTfM5l.jpg" alt="Exposition" title="Exposition">
 <img width="80" src="http://i.imgur.com/Ecc8w4n.jpg" alt="Options" title="Options">
-<img width="80" src="http://i.imgur.com/RfMZzfd.jpg" alt="Expositions List" title="Exposition List">
+<img width="80" src="http://i.imgur.com/q0L01zL.jpg" alt="Expositions List" title="Exposition List">
 <img width="80" src="http://i.imgur.com/3mdk3GH.jpg" alt="Empty Expositions List" title="Empty Exposition List">
 <img width="80" src="http://i.imgur.com/WkFFAHi.jpg" alt="QR Code Reader" title="QR Code Reader">
 
 
 -----------------------------
 
-<b>Download última versão / las version</b>
-https://drive.google.com/file/d/0B2IuetJD-2RwZkhmVXdLd1ByM0E/view?usp=sharing
+<a href="https://drive.google.com/file/d/0B2IuetJD-2RwZkhmVXdLd1ByM0E/view?usp=sharing"><b>Download última versão / last version</b></a>
