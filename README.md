@@ -112,4 +112,8 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 
 -----------------------------
 
+<<<<<<< HEAD
 <a href="https://drive.google.com/file/d/0B2IuetJD-2RwZkhmVXdLd1ByM0E/view?usp=sharing"><b>Download última versão / last version</b></a>
+=======
+<a href="https://drive.google.com/file/d/0B2IuetJD-2RwZkhmVXdLd1ByM0E/view?usp=sharing"><b>Download última versão / last version</b></a>
+>>>>>>> Update README
