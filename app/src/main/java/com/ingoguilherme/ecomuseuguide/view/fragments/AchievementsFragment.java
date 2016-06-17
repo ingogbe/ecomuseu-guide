@@ -117,6 +117,8 @@ public class AchievementsFragment extends Fragment {
         TextView tvPontos = (TextView) rootView.findViewById(R.id.totalPontos);
         tvPontos.setText(getResources().getString(R.string.points) + ": " + pontos + "/" + totalPontos);
 
+        dh.close();
+
         return rootView;
     }
 

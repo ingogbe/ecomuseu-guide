@@ -108,6 +108,8 @@ public class QRCodeFragment extends Fragment {
                     integrator.setBeepEnabled(false);
                     integrator.initiateScan();
                 }
+
+                dh.close();
             }
         }
     }

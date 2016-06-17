@@ -43,6 +43,8 @@ public class PanelDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         for(Panel p: panList){
             p = queryImagesFromPanel(p);
@@ -73,6 +75,8 @@ public class PanelDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return pan;
     }
@@ -98,6 +102,8 @@ public class PanelDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return pan;
     }

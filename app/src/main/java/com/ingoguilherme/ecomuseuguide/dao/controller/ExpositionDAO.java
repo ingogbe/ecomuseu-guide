@@ -47,9 +47,12 @@ public class ExpositionDAO {
         }
 
         cursor.close();
+        db.close();
 
         PanelDAO panelDAO = new PanelDAO(dbHandler);
         expo.setPanels(panelDAO.queryPanelByExposition(expo));
+
+        dbHandler.close();
 
         return expo;
     }
@@ -84,11 +87,14 @@ public class ExpositionDAO {
         }
 
         cursor.close();
+        db.close();
 
         PanelDAO panelDAO = new PanelDAO(dbHandler);
         for(Exposition expo: expoList) {
             expo.setPanels(panelDAO.queryPanelByExposition(expo));
         }
+
+        dbHandler.close();
 
         return expoList;
     }

@@ -39,7 +39,8 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 		- [ ] No ExpositionFragment, usar imagem grande (ViewPager ou AndroidImageSlider, com marcadores) quando tiver mais de uma imagem.
 - Código
     - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
-    - [ ] Dar close() em alguns objetos de conexão com o banco de dados (Alguns estão sem)
+    - [ ] Tamanho da Heap fica crescendo enquanto rolo a Listview
+    - [x] Dar close() em alguns objetos de conexão com o banco de dados (Alguns estão sem)
     - [x] Trocar o título da ActionBar ao trocar idioma do aplicativo
     - [x] Implementar pinch zoom, no ViewPager das imagens da exposição (com [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
     - [x] Trocar item selecionado do menu no drawer ao trocar fragment com link externo
@@ -87,7 +88,8 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 		- [ ] In ExpositionFragment, use large image (ViewPager or AndroidImageSlider, with markers) when you have more than one image.
 - Code
 	- [ ] Improving further the performance of the generateThumbnail()
-	- [ ] Put close() in a few database objects (Some are without)
+	- [ ] Heap size increased while scrolling in the Listview
+	- [x] Put close() in a few database objects (Some are without)
 	- [x] Change the title of the ActionBar when change application language
 	- [x] Implement pinch zoom, in ViewPager of exhibition images (with [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
 	- [x] Change seletected item in drawer menu when change fragment with external link
@@ -112,8 +114,4 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 
 -----------------------------
 
-<<<<<<< HEAD
 <a href="https://drive.google.com/file/d/0B2IuetJD-2RwZkhmVXdLd1ByM0E/view?usp=sharing"><b>Download última versão / last version</b></a>
-=======
-<a href="https://drive.google.com/file/d/0B2IuetJD-2RwZkhmVXdLd1ByM0E/view?usp=sharing"><b>Download última versão / last version</b></a>
->>>>>>> Update README

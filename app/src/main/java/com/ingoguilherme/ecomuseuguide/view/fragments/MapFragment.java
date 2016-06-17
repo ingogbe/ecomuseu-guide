@@ -77,6 +77,7 @@ public class MapFragment extends Fragment {
 
         map.setWebViewClient(wvc);
 
+
         final FrameLayout labels = (FrameLayout) rootView.findViewById(R.id.labels);
 
         fab = MainActivity.fabMap;
@@ -138,6 +139,8 @@ public class MapFragment extends Fragment {
                 }
             }
         });
+
+        dh.close();
 
         return rootView;
     }

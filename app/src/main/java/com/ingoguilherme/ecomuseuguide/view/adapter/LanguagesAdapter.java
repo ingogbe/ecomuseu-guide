@@ -104,6 +104,8 @@ public class LanguagesAdapter extends ArrayAdapter<Room> {
 
 		MapFragment.currentRoom = room;
 
+		dh.close();
+
 		Fragment f = MainActivity.getLastOpenedFragment();
 		ft.replace(R.id.your_placeholder, f);
 		ft.commit();

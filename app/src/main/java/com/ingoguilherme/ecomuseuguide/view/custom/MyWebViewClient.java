@@ -61,6 +61,6 @@ public class MyWebViewClient extends WebViewClient{
         }
 
         map.loadUrl("javascript:changeColor('" + MapFragment.currentRoom.getMapIdentification() + "','#ff7e7e')");
-    }
+}
 
 }

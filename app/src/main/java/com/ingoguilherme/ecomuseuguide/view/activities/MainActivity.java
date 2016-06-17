@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-
+        dh.close();
 
     }
 
@@ -266,6 +266,8 @@ public class MainActivity extends AppCompatActivity
                 texto = "I visited the Ecomuseu (Foz do Iguassu - PR) and got " + points + "/" + totalPoints + " points, totaling " +
                         porcentagem + "% of the achievements in " + appName + " app for Android. Come and visit you too! " +
                         "https://goo.gl/mJ5mI9";
+
+            dh.close();
 
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);

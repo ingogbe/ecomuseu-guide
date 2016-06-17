@@ -32,6 +32,11 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 	FragmentTransaction ft;
 	Room room;
 
+	ImageView imageCover;
+	TextView textViewExpositionName;
+	TextView textViewExpositionSummary;
+	LinearLayout itemExpositionListLayout;
+
 	public ExpositionListAdapter(Context context, int resource, ArrayList<Exposition> expositions, FragmentTransaction ft, Room room) {
 		super(context, resource);
 		this.context = context;
@@ -51,12 +56,13 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 
     	final Exposition exposition = expositions.get(position);
 
-		view = inflater.inflate(R.layout.item_list_exposition, null);
-
-		ImageView imageCover = (ImageView) view.findViewById(R.id.imageCover);
-		TextView textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
-		TextView textViewExpositionSummary = (TextView) view.findViewById(R.id.text_view_exposition_summary);
-		LinearLayout itemExpositionListLayout = (LinearLayout) view.findViewById(R.id.item_list_exposition_layout);
+		if (view == null) {
+			view = inflater.inflate(R.layout.item_list_exposition, null);
+			imageCover = (ImageView) view.findViewById(R.id.imageCover);
+			textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
+			textViewExpositionSummary = (TextView) view.findViewById(R.id.text_view_exposition_summary);
+			itemExpositionListLayout = (LinearLayout) view.findViewById(R.id.item_list_exposition_layout);
+		}
 
 		if(exposition.getId() != 0) {
 			imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, exposition.getCoverImageSrc(), 200));

@@ -44,6 +44,8 @@ public class AchievementDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return achi;
     }
@@ -64,6 +66,8 @@ public class AchievementDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return list_achi;
     }
@@ -83,6 +87,8 @@ public class AchievementDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return points;
     }
@@ -106,6 +112,8 @@ public class AchievementDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return list_achi;
     }
@@ -128,6 +136,8 @@ public class AchievementDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return points;
     }
@@ -150,6 +160,8 @@ public class AchievementDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return counter;
     }
@@ -161,6 +173,9 @@ public class AchievementDAO {
         values1.put("idAchievement", achi.getId());
 
         long insert = db.insert("CompletedAchievement", null, values1);
+
+        db.close();
+        dbHandler.close();
 
         if(insert == -1)
             return false;
@@ -183,6 +198,8 @@ public class AchievementDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return counter;
     }

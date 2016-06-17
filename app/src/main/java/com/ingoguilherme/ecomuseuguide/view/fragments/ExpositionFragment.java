@@ -254,6 +254,8 @@ public class ExpositionFragment extends Fragment {
             //Sem exposição
         }
 
+        dh.close();
+
         return rootView;
     }
 

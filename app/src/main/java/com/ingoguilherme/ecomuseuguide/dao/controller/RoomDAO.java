@@ -48,6 +48,8 @@ public class RoomDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return roomList;
     }
@@ -78,6 +80,8 @@ public class RoomDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return room;
     }
@@ -110,6 +114,8 @@ public class RoomDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return room;
     }
@@ -137,6 +143,8 @@ public class RoomDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return roomList;
     }
@@ -163,6 +171,8 @@ public class RoomDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return room;
     }

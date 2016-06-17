@@ -33,6 +33,8 @@ public class LanguageDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return lang;
     }
@@ -50,6 +52,8 @@ public class LanguageDAO {
         }
 
         cursor.close();
+        db.close();
+        dbHandler.close();
 
         return langList;
     }

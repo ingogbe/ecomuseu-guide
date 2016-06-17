@@ -44,6 +44,8 @@ public class OptionFragment extends Fragment {
         DatabaseHandler dh = new DatabaseHandler(getContext());
         LanguageDAO languageDAO = new LanguageDAO(dh);
         languages = languageDAO.queryAllLanguages();
+
+        dh.close();
     }
 
     @Override
