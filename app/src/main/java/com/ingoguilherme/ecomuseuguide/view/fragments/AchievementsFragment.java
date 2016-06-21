@@ -1,9 +1,11 @@
 package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ import com.ingoguilherme.ecomuseuguide.dao.controller.AchievementDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
+import com.ingoguilherme.ecomuseuguide.view.dialog.MessageDialog;
 
 import java.util.ArrayList;
 
@@ -59,6 +62,13 @@ public class AchievementsFragment extends Fragment {
         AchievementDAO achievementDAO = new AchievementDAO(dh);
         ArrayList<Achievement> all = achievementDAO.queryAllAchievement();
         ArrayList<Achievement> completed = achievementDAO.queryAllCompletedAchievement();
+
+        if(completed.size() == 0){
+            MessageDialog md = new MessageDialog();
+            md.setInstance(getResources().getString(R.string.dialog_achievements_msg));
+            FragmentManager fm = getActivity().getSupportFragmentManager();
+            md.show(fm, "Dialog Fragment");
+        }
 
         TableRow row = new TableRow(rootView.getContext());
         int counter = 0;
@@ -131,6 +141,7 @@ public class AchievementsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        getActivity().setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if (context instanceof OnAchievementsFragmentInteractionListener) {
             mListener = (OnAchievementsFragmentInteractionListener) context;
         } else {

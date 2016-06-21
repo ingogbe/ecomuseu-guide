@@ -26,7 +26,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
     - [ ] Inserir imagens finais nos assets
     - [ ] Inserir audios finais nos assets (en-rUS, pt-rBR, es-rAR)
     - [ ] Popular banco de dados com informações finais (en-rUS, pt-rBR, es-rAR)
-    - [ ] Quando abrir AchievementsFragment pela primeira vez falar como se conquista elas
+    - [x] Quando abrir AchievementsFragment pela primeira vez falar como se conquista elas
     - Refinar layout do aplicativo (corrigir pequenos detalhes)
     	- [x] Achievements Fragment
 		- [x] Exposition Fragment
@@ -76,7 +76,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 	- [ ] Insert final images in assets
 	- [ ] Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
 	- [ ] Populate the database with final information (en-rUS, pt-rBR, es-rAR)
-	- [ ] When you open AchievementsFragment for the first time, show how to win them
+	- [x] When you open AchievementsFragment for the first time, show how to win them
 	- Refine application layout (correct minor details)
 		- [x] Achievements Fragment
 		- [x] Exposition Fragment

@@ -33,4 +33,7 @@
     <string name="map_label_paviment">Paviment</string>
     <string name="map_label_grass">Grass</string>
 
+    <string name="ok">OK</string>
+    <string name="dialog_achievements_msg">Not have achievements yet? Read some QR Code in the musuem.</string>
+
 </resources>

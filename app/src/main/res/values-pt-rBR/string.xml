@@ -33,5 +33,6 @@
     <string name="map_label_paviment">Calçadas</string>
     <string name="map_label_grass">Grama</string>
 
+    <string name="dialog_achievements_msg">Não possui conquistas ainda? Leia alguns QR Codes no museu.</string>
 
 </resources>
