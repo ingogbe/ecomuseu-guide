@@ -65,7 +65,13 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 		}
 
 		if(exposition.getId() != 0) {
-			imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, exposition.getCoverImageSrc(), 200));
+			if(exposition.getCoverImageSrc().isEmpty()){
+                ((ViewGroup) imageCover.getParent()).setMinimumHeight(200);
+                ((ViewGroup) imageCover.getParent()).removeView(imageCover);
+			}
+			else {
+				imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, exposition.getCoverImageSrc(), 200));
+			}
 			textViewExpositionName.setText(exposition.getName());
 			textViewExpositionSummary.setText(exposition.getDescription());
 			itemExpositionListLayout.setOnClickListener(new OnClickListener() {

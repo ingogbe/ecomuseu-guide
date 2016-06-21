@@ -33,10 +33,11 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 		- [x] Exposition List Fragment
 		- [x] Map Fragment (FloatingActionButton na esquerda que abre popup da legenda)
 		- [x] Nome da sala na fragment da exposição
-		- [ ] Quando não existe imagem nas listas, mostrar somente texto, ao invés de imagem "No Image"
+		- [x] Quando não existe imagem no banco de dados, mostrar somente texto, ao invés de imagem "No Image"
 		- [ ] Quando abrir mapa, mostrar todo ele e dar zoom do centro para a sala atual
 		- [x] Não girar tela, no ExpositionFragment
 		- [ ] No ExpositionFragment, usar imagem grande (ViewPager ou AndroidImageSlider, com marcadores) quando tiver mais de uma imagem.
+		- [ ] Adicionar fragment AboutFragment, com informações sobre o aplicativo
 - Código
     - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
     - [ ] Tamanho da Heap fica crescendo enquanto rolo a Listview
@@ -82,10 +83,11 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 		- [x] Exposition List Fragment
 		- [x] Map Fragment (FloatingActionButton on the left opens map labels popup)
 		- [x] Room name at the exposition fragment
-		- [ ] When there is no image in the folder, display text only, instead of image "No Image"
+		- [x] When there is no image in the database, display text only, instead of image "No Image"
 		- [ ] When open map, showing all of it and zoom from center to current room
 		- [x] Do not turn the screen in ExpositionFragment
 		- [ ] In ExpositionFragment, use large image (ViewPager or AndroidImageSlider, with markers) when you have more than one image.
+		- [ ] Add fragment AboutFragment, with informations about the application
 - Code
 	- [ ] Improving further the performance of the generateThumbnail()
 	- [ ] Heap size increased while scrolling in the Listview

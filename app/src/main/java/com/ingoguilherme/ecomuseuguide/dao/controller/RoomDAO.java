@@ -42,8 +42,7 @@ public class RoomDAO {
                     "l.id = " + lang.getId(), null);
 
         while (cursor.moveToNext()) {
-            Room room = new Room();
-            room = fromCursorRoom(cursor);
+            Room room = fromCursorRoom(cursor);
             roomList.add(room);
         }
 
