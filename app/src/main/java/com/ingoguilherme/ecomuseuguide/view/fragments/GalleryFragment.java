@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ingoguilherme.ecomuseuguide.R;
-import com.ingoguilherme.ecomuseuguide.view.adapter.ImageAdapter;
+import com.ingoguilherme.ecomuseuguide.view.adapter.TouchImageAdapter;
 import com.ingoguilherme.ecomuseuguide.view.custom.MyViewPager;
 
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ public class GalleryFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
 
         MyViewPager viewPager = (MyViewPager) rootView.findViewById(R.id.view_pager);
-        ImageAdapter adapter = new ImageAdapter(getActivity(), imageSources);
+        TouchImageAdapter adapter = new TouchImageAdapter(getActivity(), imageSources);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(clickedImage);
 

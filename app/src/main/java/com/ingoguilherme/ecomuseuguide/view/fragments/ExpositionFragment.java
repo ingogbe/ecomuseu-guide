@@ -11,9 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,10 +25,9 @@ import com.ingoguilherme.ecomuseuguide.dao.controller.PanelDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
 import com.ingoguilherme.ecomuseuguide.utils.Audio;
-import com.ingoguilherme.ecomuseuguide.utils.Thumbnail;
 import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
-
-import java.util.ArrayList;
+import com.ingoguilherme.ecomuseuguide.view.adapter.ImageAdapter;
+import com.ingoguilherme.ecomuseuguide.view.custom.MyViewPager;
 
 /**
  * Created by IngoGuilherme on 04-May-16.
@@ -131,61 +128,12 @@ public class ExpositionFragment extends Fragment {
                         text = text + p.getParagraphs().get(i) + "\n\n";
                 }
 
-                if(p.getImageSources().size() > 1) {
-                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.room_images);
+                LinearLayout ll_dots = (LinearLayout) rootView.findViewById(R.id.linear_layout_dots);
 
-                    for (int i = 0; i < p.getImageSources().size(); i++) {
-                        String s = p.getImageSources().get(i);
-
-                        ImageView im = new ImageView(rootView.getContext());
-
-                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                        lp.setMargins(10,0,10,0);
-                        im.setLayoutParams(lp);
-
-                        im.setImageBitmap(Thumbnail.generateThumbnail(rootView, s, 150));
-
-                        final int position = i;
-                        final ArrayList<String> sources = p.getImageSources();
-
-                        im.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                Fragment f = GalleryFragment.newInstance(sources, position);
-                                MainActivity.addLastOpenedFragment(f);
-                                ft.replace(R.id.your_placeholder, f);
-                                ft.commit();
-                            }
-                        });
-
-                        ll.addView(im);
-                    }
-                }
-                else{
-                    HorizontalScrollView hsv = (HorizontalScrollView) rootView.findViewById(R.id.scrollView);
-                    hsv.setVisibility(View.GONE);
-
-                    String s = p.getImageSources().get(0);
-                    ImageView tiv = (ImageView) rootView.findViewById(R.id.iv_image);
-
-                    final ArrayList<String> sources = p.getImageSources();
-
-                    tiv.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            Fragment f = GalleryFragment.newInstance(sources, 0);
-                            MainActivity.addLastOpenedFragment(f);
-                            ft.replace(R.id.your_placeholder, f);
-                            ft.commit();
-                        }
-                    });
-
-                    tiv.setImageBitmap(Thumbnail.generateThumbnail(rootView, s, 600));
-
-                    tiv.setVisibility(View.VISIBLE);
-                }
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                MyViewPager viewPager = (MyViewPager) rootView.findViewById(R.id.view_pager_expo);
+                ImageAdapter adapter = new ImageAdapter(ll_dots, ft, getActivity(), p.getImageSources());
+                viewPager.setAdapter(adapter);
 
                 audioSrc = p.getAudioSource();
                 audio = new Audio(audioSrc, rootView);

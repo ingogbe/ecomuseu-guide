@@ -2,11 +2,13 @@ package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 import com.ingoguilherme.ecomuseuguide.view.dialog.MessageDialog;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 /**
@@ -141,6 +144,12 @@ public class AchievementsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Resources res = getResources();
+        // Change locale settings in the app.
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = new Locale(MainActivity.selectedLanguage.getLanguage(), MainActivity.selectedLanguage.getCountryCode());
+        res.updateConfiguration(conf, dm);
         getActivity().setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if (context instanceof OnAchievementsFragmentInteractionListener) {
             mListener = (OnAchievementsFragmentInteractionListener) context;

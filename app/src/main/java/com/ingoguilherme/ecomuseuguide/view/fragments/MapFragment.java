@@ -1,10 +1,12 @@
 package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
 import com.ingoguilherme.ecomuseuguide.view.custom.MyWebViewClient;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by IngoGuilherme on 04-May-16.
@@ -154,6 +157,12 @@ public class MapFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Resources res = getResources();
+        // Change locale settings in the app.
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = new Locale(MainActivity.selectedLanguage.getLanguage(), MainActivity.selectedLanguage.getCountryCode());
+        res.updateConfiguration(conf, dm);
         if (context instanceof OnMapFragmentInteractionListener) {
             mListener = (OnMapFragmentInteractionListener) context;
         } else {

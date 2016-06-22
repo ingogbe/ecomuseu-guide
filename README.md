@@ -36,7 +36,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 		- [x] Quando não existe imagem no banco de dados, mostrar somente texto, ao invés de imagem "No Image"
 		- [ ] Quando abrir mapa, mostrar todo ele e dar zoom do centro para a sala atual
 		- [x] Não girar tela, no ExpositionFragment
-		- [ ] No ExpositionFragment, usar imagem grande (ViewPager ou AndroidImageSlider, com marcadores) quando tiver mais de uma imagem.
+		- [x] No ExpositionFragment, usar imagem grande (ViewPager ou AndroidImageSlider, com marcadores) quando tiver mais de uma imagem.
 		- [x] Adicionar fragment AboutFragment, com informações sobre o aplicativo
 - Código
     - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
@@ -86,7 +86,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 		- [x] When there is no image in the database, display text only, instead of image "No Image"
 		- [ ] When open map, showing all of it and zoom from center to current room
 		- [x] Do not turn the screen in ExpositionFragment
-		- [ ] In ExpositionFragment, use large image (ViewPager or AndroidImageSlider, with markers) when you have more than one image.
+		- [x] In ExpositionFragment, use large image (ViewPager or AndroidImageSlider, with markers) when you have more than one image.
 		- [x] Add fragment AboutFragment, with informations about the application
 - Code
 	- [ ] Improving further the performance of the generateThumbnail()
