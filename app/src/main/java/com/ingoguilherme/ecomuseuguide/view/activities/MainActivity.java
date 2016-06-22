@@ -336,6 +336,8 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().getItem(1).setChecked(true);
         else if(f instanceof RoomListFragment)
             navigationView.getMenu().getItem(0).setChecked(true);
+        else if(f instanceof AboutFragment)
+            navigationView.getMenu().getItem(5).setChecked(true);
     }
 
     public static Fragment getLastOpenedFragment(){

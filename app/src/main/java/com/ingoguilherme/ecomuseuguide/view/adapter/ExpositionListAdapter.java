@@ -56,13 +56,11 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 
     	final Exposition exposition = expositions.get(position);
 
-		if (view == null) {
-			view = inflater.inflate(R.layout.item_list_exposition, null);
-			imageCover = (ImageView) view.findViewById(R.id.imageCover);
-			textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
-			textViewExpositionSummary = (TextView) view.findViewById(R.id.text_view_exposition_summary);
-			itemExpositionListLayout = (LinearLayout) view.findViewById(R.id.item_list_exposition_layout);
-		}
+        view = inflater.inflate(R.layout.item_list_exposition, null);
+        imageCover = (ImageView) view.findViewById(R.id.imageCover);
+        textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
+        textViewExpositionSummary = (TextView) view.findViewById(R.id.text_view_exposition_summary);
+        itemExpositionListLayout = (LinearLayout) view.findViewById(R.id.item_list_exposition_layout);
 
 		if(exposition.getId() != 0) {
 			if(exposition.getCoverImageSrc().isEmpty()){
@@ -82,7 +80,7 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 			});
 		}
 		else{
-			((ViewGroup) imageCover.getParent()).removeView(imageCover);
+            ((ViewGroup) imageCover.getParent()).removeView(imageCover);
 			textViewExpositionName.setText("");
 			textViewExpositionSummary.setText("");
 			textViewExpositionSummary.setHeight(100);

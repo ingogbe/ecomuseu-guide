@@ -1,9 +1,11 @@
 package com.ingoguilherme.ecomuseuguide.view.fragments;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ingoguilherme.ecomuseuguide.R;
+import com.ingoguilherme.ecomuseuguide.view.activities.MainActivity;
+
+import java.util.Locale;
 
 
 public class AboutFragment extends Fragment implements OnMapReadyCallback{
@@ -63,6 +68,13 @@ public class AboutFragment extends Fragment implements OnMapReadyCallback{
 
     @Override
     public void onAttach(Context context) {
+        Resources res = getResources();
+        // Change locale settings in the app.
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = new Locale(MainActivity.selectedLanguage.getLanguage(), MainActivity.selectedLanguage.getCountryCode());
+        res.updateConfiguration(conf, dm);
+
         super.onAttach(context);
         if (context instanceof OnAboutFragmentInteractionListener) {
             mListener = (OnAboutFragmentInteractionListener) context;
