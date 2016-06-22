@@ -88,7 +88,6 @@ public class MapFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Change visibility labels
                 if(labels.getVisibility() == View.INVISIBLE && animationEnded){
                     animationEnded = false;
                     labels.setVisibility(View.VISIBLE);
