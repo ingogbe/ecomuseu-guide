@@ -39,8 +39,8 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 		- [x] No ExpositionFragment, usar imagem grande (ViewPager ou AndroidImageSlider, com marcadores) quando tiver mais de uma imagem.
 		- [x] Adicionar fragment AboutFragment, com informações sobre o aplicativo
 - Código
-    - [ ] Melhorar mais ainda o desemepenho do generateThumbnail()
-    - [ ] Tamanho da Heap fica crescendo enquanto rolo a Listview
+    - [x] Melhorar mais ainda o desemepenho do generateThumbnail()
+    - [x] Tamanho da Heap fica crescendo enquanto rolo a Listview
     - [x] Dar close() em alguns objetos de conexão com o banco de dados (Alguns estão sem)
     - [x] Trocar o título da ActionBar ao trocar idioma do aplicativo
     - [x] Implementar pinch zoom, no ViewPager das imagens da exposição (com [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
@@ -89,8 +89,8 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 		- [x] In ExpositionFragment, use large image (ViewPager or AndroidImageSlider, with markers) when you have more than one image.
 		- [x] Add fragment AboutFragment, with informations about the application
 - Code
-	- [ ] Improving further the performance of the generateThumbnail()
-	- [ ] Heap size increased while scrolling in the Listview
+	- [x] Improving further the performance of the generateThumbnail()
+	- [x] Heap size increased while scrolling in the Listview
 	- [x] Put close() in a few database objects (Some are without)
 	- [x] Change the title of the ActionBar when change application language
 	- [x] Implement pinch zoom, in ViewPager of exhibition images (with [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))

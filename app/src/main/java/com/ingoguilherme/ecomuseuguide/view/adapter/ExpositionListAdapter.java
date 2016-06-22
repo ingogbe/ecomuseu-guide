@@ -32,11 +32,6 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 	FragmentTransaction ft;
 	Room room;
 
-	ImageView imageCover;
-	TextView textViewExpositionName;
-	TextView textViewExpositionSummary;
-	LinearLayout itemExpositionListLayout;
-
 	public ExpositionListAdapter(Context context, int resource, ArrayList<Exposition> expositions, FragmentTransaction ft, Room room) {
 		super(context, resource);
 		this.context = context;
@@ -51,28 +46,54 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 		return expositions.size();
 	}
 
+
+    @Override
+    public int getViewTypeCount() {
+        return 1;
+    }
+
+    static class ViewHolder {
+        private ImageView imageCover;
+        private TextView textViewExpositionName;
+        private TextView textViewExpositionSummary;
+        private LinearLayout itemExpositionListLayout;
+    }
+
     @Override
     public View getView(int position, View view, ViewGroup parent) {
 
     	final Exposition exposition = expositions.get(position);
 
-        view = inflater.inflate(R.layout.item_list_exposition, null);
-        imageCover = (ImageView) view.findViewById(R.id.imageCover);
-        textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
-        textViewExpositionSummary = (TextView) view.findViewById(R.id.text_view_exposition_summary);
-        itemExpositionListLayout = (LinearLayout) view.findViewById(R.id.item_list_exposition_layout);
+        ViewHolder holder;
+
+        if (view == null) {
+            view = inflater.inflate(R.layout.item_list_exposition, null);
+            holder = new ViewHolder();
+            holder.imageCover = (ImageView) view.findViewById(R.id.imageCover);
+            holder.textViewExpositionName = (TextView) view.findViewById(R.id.text_view_exposition_name);
+            holder.textViewExpositionSummary = (TextView) view.findViewById(R.id.text_view_exposition_summary);
+            holder.itemExpositionListLayout = (LinearLayout) view.findViewById(R.id.item_list_exposition_layout);
+            view.setTag(holder);
+        }
+        else{
+            holder = (ViewHolder) view.getTag();
+        }
 
 		if(exposition.getId() != 0) {
-			if(exposition.getCoverImageSrc().isEmpty()){
-                ((ViewGroup) imageCover.getParent()).setMinimumHeight(200);
-                ((ViewGroup) imageCover.getParent()).removeView(imageCover);
-			}
-			else {
-				imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, exposition.getCoverImageSrc(), 200));
-			}
-			textViewExpositionName.setText(exposition.getName());
-			textViewExpositionSummary.setText(exposition.getDescription());
-			itemExpositionListLayout.setOnClickListener(new OnClickListener() {
+
+            holder.imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, room.getCoverImageSrc(), 200));
+
+            if(room.getCoverImageSrc().isEmpty()){
+                holder.imageCover.setVisibility(View.GONE);
+                holder.itemExpositionListLayout.setMinimumHeight(200);
+            }
+            else {
+                holder.imageCover.setVisibility(View.VISIBLE);
+            }
+
+			holder.textViewExpositionName.setText(exposition.getName());
+            holder.textViewExpositionSummary.setText(exposition.getDescription());
+            holder.itemExpositionListLayout.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					expositionClick(exposition);
@@ -80,10 +101,10 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 			});
 		}
 		else{
-            ((ViewGroup) imageCover.getParent()).removeView(imageCover);
-			textViewExpositionName.setText("");
-			textViewExpositionSummary.setText("");
-			textViewExpositionSummary.setHeight(100);
+            holder.imageCover.setVisibility(View.GONE);
+            holder.textViewExpositionName.setText("");
+            holder.textViewExpositionSummary.setText("");
+            holder.itemExpositionListLayout.setMinimumHeight(170);
 		}
  
         return view;

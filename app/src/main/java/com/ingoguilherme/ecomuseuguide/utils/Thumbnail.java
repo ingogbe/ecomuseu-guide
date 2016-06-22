@@ -40,7 +40,13 @@ public class Thumbnail {
             d = Drawable.createFromStream(ims, null);
             ims.close();
         }catch (IOException e){
-            d = rootView.getContext().getResources().getDrawable(R.drawable.ic_no_image);
+            try{
+                InputStream ims = rootView.getContext().getAssets().open("images/utils/blank.jpg");
+                d = Drawable.createFromStream(ims, null);
+                ims.close();
+            }catch (IOException e1){
+                d = rootView.getContext().getResources().getDrawable(R.drawable.ic_no_image);
+            }
         }
 
         //TODO: Melhorar desempenho, está muito lerdo

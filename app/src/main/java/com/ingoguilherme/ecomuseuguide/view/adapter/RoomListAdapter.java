@@ -43,29 +43,52 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 		return rooms.size();
 	}
 
-    @Override
+	@Override
+	public int getViewTypeCount() {
+		return 1;
+	}
+
+	static class ViewHolder {
+		private ImageView imageCover;
+		private TextView textViewRoomName;
+		private TextView textViewRoomSummary;
+		private LinearLayout itemRoomListLayout;
+	}
+
+	@Override
     public View getView(int position, View view, ViewGroup parent) {
     	final Room room = rooms.get(position);
 
-		view = inflater.inflate(R.layout.item_list_room, null);
+		ViewHolder holder;
 
-		ImageView imageCover = (ImageView) view.findViewById(R.id.imageCover);
-        TextView textViewRoomName = (TextView) view.findViewById(R.id.text_view_room_name);
-        TextView textViewRoomSummary = (TextView)view.findViewById(R.id.text_view_room_summary);
-        LinearLayout itemRoomListLayout = (LinearLayout) view.findViewById(R.id.item_list_room_layout);
+		if (view == null) {
+			view = inflater.inflate(R.layout.item_list_room, null);
+			holder = new ViewHolder();
+			holder.imageCover = (ImageView) view.findViewById(R.id.imageCover);
+			holder.textViewRoomName = (TextView) view.findViewById(R.id.text_view_room_name);
+			holder.textViewRoomSummary = (TextView)view.findViewById(R.id.text_view_room_summary);
+			holder.itemRoomListLayout = (LinearLayout) view.findViewById(R.id.item_list_room_layout);
+			view.setTag(holder);
+		}
+		else{
+			holder = (ViewHolder) view.getTag();
+		}
 
 		if(room.getId() != 0){
-			textViewRoomSummary.setText(room.getDescription());
-			textViewRoomName.setText(room.getName());
-			if(room.getCoverImageSrc().isEmpty()){
-				((ViewGroup) imageCover.getParent()).setMinimumHeight(200);
-				((ViewGroup) imageCover.getParent()).removeView(imageCover);
+			holder.textViewRoomSummary.setText(room.getDescription());
+			holder.textViewRoomName.setText(room.getName());
 
+			holder.imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, room.getCoverImageSrc(), 200));
+
+			if(room.getCoverImageSrc().isEmpty()){
+				holder.imageCover.setVisibility(View.GONE);
+				holder.itemRoomListLayout.setMinimumHeight(200);
 			}
 			else {
-				imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, room.getCoverImageSrc(), 200));
+				holder.imageCover.setVisibility(View.VISIBLE);
 			}
-			itemRoomListLayout.setOnClickListener(new View.OnClickListener() {
+
+			holder.itemRoomListLayout.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					roomClick(room);
@@ -73,10 +96,10 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 			});
 		}
 		else{
-			((ViewGroup) imageCover.getParent()).removeView(imageCover);
-			textViewRoomName.setText("");
-			textViewRoomSummary.setText("");
-			textViewRoomSummary.setHeight(100);
+			holder.imageCover.setVisibility(View.GONE);
+			holder.textViewRoomName.setText("");
+			holder.textViewRoomSummary.setText("");
+			holder.itemRoomListLayout.setMinimumHeight(170);
 		}
 
         return view;
