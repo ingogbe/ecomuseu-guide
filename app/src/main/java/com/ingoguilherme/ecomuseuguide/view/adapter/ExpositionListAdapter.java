@@ -81,7 +81,7 @@ public class ExpositionListAdapter extends ArrayAdapter<Room> {
 
 		if(exposition.getId() != 0) {
 
-            holder.imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, room.getCoverImageSrc(), 200));
+            holder.imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, exposition.getCoverImageSrc(), 200));
 
             if(room.getCoverImageSrc().isEmpty()){
                 holder.imageCover.setVisibility(View.GONE);

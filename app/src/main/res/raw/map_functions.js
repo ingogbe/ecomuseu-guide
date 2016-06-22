@@ -52,8 +52,8 @@ function goToElement(id){
         var top = (actualTop + rect.top) - ((windowHeight - elementHeight) / 2);
         var left = (actualLeft + rect.left) - ((windowWidth - elementWidth) / 2);
 
-        $("html, body").animate({ scrollTop: top + 'px'});
-        $("html, body").animate({ scrollLeft: left + 'px'});
+        $("html, body").scrollTop(top); //.animate({ scrollTop: top + 'px'});
+        $("html, body").scrollLeft(left); //.animate({ scrollLeft: left + 'px'});
 
     }
 }

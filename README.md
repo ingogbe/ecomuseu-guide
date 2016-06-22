@@ -34,7 +34,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 		- [x] Map Fragment (FloatingActionButton na esquerda que abre popup da legenda)
 		- [x] Nome da sala na fragment da exposição
 		- [x] Quando não existe imagem no banco de dados, mostrar somente texto, ao invés de imagem "No Image"
-		- [ ] Quando abrir mapa, mostrar todo ele e dar zoom do centro para a sala atual
+		- [x] Quando abrir mapa, mostrar todo ele e dar zoom do centro para a sala atual (Trocado por abrir direto na sala)
 		- [x] Não girar tela, no ExpositionFragment
 		- [x] No ExpositionFragment, usar imagem grande (ViewPager ou AndroidImageSlider, com marcadores) quando tiver mais de uma imagem.
 		- [x] Adicionar fragment AboutFragment, com informações sobre o aplicativo
@@ -84,7 +84,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 		- [x] Map Fragment (FloatingActionButton on the left opens map labels popup)
 		- [x] Room name at the exposition fragment
 		- [x] When there is no image in the database, display text only, instead of image "No Image"
-		- [ ] When open map, showing all of it and zoom from center to current room
+		- [x] When open map, showing all of it and zoom from center to current room (Changed to open directly in room)
 		- [x] Do not turn the screen in ExpositionFragment
 		- [x] In ExpositionFragment, use large image (ViewPager or AndroidImageSlider, with markers) when you have more than one image.
 		- [x] Add fragment AboutFragment, with informations about the application

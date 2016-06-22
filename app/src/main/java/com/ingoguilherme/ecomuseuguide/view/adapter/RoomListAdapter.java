@@ -75,9 +75,6 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 		}
 
 		if(room.getId() != 0){
-			holder.textViewRoomSummary.setText(room.getDescription());
-			holder.textViewRoomName.setText(room.getName());
-
 			holder.imageCover.setImageBitmap(Thumbnail.generateThumbnail(view, room.getCoverImageSrc(), 200));
 
 			if(room.getCoverImageSrc().isEmpty()){
@@ -87,6 +84,9 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 			else {
 				holder.imageCover.setVisibility(View.VISIBLE);
 			}
+
+			holder.textViewRoomName.setText(room.getName());
+			holder.textViewRoomSummary.setText(room.getDescription());
 
 			holder.itemRoomListLayout.setOnClickListener(new View.OnClickListener() {
 				@Override
