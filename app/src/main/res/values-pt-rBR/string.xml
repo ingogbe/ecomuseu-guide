@@ -14,6 +14,7 @@
     <string name="nav_achievements">Conquistas</string>
     <string name="nav_options">Opções</string>
     <string name="nav_share">Compartilhar</string>
+    <string name="nav_about">Informação</string>
 
     <string name="nav_title_social">Social</string>
     <string name="points">Pontos</string>
@@ -34,5 +35,47 @@
     <string name="map_label_grass">Grama</string>
 
     <string name="dialog_achievements_msg">Não possui conquistas ainda? Leia alguns QR Codes no museu.</string>
+
+    <string name="about_developers_title">Aplicativo desenvolvido por:</string>
+    <string name="about_developers">
+        Ingo G. B. Eyng\n
+        Felipe Ferreira\n
+        Thiago H. Borges\n
+        Flavio Canesso
+    </string>
+
+    <string name="about_address_title">Endereço:</string>
+    <string name="about_address">
+        Av. Trancredo Neves, 6001\n
+        Porto Belo, Foz do Iguaçu - PR\n
+        85867-900
+    </string>
+    <string name="about_address_open_maps">
+        Ou abra pelo maps:\n
+        goo.gl/maps/HkoYvNSqSru
+    </string>
+
+    <string name="about_schedule_title">Hora de Funcionamento:</string>
+    <string name="about_schedule">
+        Terça a Domingo, das 8h às 16h30.\n\n
+        Duração: livre (aprox. 1h).\n
+        Encerramento às 17h30.\n\n
+        Transporte do Centro de Recepção de Visitantes (CRV) ao Ecomuseu às 09h40, 11h, 14h e 15h40.
+    </string>
+
+    <string name="about_prices_title">Preços:</string>
+    <string name="about_prices">
+        R$ 12,00 (Integral)\n
+        R$ 6,00 (Meia-Entrada)
+    </string>
+
+    <string name="about_more_title">Mais informação em:</string>
+    <string name="about_more">
+        www.turismoitaipu.com.br/pt/atracoes/ecomuseu\n\n
+        0800 645 4645\n
+        +55 45 3529-2892\n
+        info@turismoitaipu.com.br\n\n
+        Todos os dias, das 8h às 18h
+    </string>
 
 </resources>

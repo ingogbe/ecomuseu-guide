@@ -14,6 +14,7 @@
     <string name="nav_achievements">Achievements</string>
     <string name="nav_options">Options</string>
     <string name="nav_share">Share</string>
+    <string name="nav_about">Information</string>
 
     <string name="nav_title_social">Social</string>
     <string name="points">Points</string>
@@ -35,5 +36,47 @@
 
     <string name="ok">OK</string>
     <string name="dialog_achievements_msg">Not have achievements yet? Read some QR Code in the musuem.</string>
+
+    <string name="about_developers_title">Application developed by:</string>
+    <string name="about_developers">
+        Ingo G. B. Eyng\n
+        Felipe Ferreira\n
+        Thiago H. Borges\n
+        Flavio Canesso
+    </string>
+
+    <string name="about_address_title">Address:</string>
+    <string name="about_address">
+        Av. Trancredo Neves, 6001\n
+        Porto Belo, Foz do Iguaçu - PR\n
+        85867-900
+    </string>
+    <string name="about_address_open_maps">
+        Or open in maps:\n
+        goo.gl/maps/HkoYvNSqSru
+    </string>
+
+    <string name="about_schedule_title">Opening Hours:</string>
+    <string name="about_schedule">
+        Tuesdays to Sundays, from 8h to 16h30.\n\n
+        Duration: free (about. 1h).\n
+        Closing at 17h30.\n\n
+        Transportation from Visitor Reception Center (CRV) to Ecomuseu at 09h40, 11h, 14h and 15h40.
+    </string>
+
+    <string name="about_prices_title">Prices:</string>
+    <string name="about_prices">
+        R$ 12,00 (full price)\n
+        R$ 6,00 (half price)
+    </string>
+
+    <string name="about_more_title">More information at:</string>
+    <string name="about_more">
+        www.turismoitaipu.com.br/pt/atracoes/ecomuseu\n\n
+        0800 645 4645\n
+        +55 45 3529-2892\n
+        info@turismoitaipu.com.br\n\n
+        Every day, from 8h to 18h
+    </string>
 
 </resources>

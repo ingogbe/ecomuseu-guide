@@ -79,8 +79,6 @@ public class LanguagesAdapter extends ArrayAdapter<Room> {
     }
     
     public void languageClick(Language l){
-		//TODO: Não troca o titulo na ActionBar, arrumar isso
-
 		MainActivity.selectedLanguage = l;
 
 		Resources res = context.getResources();

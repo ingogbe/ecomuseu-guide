@@ -2,6 +2,7 @@ package com.ingoguilherme.ecomuseuguide.view.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +28,7 @@ import com.ingoguilherme.ecomuseuguide.dao.controller.AchievementDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.LanguageDAO;
 import com.ingoguilherme.ecomuseuguide.dao.controller.RoomDAO;
 import com.ingoguilherme.ecomuseuguide.dao.handler.DatabaseHandler;
+import com.ingoguilherme.ecomuseuguide.view.fragments.AboutFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.AchievementsFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.ExpositionListFragment;
@@ -36,6 +39,7 @@ import com.ingoguilherme.ecomuseuguide.view.fragments.QRCodeFragment;
 import com.ingoguilherme.ecomuseuguide.view.fragments.RoomListFragment;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by IngoGuilherme on 04-May-16.
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity
         QRCodeFragment.OnQRCodeFragmentInteractionListener, MapFragment.OnMapFragmentInteractionListener,
         AchievementsFragment.OnAchievementsFragmentInteractionListener, RoomListFragment.OnRoomListFragmentInteractionListener,
         OptionFragment.OnOptionFragmentInteractionListener, ExpositionListFragment.OnExpositionListFragmentInteractionListener,
-        GalleryFragment.OnGalleryFragmentInteractionListener{
+        GalleryFragment.OnGalleryFragmentInteractionListener, AboutFragment.OnAboutFragmentInteractionListener{
 
     public static ArrayList<Fragment> lastOpenedFragmentList = new ArrayList<Fragment>();
     public static Language selectedLanguage = null;
@@ -125,6 +129,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
+        Resources res = getResources();
+        // Change locale settings in the app.
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = new Locale(selectedLanguage.getLanguage(),selectedLanguage.getCountryCode());
+        res.updateConfiguration(conf, dm);
+
+        refreshDrawerTexts();
+
         if(QRCodeFragment.isBackPressed) {
             QRCodeFragment.isBackPressed = false;
             if(lastOpenedFragmentList.size() > 1) {
@@ -152,8 +165,9 @@ public class MainActivity extends AppCompatActivity
         MainActivity.navigationView.getMenu().getItem(2).setTitle(R.string.nav_map);
         MainActivity.navigationView.getMenu().getItem(3).setTitle(R.string.nav_achievements);
         MainActivity.navigationView.getMenu().getItem(4).setTitle(R.string.nav_options);
-        MainActivity.navigationView.getMenu().getItem(5).setTitle(R.string.nav_title_social);
-        MainActivity.navigationView.getMenu().getItem(5).getSubMenu().getItem(0).setTitle(R.string.nav_share);
+        MainActivity.navigationView.getMenu().getItem(5).setTitle(R.string.nav_about);
+        MainActivity.navigationView.getMenu().getItem(6).setTitle(R.string.nav_title_social);
+        MainActivity.navigationView.getMenu().getItem(6).getSubMenu().getItem(0).setTitle(R.string.nav_share);
 
         ((TextView)MainActivity.navigationView.getHeaderView(0).findViewById(R.id.tv_app_title)).setText(R.string.app_name);
         ((TextView)MainActivity.navigationView.getHeaderView(0).findViewById(R.id.tv_app_description)).setText(R.string.app_description);
@@ -235,6 +249,12 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         } else if (id == R.id.nav_options) {
             Fragment f = OptionFragment.newInstance();
+            addLastOpenedFragment(f);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.your_placeholder, f);
+            ft.commit();
+        } else if (id == R.id.nav_about) {
+            Fragment f = AboutFragment.newInstance();
             addLastOpenedFragment(f);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.your_placeholder, f);
@@ -362,6 +382,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onGalleryFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onAboutFragmentInteraction(Uri uri) {
 
     }
 }

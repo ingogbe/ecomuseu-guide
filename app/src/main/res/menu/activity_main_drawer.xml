@@ -22,6 +22,10 @@
             android:id="@+id/nav_options"
             android:icon="@drawable/ic_menu_options"
             android:title="@string/nav_options" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_about"
+            android:title="@string/nav_about" />
     </group>
 
     <item android:title="@string/nav_title_social">
