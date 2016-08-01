@@ -23,9 +23,9 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
 
 <b>Task List:</b>
 - Geral
-    - [ ] Inserir imagens finais nos assets
-    - [ ] Inserir audios finais nos assets (en-rUS, pt-rBR, es-rAR)
-    - [ ] Popular banco de dados com informações finais (en-rUS, pt-rBR, es-rAR)
+    - [x] Inserir imagens finais nos assets
+    - [x] Inserir audios finais nos assets (en-rUS, pt-rBR, es-rAR)
+    - [x] Popular banco de dados com informações finais (en-rUS, pt-rBR, es-rAR)
     - [x] Quando abrir AchievementsFragment pela primeira vez falar como se conquista elas
     - Refinar layout do aplicativo (corrigir pequenos detalhes)
     	- [x] Achievements Fragment
@@ -73,9 +73,9 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 
 <b>Task List: </b>
 - General
-	- [ ] Insert final images in assets
-	- [ ] Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
-	- [ ] Populate the database with final information (en-rUS, pt-rBR, es-rAR)
+	- [x] Insert final images in assets
+	- [x] Insert final audios in assets (en-rUS, pt-rBR, es-rAR)
+	- [x] Populate the database with final information (en-rUS, pt-rBR, es-rAR)
 	- [x] When you open AchievementsFragment for the first time, show how to win them
 	- Refine application layout (correct minor details)
 		- [x] Achievements Fragment
@@ -95,6 +95,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 	- [x] Change the title of the ActionBar when change application language
 	- [x] Implement pinch zoom, in ViewPager of exhibition images (with [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
 	- [x] Change seletected item in drawer menu when change fragment with external link
+	- [ ] Fix some map troubles with some devices
 
 
 -----------------------------

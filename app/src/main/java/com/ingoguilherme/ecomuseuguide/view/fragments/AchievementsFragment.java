@@ -81,7 +81,7 @@ public class AchievementsFragment extends Fragment {
         for(final Achievement a :all) {
             totalPontos = totalPontos + a.getPoints();
 
-            if(counter == 3){
+            if(counter == 2){
                 table.addView(row);
                 row = new TableRow(rootView.getContext());
                 counter = 0;

@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity
     public static NavigationView navigationView;
     public static FloatingActionButton fabMap;
     public static Activity activity;
+    public static Menu menuActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,6 +169,8 @@ public class MainActivity extends AppCompatActivity
         MainActivity.navigationView.getMenu().getItem(5).setTitle(R.string.nav_about);
         MainActivity.navigationView.getMenu().getItem(6).setTitle(R.string.nav_title_social);
         MainActivity.navigationView.getMenu().getItem(6).getSubMenu().getItem(0).setTitle(R.string.nav_share);
+
+
 
         ((TextView)MainActivity.navigationView.getHeaderView(0).findViewById(R.id.tv_app_title)).setText(R.string.app_name);
         ((TextView)MainActivity.navigationView.getHeaderView(0).findViewById(R.id.tv_app_description)).setText(R.string.app_description);

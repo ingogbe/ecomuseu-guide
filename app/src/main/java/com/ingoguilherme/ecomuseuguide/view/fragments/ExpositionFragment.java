@@ -128,12 +128,18 @@ public class ExpositionFragment extends Fragment {
                         text = text + p.getParagraphs().get(i) + "\n\n";
                 }
 
-                LinearLayout ll_dots = (LinearLayout) rootView.findViewById(R.id.linear_layout_dots);
+                if(p.getImageSources().size() > 0) {
+                    LinearLayout ll_dots = (LinearLayout) rootView.findViewById(R.id.linear_layout_dots);
 
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                MyViewPager viewPager = (MyViewPager) rootView.findViewById(R.id.view_pager_expo);
-                ImageAdapter adapter = new ImageAdapter(ll_dots, ft, getActivity(), p.getImageSources());
-                viewPager.setAdapter(adapter);
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    MyViewPager viewPager = (MyViewPager) rootView.findViewById(R.id.view_pager_expo);
+                    ImageAdapter adapter = new ImageAdapter(ll_dots, ft, getActivity(), p.getImageSources());
+                    viewPager.setAdapter(adapter);
+                }
+                else{
+                    MyViewPager viewPager = (MyViewPager) rootView.findViewById(R.id.view_pager_expo);
+                    viewPager.setVisibility(View.GONE);
+                }
 
                 audioSrc = p.getAudioSource();
                 audio = new Audio(audioSrc, rootView);

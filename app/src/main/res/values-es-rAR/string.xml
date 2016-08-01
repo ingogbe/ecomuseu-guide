@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Guía Ecomuseo</string>
+    <string name="app_description">Una nueva experiencia para su visita</string>
+
+    <string name="navigation_drawer_open">Abra el menú de navegación</string>
+    <string name="navigation_drawer_close">Cierre el menú de navegación</string>
+
+    <string name="action_settings">Configuraciones</string>
+    <string name="send_to">Enviar para</string>
+
+    <string name="nav_rooms">Salas Espacios</string>
+    <string name="nav_qrcode">QR Code</string>
+    <string name="nav_map">Mapa</string>
+    <string name="nav_achievements">Conquistas</string>
+    <string name="nav_options">Opciones</string>
+    <string name="nav_share">Compartir</string>
+    <string name="nav_about">Información</string>
+
+    <string name="nav_title_social">Social</string>
+    <string name="points">Puntos</string>
+    <string name="room">Sala</string>
+
+    <string name="room_thumbnail">Imagen miniatura de la sala</string>
+    <string name="exposition_thumbnail">Imagen minuatura de la exposición</string>
+    <string name="button_play_pause">Tocar y Pausar</string>
+    <string name="button_stop">Parar</string>
+    <string name="exposition_image_view">Visualizador de imágenes de la exposición</string>
+    <string name="qr_code_reader_button">Lector de QR Code</string>
+    <string name="map_labels">Subtítulo del mapa</string>
+    <string name="no_item_list">Vacío</string>
+    <string name="no_audio">Exposición sin áudio</string>
+
+    <string name="new_achievement_unlocked">Nueva conquista desbloqueada</string>
+    <string name="qr_code_scan">Escaneie un QR Code</string>
+
+    <string name="map_label_clickable_room">Salas accesibles</string>
+    <string name="map_label_current_place">Area actual</string>
+    <string name="map_label_acessible_areas">Areas accesibles\nsin exposición</string>
+    <string name="map_label_administration_rooms">Salas de la\nadministración</string>
+    <string name="map_label_paviment">Calzadas</string>
+    <string name="map_label_grass">Gramo</string>
+
+    <string name="dialog_achievements_msg">No posee conquistas aún? Lea algunos QR Codes en el museo.</string>
+
+    <string name="about_developers_title">Aplicación desarrollada por:</string>
+    <string name="about_developers">
+        Ingo G. B. Eyng\n
+        Felipe Ferreira\n
+        Thiago H. Borges\n
+        Flavio Canesso
+    </string>
+
+    <string name="about_address_title">Dirección:</string>
+    <string name="about_address">
+        Av. Trancredo Neves, 6001\n
+        Porto Belo, Foz do Iguaçu - PR\n
+        85867-900
+    </string>
+    <string name="about_address_open_maps">
+        O abra por el maps:\n
+        goo.gl/maps/HkoYvNSqSru
+    </string>
+
+    <string name="about_schedule_title">Hora de Funcionamiento:</string>
+    <string name="about_schedule">
+        Martes a Domingo, das 8h às 16h30.\n\n
+        Duración: libre (aprox. 1h).\n
+        Cierre às 17h30.\n\n
+        Transporte del Centro de Recepción de Visitantes (CRV) al Ecomuseo a las 09h40, 11h, 14h e 15h40.
+    </string>
+
+    <string name="about_prices_title">Precios:</string>
+    <string name="about_prices">
+        R$ 12,00 (Integral)\n
+        R$ 6,00 (Media-Entrada)
+    </string>
+
+    <string name="about_more_title">Más información en:</string>
+    <string name="about_more">
+        www.turismoitaipu.com.br/pt/atracoes/ecomuseu\n\n
+        0800 645 4645\n
+        +55 45 3529-2892\n
+        info@turismoitaipu.com.br\n\n
+        Todos los días, de las 8h às 18h
+    </string>
+
+</resources>

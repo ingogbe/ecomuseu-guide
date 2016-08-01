@@ -8,7 +8,7 @@
     <string name="action_settings">Configurações</string>
     <string name="send_to">Enviar para</string>
 
-    <string name="nav_rooms">Salas/Espaços</string>
+    <string name="nav_rooms">Salas Espaços</string>
     <string name="nav_qrcode">QR Code</string>
     <string name="nav_map">Mapa</string>
     <string name="nav_achievements">Conquistas</string>
@@ -20,7 +20,13 @@
     <string name="points">Pontos</string>
     <string name="room">Sala</string>
 
-    <string name="no_image">Sem Imagem</string>
+    <string name="room_thumbnail">Imagem miniatura da sala</string>
+    <string name="exposition_thumbnail">Imagem minuatura da exposição</string>
+    <string name="button_play_pause">Tocar e Pausar</string>
+    <string name="button_stop">Parar</string>
+    <string name="exposition_image_view">Visualizador de imagens da exposição</string>
+    <string name="qr_code_reader_button">Leitor de QR Code</string>
+    <string name="map_labels">Legenda do mapa</string>
     <string name="no_item_list">Vazio</string>
     <string name="no_audio">Exposição sem áudio</string>
 

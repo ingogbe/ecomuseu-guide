@@ -48,9 +48,9 @@ public class IntentIntegrator {
     private static final String TAG = IntentIntegrator.class.getSimpleName();
 
     // supported barcode formats
-    public static final Collection<String> PRODUCT_CODE_TYPES = list("UPC_A", "UPC_E", "EAN_8", "EAN_13", "RSS_14");
-    public static final Collection<String> ONE_D_CODE_TYPES =
-            list("UPC_A", "UPC_E", "EAN_8", "EAN_13", "CODE_39", "CODE_93", "CODE_128",
+    public static final Collection<String> PRODUCT_CODE_TYPES = list("UPC_A\", \"UPC_E\", \"EAN_8\", \"EAN_13\", \"RSS_14\");\n" +
+                            "    public static final Collection<String> ONE_D_CODE_TYPES =\n" +
+                            "            list(\"UPC_A\", \"UPC_E\", \"EAN_8\", \"EAN_13\", \"CODE_39\", \"CODE_93\", \"CODE_128",
                     "ITF", "RSS_14", "RSS_EXPANDED");
     public static final Collection<String> QR_CODE_TYPES = Collections.singleton("QR_CODE");
     public static final Collection<String> DATA_MATRIX_TYPES = Collections.singleton("DATA_MATRIX");

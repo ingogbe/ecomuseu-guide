@@ -11,11 +11,11 @@
 		android:layout_height="wrap_content"
 		android:layout_margin="5dp"
 		android:src="@drawable/ic_no_image"
-		android:contentDescription="@string/no_image" />
+		android:contentDescription="@string/exposition_thumbnail" />
 
 	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
 		android:orientation="vertical"
 		android:layout_margin="5dp"
 		android:gravity="center_vertical"

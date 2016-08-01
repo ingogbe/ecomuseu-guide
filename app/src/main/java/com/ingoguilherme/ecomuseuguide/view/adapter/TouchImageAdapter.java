@@ -47,6 +47,7 @@ public class TouchImageAdapter extends PagerAdapter {
         View viewLayout = inflater.inflate(R.layout.item_list_gallery_touch_image, container, false);
 
         imgDisplay = (TouchImageView) viewLayout.findViewById(R.id.imgDisplay);
+        imgDisplay.setContentDescription("Exposition image " + (position+1));
         imgDisplay.setImageBitmap(Thumbnail.generateThumbnail(container, imageSources.get(position),600));
 
         ((ViewPager) container).addView(viewLayout);

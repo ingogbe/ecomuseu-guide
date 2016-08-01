@@ -43,6 +43,7 @@
                     android:background="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
+                    android:contentDescription="@string/exposition_image_view"
                     android:layout_marginBottom="10dp"/>
 
                 <LinearLayout
@@ -78,6 +79,7 @@
                     android:layout_height="60dp"
                     android:layout_width="60dp"
                     android:id="@+id/buttonPlayPause"
+                    android:contentDescription="@string/button_play_pause"
                     android:onClick="playPauseResume"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_button_play"/>
@@ -86,6 +88,7 @@
                     android:layout_height="60dp"
                     android:layout_width="60dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/button_stop"
                     android:layout_marginLeft="10dp"
                     android:id="@+id/buttonStop"
                     android:background="@drawable/ic_button_stop"

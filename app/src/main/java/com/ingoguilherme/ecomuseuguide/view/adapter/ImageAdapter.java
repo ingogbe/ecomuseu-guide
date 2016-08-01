@@ -65,6 +65,7 @@ public class ImageAdapter extends PagerAdapter {
 
         imgDisplay = (ImageView) viewLayout.findViewById(R.id.imgDisplay);
         imgDisplay.setImageBitmap(Thumbnail.generateThumbnail(container, imageSources.get(position),600));
+        imgDisplay.setContentDescription("Exposition image " + (position+1));
 
         final int positionAux = position;
 
