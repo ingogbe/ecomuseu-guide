@@ -45,6 +45,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
     - [x] Trocar o título da ActionBar ao trocar idioma do aplicativo
     - [x] Implementar pinch zoom, no ViewPager das imagens da exposição (com [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
     - [x] Trocar item selecionado do menu no drawer ao trocar fragment com link externo
+    - [ ] Corrigir alguns problemas com o mapa em alguns dispositivos
 
 	
 -----------------------------
@@ -117,4 +118,4 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 
 -----------------------------
 
-<a href="https://drive.google.com/file/d/0B2IuetJD-2RwZkhmVXdLd1ByM0E/view?usp=sharing"><b>Download última versão / last version</b></a>
+<a href="https://drive.google.com/file/d/0B2IuetJD-2RwTTM1ZzN3QjY5Wm8/view?usp=sharing"><b>Download última versão / last version</b></a>
