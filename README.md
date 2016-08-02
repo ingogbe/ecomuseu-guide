@@ -46,6 +46,7 @@ Projeto Android para o Ecomuseu (Foz do Iguaçu - PR - Brasil), para auxiliar os
     - [x] Implementar pinch zoom, no ViewPager das imagens da exposição (com [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
     - [x] Trocar item selecionado do menu no drawer ao trocar fragment com link externo
     - [ ] Corrigir alguns problemas com o mapa em alguns dispositivos
+    - [ ] Corrigir erros de compatibilidade com alguns dispositivos.
 
 	
 -----------------------------
@@ -97,6 +98,7 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 	- [x] Implement pinch zoom, in ViewPager of exhibition images (with [TouchImageView](https://github.com/MikeOrtiz/TouchImageView))
 	- [x] Change seletected item in drawer menu when change fragment with external link
 	- [ ] Fix some map troubles with some devices
+	- [ ] Fiz some compability errors with some devices
 
 
 -----------------------------
