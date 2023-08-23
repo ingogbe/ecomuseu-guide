@@ -106,6 +106,8 @@ Android project for the Ecomuseum (Foz do Iguassu - PR - Brazil), to help visito
 
 <b>ScreenShots</b>
 
+Menu | Room List | Map (labels closed) | Map (labels opened) | Achievements | Exposition | Options | Exposition List | Empty Exposition List | QR Code Reader
+-----|-----------|---------------------|---------------------|--------------|------------|---------|-----------------|-----------------------|-----------------
 <img width="80" src="http://i.imgur.com/7XWV7sG.jpg" alt="Menu" title="Menu"> | <img width="80" src="http://i.imgur.com/OTK06ai.jpg" alt="Room List" title="Room List"> | <img width="80" src="http://i.imgur.com/1m5K1HW.jpg" alt="Map" title="Map - Labels closed"> | <img width="80" src="http://i.imgur.com/Gfx4jqy.jpg" alt="Map" title="Map - Labels opened"> | <img width="80" src="http://i.imgur.com/Tkc6hHN.jpg" alt="Achievements" title="Achievements"> | <img width="80" src="http://i.imgur.com/0aTfM5l.jpg" alt="Exposition" title="Exposition"> | <img width="80" src="http://i.imgur.com/Ecc8w4n.jpg" alt="Options" title="Options"> | <img width="80" src="http://i.imgur.com/q0L01zL.jpg" alt="Expositions List" title="Exposition List"> | <img width="80" src="http://i.imgur.com/3mdk3GH.jpg" alt="Empty Expositions List" title="Empty Exposition List"> | <img width="80" src="http://i.imgur.com/WkFFAHi.jpg" alt="QR Code Reader" title="QR Code Reader">
 
 
